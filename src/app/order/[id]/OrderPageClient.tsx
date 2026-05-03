@@ -44,11 +44,11 @@ export default function OrderPageClient() {
     setErrorMsg('');
 
     try {
-      // Send via Web3Forms (free email service)
+      // Send via Formsubmit.co (free, no API key needed)
       const formData = new FormData();
-      formData.append('access_key', 'YOUR_WEB3FORMS_KEY_HERE');
-      formData.append('subject', `🛒 New Order: ${service.title} — from ${form.name}`);
-      formData.append('from_name', 'ZYROO Website');
+      formData.append('_subject', `🛒 New Order: ${service.title} — from ${form.name}`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
 
       // Order details
       formData.append('Service', service.title);
@@ -59,18 +59,18 @@ export default function OrderPageClient() {
       formData.append('Email', form.email || 'Not provided');
       formData.append('Project Details', form.details);
 
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://formsubmit.co/ajax/jha@tinytoono.in', {
         method: 'POST',
         body: formData,
       });
 
       const data = await res.json();
 
-      if (data.success) {
+      if (data.success === 'true' || data.success === true) {
         setStatus('success');
       } else {
         setStatus('error');
-        setErrorMsg('Failed to send order. Please try again.');
+        setErrorMsg('Failed to send. Please try again.');
       }
     } catch {
       setStatus('error');
