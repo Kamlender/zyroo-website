@@ -43,39 +43,28 @@ export default function OrderPageClient() {
     setStatus('sending');
     setErrorMsg('');
 
-    try {
-      // Send via Formsubmit.co (free, no API key needed)
-      const formData = new FormData();
-      formData.append('_subject', `🛒 New Order: ${service.title} — from ${form.name}`);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
+    // Build WhatsApp message with all order details
+    const whatsappNumber = '918743843752';
+    const message = [
+      `🛒 *New Order — ZYROO*`,
+      ``,
+      `📦 *Service:* ${service.title}`,
+      `💰 *Price:* ${formatPrice(service.price)}`,
+      `📅 *Delivery:* ${service.deliveryDays} days`,
+      ``,
+      `👤 *Name:* ${form.name}`,
+      `📞 *Phone:* ${form.phone}`,
+      `✉️ *Email:* ${form.email || 'Not provided'}`,
+      ``,
+      `📝 *Project Details:*`,
+      form.details,
+    ].join('\n');
 
-      // Order details
-      formData.append('Service', service.title);
-      formData.append('Price', formatPrice(service.price));
-      formData.append('Delivery', `${service.deliveryDays} days`);
-      formData.append('Customer Name', form.name);
-      formData.append('Phone', form.phone);
-      formData.append('Email', form.email || 'Not provided');
-      formData.append('Project Details', form.details);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-      const res = await fetch('https://formsubmit.co/ajax/jha@tinytoono.in', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (data.success === 'true' || data.success === true) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-        setErrorMsg('Failed to send. Please try again.');
-      }
-    } catch {
-      setStatus('error');
-      setErrorMsg('Network error. Please check your connection and try again.');
-    }
+    // Open WhatsApp with order details
+    window.open(whatsappUrl, '_blank');
+    setStatus('success');
   };
 
   if (status === 'success') {
