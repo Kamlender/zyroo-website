@@ -1,5 +1,5 @@
 // ============================================
-// ZYRO — Web Design Services Data
+// ZYROO — Web Design Services Data
 // ============================================
 
 export interface Service {

@@ -3,13 +3,13 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'ZYRO — Web Design Studio',
+  title: 'ZYROO — Web Design Studio',
   description:
     'Premium web design & development studio. We craft stunning websites, e-commerce stores, and web applications that convert visitors into customers.',
   keywords:
     'web design, website development, landing page, e-commerce, portfolio website, web application, responsive design',
   openGraph: {
-    title: 'ZYRO — Web Design Studio',
+    title: 'ZYROO — Web Design Studio',
     description:
       'Premium web design & development studio. Stunning websites that convert.',
     type: 'website',

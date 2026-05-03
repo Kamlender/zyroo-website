@@ -16,7 +16,7 @@ export default function HomePage() {
     {
       name: 'Rajesh Kumar',
       role: 'Founder, TechStart',
-      text: 'ZYRO ne hamare startup ke liye amazing website banayi. Bahut fast delivery aur design ekdum premium tha!',
+      text: 'ZYROO ne hamare startup ke liye amazing website banayi. Bahut fast delivery aur design ekdum premium tha!',
       rating: 5,
       avatar: 'R',
     },
@@ -364,7 +364,7 @@ export default function HomePage() {
             <div className={styles.footerBrand}>
               <div className={styles.footerLogo}>
                 <div className={styles.footerLogoIcon}>Z</div>
-                <span>ZYRO</span>
+                <span>ZYROO</span>
               </div>
               <p className={styles.footerDesc}>
                 Premium web design studio crafting beautiful, high-performance
@@ -400,7 +400,7 @@ export default function HomePage() {
           </div>
 
           <div className={styles.footerBottom}>
-            <p>© {new Date().getFullYear()} ZYRO. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
           </div>
         </div>
       </footer>

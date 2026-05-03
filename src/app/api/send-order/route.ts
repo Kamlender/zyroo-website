@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
         
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); padding: 28px 32px;">
-          <h1 style="margin: 0; font-size: 22px; color: #fff;">🛒 New Order — ZYRO Web Design</h1>
+          <h1 style="margin: 0; font-size: 22px; color: #fff;">🛒 New Order — ZYROO Web Design</h1>
         </div>
         
         <!-- Body -->
@@ -87,14 +87,14 @@ export async function POST(request: NextRequest) {
         
         <!-- Footer -->
         <div style="padding: 16px 32px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-          <p style="margin: 0; font-size: 12px; color: #6b7280;">Sent from ZYRO Website • ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+          <p style="margin: 0; font-size: 12px; color: #6b7280;">Sent from ZYROO Website • ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
         </div>
       </div>
     `;
 
     // Send email
     await transporter.sendMail({
-      from: `"ZYRO Website" <${process.env.SMTP_USER}>`,
+      from: `"ZYROO Website" <${process.env.SMTP_USER}>`,
       to: recipientEmail,
       subject: `🛒 New Order: ${serviceName} — from ${name}`,
       html: htmlContent,
