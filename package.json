@@ -1,0 +1,25 @@
+{
+  "name": "zyro",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "firebase": "^11",
+    "firebase-admin": "^13",
+    "next": "^14",
+    "nodemailer": "^8.0.7",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^18",
+    "typescript": "^5"
+  }
+}
