@@ -78,19 +78,6 @@ export default function OrderPageClient() {
     }
   };
 
-  // WhatsApp fallback with order details
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918743843752';
-  const whatsappOrderMsg = encodeURIComponent(
-    `🛒 *New Order — ZYROO*\n\n` +
-    `📦 *Service:* ${service.title}\n` +
-    `💰 *Price:* ${formatPrice(service.price)}\n` +
-    `📅 *Delivery:* ${service.deliveryDays} days\n\n` +
-    `👤 *Name:* ${form.name}\n` +
-    `📞 *Phone:* ${form.phone}\n` +
-    `✉️ *Email:* ${form.email || 'Not provided'}\n\n` +
-    `📝 *Details:* ${form.details}`
-  );
-
   if (status === 'success') {
     return (
       <div className={styles.orderPage}>
@@ -268,19 +255,10 @@ export default function OrderPageClient() {
                   id="submit-order-btn"
                   disabled={status === 'sending'}
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Order'}
+                  {status === 'sending' ? 'Sending...' : 'Send'}
                 </button>
 
-                {/* WhatsApp fallback */}
-                <a
-                  href={`https://wa.me/${whatsappNumber}?text=${whatsappOrderMsg}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn btn-whatsapp btn-lg ${styles.submitBtn}`}
-                  style={{ marginTop: 'var(--space-md)', textAlign: 'center' }}
-                >
-                  💬 Or Order via WhatsApp
-                </a>
+
               </form>
             </div>
           </div>
