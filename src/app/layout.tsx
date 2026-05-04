@@ -8,6 +8,13 @@ export const metadata: Metadata = {
     'Premium web design & development studio. We craft stunning websites, e-commerce stores, and web applications that convert visitors into customers.',
   keywords:
     'web design, website development, landing page, e-commerce, portfolio website, web application, responsive design',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'ZYROO — Web Design Studio',
     description:
