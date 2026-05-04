@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 
 interface LottieCheckboxProps {
   size?: number;
-  autoplay?: boolean;
 }
 
-export default function LottieCheckbox({ size = 22, autoplay = true }: LottieCheckboxProps) {
+export default function LottieCheckbox({ size = 22 }: LottieCheckboxProps) {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [animationData, setAnimationData] = useState<object | null>(null);
 
@@ -42,7 +41,8 @@ export default function LottieCheckbox({ size = 22, autoplay = true }: LottieChe
         lottieRef={lottieRef}
         animationData={animationData}
         loop={false}
-        autoplay={autoplay}
+        autoplay={true}
+        initialSegment={[0, 90]}
         style={{ width: size, height: size }}
       />
     </div>
