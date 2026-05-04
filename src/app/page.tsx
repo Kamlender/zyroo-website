@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { services, formatPrice } from '@/lib/services';
-import LottieCheckbox from '@/components/LottieCheckbox';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -214,7 +213,7 @@ export default function HomePage() {
                 <div className={styles.serviceFeatures}>
                   {service.features.map((feature, i) => (
                     <div key={i} className={styles.serviceFeature}>
-                      <LottieCheckbox size={20} />
+                      <span className={styles.serviceFeatureCheck}>✓</span>
                       {feature}
                     </div>
                   ))}

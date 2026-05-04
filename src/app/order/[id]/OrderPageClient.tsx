@@ -4,6 +4,7 @@ import React, { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { getServiceById, formatPrice } from '@/lib/services';
+import LottieCheckbox from '@/components/LottieCheckbox';
 import styles from './page.module.css';
 
 export default function OrderPageClient() {
@@ -72,7 +73,9 @@ export default function OrderPageClient() {
       <div className={styles.orderPage}>
         <div className="container">
           <div className={`${styles.successCard} animate-scaleIn`}>
-            <div className={styles.successIcon}>✅</div>
+            <div className={styles.successIcon}>
+              <LottieCheckbox size={80} />
+            </div>
             <h2 className={styles.successTitle}>Order Sent!</h2>
             <p className={styles.successText}>
               Aapka order successfully send ho gaya hai. Hum jaldi se aapse

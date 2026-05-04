@@ -5,13 +5,12 @@ import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 
 interface LottieCheckboxProps {
   size?: number;
+  autoplay?: boolean;
 }
 
-export default function LottieCheckbox({ size = 22 }: LottieCheckboxProps) {
+export default function LottieCheckbox({ size = 22, autoplay = true }: LottieCheckboxProps) {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [animationData, setAnimationData] = useState<object | null>(null);
-  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     fetch('/checkbox.json')
@@ -20,36 +19,16 @@ export default function LottieCheckbox({ size = 22 }: LottieCheckboxProps) {
       .catch(() => {});
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current || !animationData) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasPlayed) {
-            setHasPlayed(true);
-            lottieRef.current?.goToAndPlay(0, true);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [animationData, hasPlayed]);
-
   if (!animationData) {
     return (
-      <span style={{ color: 'var(--accent-emerald)', fontWeight: 700, fontSize: size * 0.7 }}>
-        ✓
+      <span style={{ fontSize: size * 0.8, lineHeight: 1 }}>
+        ✅
       </span>
     );
   }
 
   return (
     <div
-      ref={containerRef}
       style={{
         width: size,
         height: size,
@@ -63,7 +42,7 @@ export default function LottieCheckbox({ size = 22 }: LottieCheckboxProps) {
         lottieRef={lottieRef}
         animationData={animationData}
         loop={false}
-        autoplay={false}
+        autoplay={autoplay}
         style={{ width: size, height: size }}
       />
     </div>
