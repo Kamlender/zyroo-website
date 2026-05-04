@@ -43,7 +43,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
           <div className={styles.logoIcon}>Z</div>
-          <span className={styles.logoText}>ZYROO</span>
+          <div className={styles.logoGroup}>
+            <span className={styles.logoText}>ZYROO</span>
+            <span className={styles.logoNiche}>Web-Design</span>
+          </div>
         </Link>
 
         {/* Mobile toggle */}

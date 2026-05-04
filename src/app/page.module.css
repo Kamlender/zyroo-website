@@ -746,6 +746,25 @@
   max-width: 300px;
 }
 
+.footerLogoGroup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.footerLogoNiche {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
 .footerLinks {
   display: flex;
   flex-direction: column;

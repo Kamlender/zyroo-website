@@ -364,7 +364,10 @@ export default function HomePage() {
             <div className={styles.footerBrand}>
               <div className={styles.footerLogo}>
                 <div className={styles.footerLogoIcon}>Z</div>
-                <span>ZYROO</span>
+                <div className={styles.footerLogoGroup}>
+                  <span>ZYROO</span>
+                  <span className={styles.footerLogoNiche}>Web-Design</span>
+                </div>
               </div>
               <p className={styles.footerDesc}>
                 Premium web design studio crafting beautiful, high-performance
