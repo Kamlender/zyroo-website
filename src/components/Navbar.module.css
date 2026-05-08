@@ -1,5 +1,5 @@
 /* ============================================
-   Navbar — V2 Emerald Design
+   Navbar — V2 Purple Design
    ============================================ */
 
 .navbar {
@@ -17,7 +17,7 @@
   background: rgba(10, 15, 30, 0.88);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.08);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -57,7 +57,7 @@
   font-size: var(--text-base);
   font-weight: 800;
   color: white;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
 }
 
 .logoText { letter-spacing: 1.5px; }
@@ -97,8 +97,8 @@
 
 .navLink:hover,
 .navLink.active {
-  color: var(--accent-emerald-light);
-  background: rgba(16, 185, 129, 0.06);
+  color: var(--accent-purple-light);
+  background: rgba(139, 92, 246, 0.06);
 }
 
 .navCta { margin-left: var(--space-md); }

@@ -1,5 +1,5 @@
 /* ============================================
-   Order Page — V2 Emerald Design
+   Order Page — Purple Design
    ============================================ */
 
 .orderPage {
@@ -20,7 +20,7 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 55%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 55%);
   top: -150px;
   right: -150px;
   filter: blur(50px);
@@ -50,7 +50,7 @@
 }
 
 .backLink:hover {
-  color: var(--accent-emerald-light);
+  color: var(--accent-purple-light);
   transform: translateX(-4px);
 }
 
@@ -70,7 +70,7 @@
 
 .serviceInfoCard {
   background: rgba(17, 24, 56, 0.6);
-  border: 1.5px solid rgba(16, 185, 129, 0.08);
+  border: 1.5px solid rgba(139, 92, 246, 0.08);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
   overflow: hidden;
@@ -98,8 +98,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.12);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.12);
   border-radius: var(--radius-lg);
   font-size: 28px;
 }
@@ -113,9 +113,9 @@
   gap: var(--space-sm);
   margin-bottom: var(--space-xl);
   padding: var(--space-lg);
-  background: rgba(16, 185, 129, 0.04);
+  background: rgba(139, 92, 246, 0.04);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.08);
 }
 
 .serviceInfoOldPrice { font-size: var(--text-base); color: var(--text-dim); text-decoration: line-through; }
@@ -124,7 +124,7 @@
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--accent-emerald-light);
+  color: var(--accent-purple-light);
 }
 
 .serviceInfoFeatures { margin-bottom: var(--space-xl); }
@@ -139,23 +139,23 @@
   padding: 7px 0;
 }
 
-.featureCheck { color: var(--accent-emerald); font-weight: 700; }
+.featureCheck { color: var(--accent-purple); font-weight: 700; }
 
 .serviceInfoDelivery {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-md);
-  background: rgba(16, 185, 129, 0.06);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  background: rgba(139, 92, 246, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.1);
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
-  color: var(--accent-emerald);
+  color: var(--accent-purple);
 }
 
 .orderFormCard {
   background: rgba(17, 24, 56, 0.6);
-  border: 1.5px solid rgba(16, 185, 129, 0.08);
+  border: 1.5px solid rgba(139, 92, 246, 0.08);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
 }
@@ -194,7 +194,7 @@
   text-align: center;
   padding: var(--space-3xl);
   background: rgba(17, 24, 56, 0.6);
-  border: 1.5px solid rgba(16, 185, 129, 0.1);
+  border: 1.5px solid rgba(139, 92, 246, 0.1);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-glow);
 }
