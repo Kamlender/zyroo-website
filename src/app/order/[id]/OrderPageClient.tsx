@@ -14,6 +14,7 @@ export default function OrderPageClient() {
 
   const [form, setForm] = useState({
     name: '',
+    phone: '',
     email: '',
     details: '',
   });
@@ -53,7 +54,8 @@ export default function OrderPageClient() {
           subject: `🛒 New Order — ${service.title} | ZYROO`,
           from_name: 'ZYROO Orders',
           name: form.name,
-          email: form.email,
+          phone: form.phone,
+          email: form.email || 'Not provided',
           service: service.title,
           price: formatPrice(service.price),
           delivery: `${service.deliveryDays} days`,
@@ -193,22 +195,41 @@ export default function OrderPageClient() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="order-email">
-                      Email *
+                    <label className="form-label" htmlFor="order-phone">
+                      Phone Number *
                     </label>
                     <input
-                      type="email"
-                      id="order-email"
+                      type="tel"
+                      id="order-phone"
                       className="form-input"
-                      placeholder="aapka@email.com"
-                      value={form.email}
+                      placeholder="98XXXXXXXX"
+                      value={form.phone}
                       onChange={(e) =>
-                        setForm((p) => ({ ...p, email: e.target.value }))
+                        setForm((p) => ({ ...p, phone: e.target.value }))
                       }
                       required
+                      pattern="[0-9]{10}"
+                      title="Please enter a valid 10-digit phone number"
                       disabled={status === 'sending'}
                     />
                   </div>
+                </div>
+
+                <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
+                  <label className="form-label" htmlFor="order-email">
+                    Email (Optional)
+                  </label>
+                  <input
+                    type="email"
+                    id="order-email"
+                    className="form-input"
+                    placeholder="aapka@email.com"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((p) => ({ ...p, email: e.target.value }))
+                    }
+                    disabled={status === 'sending'}
+                  />
                 </div>
 
                 <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
