@@ -847,6 +847,30 @@
   color: var(--accent-purple-light);
 }
 
+.footerAbout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.footerAboutInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footerAboutBio {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
 .footerBottom {
   padding-top: var(--space-xl);
   border-top: 1px solid var(--border-color);

@@ -273,32 +273,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== ABOUT ==================== */}
-      <section className={`section ${styles.about}`} id="about">
+      {/* ==================== REVIEWS ==================== */}
+      <section className={`section ${styles.about}`} id="reviews">
         <div className="container">
           <div className="section-header">
-            <div className="section-tag">👨‍💻 About Us</div>
+            <div className="section-tag">⭐ Reviews</div>
             <h2 className="section-title">
-              Meet the <span className="gradient-text">Founder</span>
+              Our <span className="gradient-text">Happy Clients</span>
             </h2>
           </div>
 
-          <div className={styles.aboutContent}>
-            <div className={`${styles.aboutCard} animate-fadeInUp`}>
-              <div className={styles.aboutAvatar}>PJ</div>
-              <h3 className={styles.aboutName}>Pawash Jha</h3>
-              <p className={styles.aboutRole}>Founder &amp; Lead Developer</p>
-              <p className={styles.aboutBio}>
-                Passionate about creating pixel-perfect, high-performance websites
-                that help businesses grow online. Every project at ZYROO is personally
-                overseen to ensure premium quality and on-time delivery.
-              </p>
-            </div>
-          </div>
-
-          {/* Trusted Clients */}
           <div className={styles.clientsSection}>
-            <h3 className={styles.clientsTitle}>Trusted By</h3>
             <div className={styles.clientsGrid}>
               {clients.map((c, index) => (
                 <div
@@ -365,7 +350,7 @@ export default function HomePage() {
               <h4>Quick Links</h4>
               <a href="#services">Services</a>
               <a href="#process">How It Works</a>
-              <a href="#about">About</a>
+              <a href="#reviews">Reviews</a>
             </div>
 
             <div className={styles.footerLinks}>
@@ -387,6 +372,19 @@ export default function HomePage() {
                 <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
               </div>
+            </div>
+          </div>
+
+          {/* About Founder */}
+          <div className={styles.footerAbout} id="about">
+            <div className={styles.aboutAvatar}>PJ</div>
+            <div className={styles.footerAboutInfo}>
+              <h4 className={styles.aboutName}>Pawash Jha</h4>
+              <p className={styles.aboutRole}>Founder &amp; Lead Developer</p>
+              <p className={styles.footerAboutBio}>
+                Passionate about creating pixel-perfect, high-performance websites
+                that help businesses grow online.
+              </p>
             </div>
           </div>
 

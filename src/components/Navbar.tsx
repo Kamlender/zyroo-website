@@ -82,9 +82,9 @@ export default function Navbar() {
           </button>
           <button
             className={styles.navLink}
-            onClick={() => scrollToSection('about')}
+            onClick={() => scrollToSection('reviews')}
           >
-            About
+            Reviews
           </button>
           <button
             className={`btn btn-primary btn-sm ${styles.navCta}`}
