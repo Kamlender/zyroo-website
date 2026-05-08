@@ -12,28 +12,11 @@ export default function HomePage() {
     'Hi! I want to discuss a web design project.'
   )}`;
 
-  const testimonials = [
-    {
-      name: 'Rajesh Kumar',
-      role: 'Founder, TechStart',
-      text: 'ZYROO ne hamare startup ke liye amazing website banayi. Bahut fast delivery aur design ekdum premium tha!',
-      rating: 5,
-      avatar: 'R',
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Owner, FashionHub',
-      text: 'E-commerce store bilkul waise bani jaise humne socha tha. Sales 3x badh gayi website launch ke baad.',
-      rating: 5,
-      avatar: 'P',
-    },
-    {
-      name: 'Amit Patel',
-      role: 'CEO, CloudSync',
-      text: 'Web application ka kaam bahut professional tha. Team responsive hai aur deadline se pehle deliver kiya.',
-      rating: 5,
-      avatar: 'A',
-    },
+  const clients = [
+    { name: 'Raj', avatar: 'R' },
+    { name: 'Ashish', avatar: 'A' },
+    { name: 'Anil', avatar: 'AN' },
+    { name: 'Twinkle', avatar: 'T' },
   ];
 
   const processSteps = [
@@ -98,18 +81,18 @@ export default function HomePage() {
 
             <div className={`${styles.heroStats} animate-fadeInUp stagger-4`}>
               <div className={styles.heroStat}>
-                <span className={styles.heroStatValue}>150+</span>
+                <span className={styles.heroStatValue}>50+</span>
                 <span className={styles.heroStatLabel}>Projects Done</span>
               </div>
               <div className={styles.heroStatDivider}></div>
               <div className={styles.heroStat}>
-                <span className={styles.heroStatValue}>100+</span>
+                <span className={styles.heroStatValue}>30+</span>
                 <span className={styles.heroStatLabel}>Happy Clients</span>
               </div>
               <div className={styles.heroStatDivider}></div>
               <div className={styles.heroStat}>
-                <span className={styles.heroStatValue}>4.9★</span>
-                <span className={styles.heroStatLabel}>Client Rating</span>
+                <span className={styles.heroStatValue}>24/7</span>
+                <span className={styles.heroStatLabel}>Support</span>
               </div>
             </div>
           </div>
@@ -271,16 +254,16 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.statsGrid}>
             <div className={styles.statItem}>
-              <div className={styles.statValue}>150+</div>
+              <div className={styles.statValue}>50+</div>
               <div className={styles.statLabel}>Projects Delivered</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statValue}>100+</div>
+              <div className={styles.statValue}>30+</div>
               <div className={styles.statLabel}>Happy Clients</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statValue}>3+</div>
-              <div className={styles.statLabel}>Years Experience</div>
+              <div className={styles.statValue}>2026</div>
+              <div className={styles.statLabel}>Est. Year</div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statValue}>24/7</div>
@@ -290,40 +273,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== TESTIMONIALS ==================== */}
-      <section className={`section ${styles.testimonials}`} id="testimonials">
+      {/* ==================== ABOUT ==================== */}
+      <section className={`section ${styles.about}`} id="about">
         <div className="container">
           <div className="section-header">
-            <div className="section-tag">⭐ Client Reviews</div>
+            <div className="section-tag">👨‍💻 About Us</div>
             <h2 className="section-title">
-              What Our <span className="gradient-text">Clients Say</span>
+              Meet the <span className="gradient-text">Founder</span>
             </h2>
-            <p className="section-subtitle">
-              Real feedback from real clients who trusted us with their projects.
-            </p>
           </div>
 
-          <div className={styles.testimonialsGrid}>
-            {testimonials.map((t, index) => (
-              <div
-                key={index}
-                className={`${styles.testimonialCard} animate-fadeInUp stagger-${index + 1}`}
-              >
-                <div className={styles.testimonialStars}>
-                  {'★'.repeat(t.rating)}
+          <div className={styles.aboutContent}>
+            <div className={`${styles.aboutCard} animate-fadeInUp`}>
+              <div className={styles.aboutAvatar}>PJ</div>
+              <h3 className={styles.aboutName}>Pawash Jha</h3>
+              <p className={styles.aboutRole}>Founder &amp; Lead Developer</p>
+              <p className={styles.aboutBio}>
+                Passionate about creating pixel-perfect, high-performance websites
+                that help businesses grow online. Every project at ZYROO is personally
+                overseen to ensure premium quality and on-time delivery.
+              </p>
+            </div>
+          </div>
+
+          {/* Trusted Clients */}
+          <div className={styles.clientsSection}>
+            <h3 className={styles.clientsTitle}>Trusted By</h3>
+            <div className={styles.clientsGrid}>
+              {clients.map((c, index) => (
+                <div
+                  key={index}
+                  className={`${styles.clientBadge} animate-fadeInUp stagger-${index + 1}`}
+                >
+                  <div className={styles.clientAvatar}>{c.avatar}</div>
+                  <span className={styles.clientName}>{c.name}</span>
                 </div>
-                <p className={styles.testimonialText}>
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className={styles.testimonialAuthor}>
-                  <div className={styles.testimonialAvatar}>{t.avatar}</div>
-                  <div>
-                    <div className={styles.testimonialName}>{t.name}</div>
-                    <div className={styles.testimonialRole}>{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -379,7 +365,7 @@ export default function HomePage() {
               <h4>Quick Links</h4>
               <a href="#services">Services</a>
               <a href="#process">How It Works</a>
-              <a href="#testimonials">Reviews</a>
+              <a href="#about">About</a>
             </div>
 
             <div className={styles.footerLinks}>
@@ -396,9 +382,11 @@ export default function HomePage() {
               <a href="mailto:jha@tinytoono.in">
                 ✉️ jha@tinytoono.in
               </a>
-              <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>
-                Available 24/7
-              </p>
+              <div className={styles.footerSocials}>
+                <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+              </div>
             </div>
           </div>
 

@@ -581,73 +581,131 @@
   letter-spacing: 1px;
 }
 
-/* ==================== TESTIMONIALS ==================== */
-.testimonials {
+/* ==================== ABOUT ==================== */
+.about {
   position: relative;
 }
 
-.testimonialsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+.aboutContent {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-3xl);
 }
 
-.testimonialCard {
-  padding: var(--space-xl);
+.aboutCard {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-3xl);
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
+  max-width: 500px;
   transition: all var(--transition-base);
 }
 
-.testimonialCard:hover {
+.aboutCard:hover {
   border-color: var(--border-color-hover);
-  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
 
-.testimonialStars {
-  font-size: var(--text-lg);
-  color: #fbbf24;
-  letter-spacing: 2px;
-  margin-bottom: var(--space-md);
-}
-
-.testimonialText {
-  font-size: var(--text-base);
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--space-xl);
-  font-style: italic;
-}
-
-.testimonialAuthor {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.testimonialAvatar {
-  width: 44px;
-  height: 44px;
+.aboutAvatar {
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--gradient-primary);
   border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-2xl);
+  color: white;
+  margin: 0 auto var(--space-lg);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.aboutName {
+  font-size: var(--text-2xl);
   font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.aboutRole {
+  font-size: var(--text-sm);
+  color: var(--accent-purple-light);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aboutBio {
   font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Trusted Clients */
+.clientsSection {
+  text-align: center;
+}
+
+.clientsTitle {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.clientsGrid {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.clientBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+.clientBadge:hover {
+  border-color: var(--border-color-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.clientAvatar {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-secondary);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: var(--text-xs);
   color: white;
 }
 
-.testimonialName {
-  font-weight: 600;
+.clientName {
   font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.testimonialRole {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
+/* Footer Socials */
+.footerSocials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 /* ==================== FOOTER (merged CTA + Footer) ==================== */
@@ -877,8 +935,8 @@
     gap: var(--space-lg);
   }
 
-  .testimonialsGrid {
-    grid-template-columns: 1fr;
+  .clientsGrid {
+    gap: var(--space-md);
   }
 
   .ctaCard {
