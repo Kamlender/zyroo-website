@@ -14,7 +14,6 @@ export default function OrderPageClient() {
 
   const [form, setForm] = useState({
     name: '',
-    phone: '',
     email: '',
     details: '',
   });
@@ -44,28 +43,39 @@ export default function OrderPageClient() {
     setStatus('sending');
     setErrorMsg('');
 
-    // Build WhatsApp message with all order details
-    const whatsappNumber = '918743843752';
-    const message = [
-      `🛒 *New Order — ZYROO*`,
-      ``,
-      `📦 *Service:* ${service.title}`,
-      `💰 *Price:* ${formatPrice(service.price)}`,
-      `📅 *Delivery:* ${service.deliveryDays} days`,
-      ``,
-      `👤 *Name:* ${form.name}`,
-      `📞 *Phone:* ${form.phone}`,
-      `✉️ *Email:* ${form.email || 'Not provided'}`,
-      ``,
-      `📝 *Project Details:*`,
-      form.details,
-    ].join('\n');
+    try {
+      // Send order via Web3Forms (delivers to email)
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
+          subject: `🛒 New Order — ${service.title} | ZYROO`,
+          from_name: 'ZYROO Orders',
+          name: form.name,
+          email: form.email,
+          service: service.title,
+          price: formatPrice(service.price),
+          delivery: `${service.deliveryDays} days`,
+          message: form.details,
+        }),
+      });
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      const data = await response.json();
 
-    // Open WhatsApp with order details
-    window.open(whatsappUrl, '_blank');
-    setStatus('success');
+      if (data.success) {
+        setStatus('success');
+      } else {
+        throw new Error(data.message || 'Failed to send order');
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : 'Order send nahi ho paya. Please try again.'
+      );
+    }
   };
 
   if (status === 'success') {
@@ -183,41 +193,22 @@ export default function OrderPageClient() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="order-phone">
-                      Phone Number *
+                    <label className="form-label" htmlFor="order-email">
+                      Email *
                     </label>
                     <input
-                      type="tel"
-                      id="order-phone"
+                      type="email"
+                      id="order-email"
                       className="form-input"
-                      placeholder="98XXXXXXXX"
-                      value={form.phone}
+                      placeholder="aapka@email.com"
+                      value={form.email}
                       onChange={(e) =>
-                        setForm((p) => ({ ...p, phone: e.target.value }))
+                        setForm((p) => ({ ...p, email: e.target.value }))
                       }
                       required
-                      pattern="[0-9]{10}"
-                      title="Please enter a valid 10-digit phone number"
                       disabled={status === 'sending'}
                     />
                   </div>
-                </div>
-
-                <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
-                  <label className="form-label" htmlFor="order-email">
-                    Email (Optional)
-                  </label>
-                  <input
-                    type="email"
-                    id="order-email"
-                    className="form-input"
-                    placeholder="aapka@email.com"
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm((p) => ({ ...p, email: e.target.value }))
-                    }
-                    disabled={status === 'sending'}
-                  />
                 </div>
 
                 <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
@@ -247,7 +238,7 @@ export default function OrderPageClient() {
                   id="submit-order-btn"
                   disabled={status === 'sending'}
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send'}
+                  {status === 'sending' ? 'Sending Mail...' : '✉️ Send Mail'}
                 </button>
 
 

@@ -260,15 +260,15 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-glass);
 }
 
-/* WhatsApp Button */
-.btn-whatsapp {
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+/* Email Button */
+.btn-email {
+  background: linear-gradient(135deg, #3b82f6 0%, #0891b2 100%);
   color: white;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
 }
 
-.btn-whatsapp:hover {
-  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+.btn-email:hover {
+  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.5);
   transform: translateY(-2px);
 }
 
