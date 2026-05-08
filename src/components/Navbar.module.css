@@ -1,5 +1,5 @@
 /* ============================================
-   Navbar — Premium Glass Design
+   Navbar — V2 Emerald Design
    ============================================ */
 
 .navbar {
@@ -14,10 +14,10 @@
 }
 
 .navbar.scrolled {
-  background: rgba(3, 0, 20, 0.8);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+  background: rgba(10, 15, 30, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.08);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -31,7 +31,6 @@
   height: 100%;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -45,9 +44,7 @@
   transition: all var(--transition-base);
 }
 
-.logo:hover {
-  transform: scale(1.02);
-}
+.logo:hover { transform: scale(1.03); }
 
 .logoIcon {
   width: 38px;
@@ -60,18 +57,12 @@
   font-size: var(--text-base);
   font-weight: 800;
   color: white;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
 }
 
-.logoText {
-  letter-spacing: 1.5px;
-}
+.logoText { letter-spacing: 1.5px; }
 
-.logoGroup {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
+.logoGroup { display: flex; flex-direction: column; line-height: 1; }
 
 .logoNiche {
   font-size: 0.55rem;
@@ -83,10 +74,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-top: 3px;
-  opacity: 0.8;
 }
 
-/* Navigation Links */
 .navLinks {
   display: flex;
   align-items: center;
@@ -94,47 +83,27 @@
 }
 
 .navLink {
-  padding: 9px 18px;
+  padding: 9px 20px;
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-secondary);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   transition: all var(--transition-base);
   cursor: pointer;
   background: none;
   border: none;
   font-family: inherit;
-  position: relative;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-base);
-  transform: translateX(-50%);
-}
-
-.navLink:hover::after,
-.navLink.active::after {
-  width: 50%;
 }
 
 .navLink:hover,
 .navLink.active {
-  color: var(--text-primary);
+  color: var(--accent-emerald-light);
+  background: rgba(16, 185, 129, 0.06);
 }
 
-.navCta {
-  margin-left: var(--space-md);
-}
+.navCta { margin-left: var(--space-md); }
 
-/* Mobile Toggle */
+/* Mobile */
 .mobileToggle {
   display: none;
   flex-direction: column;
@@ -154,31 +123,17 @@
   transition: all var(--transition-base);
 }
 
-.mobileToggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
+.mobileToggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobileToggle.active span:nth-child(2) { opacity: 0; }
+.mobileToggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-.mobileToggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobileToggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
-  .mobileToggle {
-    display: flex;
-  }
+  .mobileToggle { display: flex; }
 
   .navLinks {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(3, 0, 20, 0.97);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 15, 30, 0.97);
     backdrop-filter: blur(30px);
     flex-direction: column;
     justify-content: center;
@@ -188,22 +143,12 @@
     transition: all var(--transition-slow);
   }
 
-  .navLinks.open {
-    opacity: 1;
-    visibility: visible;
-  }
+  .navLinks.open { opacity: 1; visibility: visible; }
 
   .navLink {
     font-size: var(--text-xl);
     padding: 14px 28px;
   }
 
-  .navLink::after {
-    display: none;
-  }
-
-  .navCta {
-    margin-left: 0;
-    margin-top: var(--space-md);
-  }
+  .navCta { margin-left: 0; margin-top: var(--space-md); }
 }
