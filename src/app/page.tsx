@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { services, formatPrice } from '@/lib/services';
+import { services } from '@/lib/services';
+import PricingSection from '@/components/PricingSection';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -123,72 +124,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ==================== SERVICES — BENTO GRID ==================== */}
-      <section className={`section ${styles.services}`} id="services">
-        <div className="container">
-          <div className={styles.sectionTop}>
-            <div className="section-tag">💼 Our Services</div>
-            <h2 className={styles.sectionHeading}>
-              Choose Your <span className="gradient-text">Perfect Plan</span>
-            </h2>
-            <p className={styles.sectionDesc}>
-              Premium web design packages at honest prices.
-            </p>
-          </div>
-
-          <div className={styles.bentoGrid}>
-            {services.map((service, index) => (
-              <Link
-                key={service.id}
-                href={`/order/${service.id}`}
-                className={`${styles.bentoCard} ${index === 0 ? styles.bentoFeatured : ''} animate-fadeInUp stagger-${index + 1}`}
-                id={`service-${service.id}`}
-              >
-                {service.popular && (
-                  <div className={styles.popularTag}>
-                    <span className="badge badge-popular">🔥 Popular</span>
-                  </div>
-                )}
-
-                <div className={styles.bentoTop}>
-                  <div className={styles.bentoIcon}>{service.icon}</div>
-                  <span className={styles.bentoCategory}>{service.category}</span>
-                </div>
-
-                <h3 className={styles.bentoTitle}>{service.title}</h3>
-                <p className={styles.bentoDesc}>{service.description}</p>
-
-                <div className={styles.bentoPriceRow}>
-                  {service.originalPrice && (
-                    <span className={styles.bentoOldPrice}>
-                      {formatPrice(service.originalPrice)}
-                    </span>
-                  )}
-                  <span className={styles.bentoPrice}>
-                    {formatPrice(service.price)}
-                  </span>
-                </div>
-
-                <ul className={styles.bentoFeats}>
-                  {service.features.slice(0, 4).map((f, i) => (
-                    <li key={i}>
-                      <span className={styles.featCheck}>✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className={styles.bentoFooter}>
-                  <span className={styles.bentoDelivery}>
-                    📅 {service.deliveryDays} days
-                  </span>
-                  <span className={styles.bentoAction}>Order Now →</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ==================== SERVICES — PRICING SECTION ==================== */}
+      <PricingSection />
 
       {/* ==================== PROCESS — HORIZONTAL TIMELINE ==================== */}
       <section className={`section ${styles.process}`} id="process">

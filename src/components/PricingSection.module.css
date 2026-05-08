@@ -1,0 +1,442 @@
+/* ============================================
+   PricingSection — Premium Glassmorphism Cards
+   Adapted from reference Pricing Plans component
+   ============================================ */
+
+/* ---- Section ---- */
+.section {
+  position: relative;
+  padding: var(--space-4xl) 0;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Background Decor (from reference) ---- */
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bgGlowTop {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1100px;
+  height: 550px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at top,
+    rgba(16, 185, 129, 0.1) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+}
+
+.bgGlowBottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  transform: translate(40%, 40%);
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.04);
+  filter: blur(100px);
+}
+
+/* ---- Header ---- */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.heading {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: var(--space-md) 0;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    font-size: var(--text-5xl);
+  }
+}
+
+.subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- Toggle (reference-inspired ring style) ---- */
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.toggleLabel {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.toggleActive {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.toggleTrack {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggleTrack:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+.toggleTrack:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.toggleThumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.35);
+}
+
+.toggleBadge {
+  display: inline-flex;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-amber);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+/* ---- Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+/* ---- Card ---- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: 24px;
+  background: rgba(17, 24, 56, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  height: 100%;
+}
+
+.card:hover {
+  background: rgba(17, 24, 56, 0.65);
+  border-color: rgba(16, 185, 129, 0.18);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Popular Card (reference: lifts up, gradient border, glow shadow) ---- */
+.cardPopularWrap {
+  /* Reference: md:-mt-4 md:mb-4 to make popular card pop out */
+}
+
+@media (min-width: 1024px) {
+  .cardPopularWrap {
+    margin-top: -16px;
+    margin-bottom: 16px;
+    z-index: 10;
+    position: relative;
+  }
+}
+
+.cardPopular {
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 185, 129, 0.1),
+    rgba(17, 24, 56, 0.55)
+  );
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow:
+    0 0 50px -12px rgba(16, 185, 129, 0.12),
+    0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.cardPopular:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow:
+    0 0 70px -12px rgba(16, 185, 129, 0.2),
+    0 28px 70px rgba(0, 0, 0, 0.35);
+  transform: translateY(-10px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 20px;
+  background: linear-gradient(135deg, var(--accent-emerald), var(--accent-teal));
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+}
+
+/* ---- Card Header ---- */
+.cardHeader {
+  margin-bottom: var(--space-lg);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(16, 185, 129, 0.07);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  transition: all 0.3s ease;
+}
+
+.cardIconPopular {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.3);
+}
+
+.card:hover .cardIcon {
+  transform: scale(1.08);
+}
+
+.cardName {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.cardDesc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ---- Price ---- */
+.priceBlock {
+  margin-bottom: var(--space-lg);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.cardPopular .price {
+  color: var(--accent-emerald-light);
+}
+
+.oldPrice {
+  font-size: var(--text-sm);
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
+
+.priceSuffix {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.rushNote {
+  font-size: 10px;
+  color: var(--accent-amber);
+  font-weight: 600;
+}
+
+/* ---- Features ---- */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.checkNormal {
+  color: var(--accent-emerald);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.checkPopular {
+  color: var(--accent-emerald-light);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---- Card Footer (reference: full-width CTA button) ---- */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.ctaBtnPopular {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.3);
+}
+
+.ctaIcon {
+  transition: transform 0.3s ease;
+  opacity: 0.6;
+}
+
+.ctaBtnPopular .ctaIcon {
+  opacity: 1;
+}
+
+.card:hover .ctaBtn {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald-light);
+}
+
+.card:hover .ctaBtnPopular {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4);
+}
+
+.card:hover .ctaIcon {
+  transform: translateX(3px);
+}
+
+.delivery {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* ---- Note ---- */
+.note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-2xl);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1200px) {
+  .grid {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .cardPopularWrap {
+    order: -1;
+  }
+
+  .heading {
+    font-size: var(--text-3xl);
+  }
+}
