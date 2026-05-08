@@ -238,7 +238,7 @@ export default function OrderPageClient() {
                   id="submit-order-btn"
                   disabled={status === 'sending'}
                 >
-                  {status === 'sending' ? 'Sending Mail...' : '✉️ Send Mail'}
+                  {status === 'sending' ? 'Sending...' : 'Send'}
                 </button>
 
 
