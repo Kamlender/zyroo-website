@@ -39,6 +39,7 @@ jobs:
           NEXT_PUBLIC_WHATSAPP_NUMBER: '918743843752'
           NEXT_PUBLIC_WHATSAPP_MESSAGE: 'Hi! I am interested in your web design services.'
           NEXT_PUBLIC_CONTACT_EMAIL: 'jha@tinytoono.in'
+          NEXT_PUBLIC_WEB3FORMS_KEY: '636ca9bd-d0b6-4616-9f4f-5ad07be1ef35'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
