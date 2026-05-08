@@ -6,10 +6,11 @@ import { services, formatPrice } from '@/lib/services';
 import styles from './page.module.css';
 
 export default function HomePage() {
-  const emailAddress = 'jha@tinytoono.in';
-  const emailSubject = encodeURIComponent('Web Design Project Inquiry');
-  const emailBody = encodeURIComponent('Hi! I want to discuss a web design project.');
-  const mailtoUrl = `mailto:${emailAddress}?subject=${emailSubject}&body=${emailBody}`;
+  const whatsappNumber =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    'Hi! I want to discuss a web design project.'
+  )}`;
 
   const testimonials = [
     {
@@ -40,8 +41,8 @@ export default function HomePage() {
       step: '01',
       title: 'Discuss Your Idea',
       description:
-        'Email pe apni requirements batao. Hum samjhenge ki aapko kya chahiye.',
-      icon: '✉️',
+        'WhatsApp pe apni requirements batao. Hum samjhenge ki aapko kya chahiye.',
+      icon: '💬',
     },
     {
       step: '02',
@@ -165,7 +166,7 @@ export default function HomePage() {
             </h2>
             <p className="section-subtitle">
               Premium web design packages at honest prices. Click any service to
-              place your order instantly via email.
+              place your order instantly via WhatsApp.
             </p>
           </div>
 
@@ -340,7 +341,7 @@ export default function HomePage() {
               <span className="gradient-text">Dream Website?</span>
             </h2>
             <p className={styles.ctaSubtitle}>
-              Abhi mail karo — Free consultation + quote milega 10 minute
+              Abhi WhatsApp karo — Free consultation + quote milega 10 minute
               mein!
             </p>
             <div className={styles.ctaActions}>
@@ -348,10 +349,12 @@ export default function HomePage() {
                 Browse Services
               </a>
               <a
-                href={mailtoUrl}
-                className="btn btn-email btn-lg"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp btn-lg"
               >
-                ✉️ Send us an Email
+                💬 Chat on WhatsApp
               </a>
             </div>
           </div>
