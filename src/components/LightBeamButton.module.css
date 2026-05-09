@@ -1,0 +1,117 @@
+/* ============================================
+   LightBeamButton — Rotating Beam Border Effect
+   CSS @property based animation
+   ============================================ */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderSpin {
+  from { --gradient-angle: 0deg; }
+  to { --gradient-angle: 360deg; }
+}
+
+/* Main Button */
+.lightBeamBtn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 44px;
+  min-width: 200px;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.lightBeamBtn:hover {
+  background: rgba(12, 6, 40, 0.95);
+}
+
+/* Button Content — stays on top */
+.btnContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Rotating Gradient Border */
+.beamBorder {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  padding: 1.5px;
+  animation: borderSpin 2.5s linear infinite;
+}
+
+/* Inner Background — keeps text readable over the spinning gradient */
+.beamInner {
+  position: absolute;
+  inset: 1.5px;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  background: var(--bg-primary);
+  transition: background 0.3s ease;
+}
+
+.lightBeamBtn:hover .beamInner {
+  background: rgba(12, 6, 40, 0.95);
+}
+
+/* Shine / Glow Overlay on hover */
+.beamShine {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lightBeamBtn:hover .beamShine {
+  opacity: 1;
+}
+
+/* === VARIANT: Primary (Purple beam) === */
+.variantPrimary {
+  box-shadow: 0 0 24px -5px rgba(139, 92, 246, 0.35);
+}
+.variantPrimary:hover {
+  box-shadow: 0 0 32px -5px rgba(139, 92, 246, 0.55);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* === VARIANT: WhatsApp (Green beam) === */
+.variantWhatsapp {
+  box-shadow: 0 0 24px -5px rgba(37, 211, 102, 0.35);
+}
+.variantWhatsapp:hover {
+  box-shadow: 0 0 32px -5px rgba(37, 211, 102, 0.55);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .lightBeamBtn {
+    width: 100%;
+    max-width: 280px;
+  }
+}

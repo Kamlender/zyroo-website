@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { services } from '@/lib/services';
 import PricingSection from '@/components/PricingSection';
+import { LightBeamButton } from '@/components/LightBeamButton';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -20,26 +21,7 @@ export default function HomePage() {
     { name: 'Twinkle', avatar: 'T', role: 'Shop Owner' },
   ];
 
-  const processSteps = [
-    {
-      num: '01',
-      title: 'Share Your Vision',
-      desc: 'WhatsApp pe apni requirements batao. Hum samjhenge ki aapko kya chahiye.',
-      icon: '💬',
-    },
-    {
-      num: '02',
-      title: 'We Design & Build',
-      desc: 'Hamari team aapka website design karegi. Har step pe aapko updates milenge.',
-      icon: '🎨',
-    },
-    {
-      num: '03',
-      title: 'Go Live!',
-      desc: 'Testing ke baad aapki website live hogi. Free deployment aur support ke saath.',
-      icon: '🚀',
-    },
-  ];
+
 
   return (
     <>
@@ -52,10 +34,6 @@ export default function HomePage() {
         </div>
 
         <div className={`${styles.heroInner} container`}>
-          <div className={`${styles.heroBadge} animate-fadeInUp`}>
-            <span className={styles.heroBadgeDot}></span>
-            Available for Projects
-          </div>
 
           <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
             We Build
@@ -69,17 +47,22 @@ export default function HomePage() {
           </p>
 
           <div className={`${styles.heroCtas} animate-fadeInUp stagger-3`}>
-            <a href="#services" className={`btn btn-primary btn-lg ${styles.heroBtn}`}>
+            <LightBeamButton
+              href="#services"
+              variant="primary"
+              gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
+            >
               Explore Services
-            </a>
-            <a
+            </LightBeamButton>
+            <LightBeamButton
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`btn btn-whatsapp btn-lg ${styles.heroBtn}`}
+              variant="whatsapp"
+              gradientColors={['#25d366', '#128c7e', '#25d366']}
             >
               💬 WhatsApp Us
-            </a>
+            </LightBeamButton>
           </div>
 
           {/* Stats Ticker */}
@@ -127,33 +110,7 @@ export default function HomePage() {
       {/* ==================== SERVICES — PRICING SECTION ==================== */}
       <PricingSection />
 
-      {/* ==================== PROCESS — HORIZONTAL TIMELINE ==================== */}
-      <section className={`section ${styles.process}`} id="process">
-        <div className="container">
-          <div className={styles.sectionTop}>
-            <div className="section-tag">⚙️ How It Works</div>
-            <h2 className={styles.sectionHeading}>
-              Simple <span className="gradient-text">3-Step</span> Process
-            </h2>
-          </div>
 
-          <div className={styles.timeline}>
-            {processSteps.map((step, index) => (
-              <React.Fragment key={index}>
-                <div className={`${styles.timelineCard} animate-fadeInUp stagger-${index + 1}`}>
-                  <div className={styles.timelineNum}>{step.num}</div>
-                  <div className={styles.timelineIcon}>{step.icon}</div>
-                  <h3 className={styles.timelineTitle}>{step.title}</h3>
-                  <p className={styles.timelineDesc}>{step.desc}</p>
-                </div>
-                {index < processSteps.length - 1 && (
-                  <div className={styles.timelineArrow}>→</div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ==================== REVIEWS ==================== */}
       <section className={`section ${styles.reviews}`} id="reviews">
@@ -183,30 +140,7 @@ export default function HomePage() {
       {/* ==================== FOOTER ==================== */}
       <footer className={styles.footer} id="contact">
         <div className="container">
-          {/* CTA */}
-          <div className={styles.ctaBlock}>
-            <h2 className={styles.ctaHeading}>
-              Ready to Build Your
-              <br />
-              <span className="gradient-text">Dream Website?</span>
-            </h2>
-            <p className={styles.ctaSub}>
-              Abhi WhatsApp karo — Free consultation + quote milega 10 minute mein!
-            </p>
-            <div className={styles.ctaBtns}>
-              <a href="#services" className="btn btn-primary btn-lg">
-                Browse Services
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
-              >
-                💬 Chat on WhatsApp
-              </a>
-            </div>
-          </div>
+
 
           {/* Founder */}
           <div className={styles.founderStrip} id="about">
@@ -240,7 +174,6 @@ export default function HomePage() {
             <div className={styles.fCol}>
               <h5>Quick Links</h5>
               <a href="#services">Services</a>
-              <a href="#process">How It Works</a>
               <a href="#reviews">Reviews</a>
             </div>
 

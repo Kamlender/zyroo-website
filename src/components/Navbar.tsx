@@ -76,12 +76,6 @@ export default function Navbar() {
           </button>
           <button
             className={styles.navLink}
-            onClick={() => scrollToSection('process')}
-          >
-            Process
-          </button>
-          <button
-            className={styles.navLink}
             onClick={() => scrollToSection('reviews')}
           >
             Reviews
