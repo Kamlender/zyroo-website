@@ -140,20 +140,6 @@ export default function HomePage() {
       <footer className={styles.footer} id="contact">
         <div className="container">
 
-
-          {/* Founder */}
-          <div className={styles.founderStrip} id="about">
-            <div className={styles.founderAvatar}>PJ</div>
-            <div className={styles.founderInfo}>
-              <h4>Pawash Jha</h4>
-              <span>Founder &amp; Lead Developer</span>
-              <p>
-                Passionate about creating pixel-perfect, high-performance
-                websites that help businesses grow online.
-              </p>
-            </div>
-          </div>
-
           {/* Links */}
           <div className={styles.footerGrid}>
             <div className={styles.footerBrand}>
