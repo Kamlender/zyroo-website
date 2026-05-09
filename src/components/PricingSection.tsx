@@ -46,7 +46,6 @@ export default function PricingSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="section-tag">Our Services</div>
           <h2 className={styles.heading}>
             Choose Your <span className="gradient-text">Perfect Plan</span>
           </h2>
