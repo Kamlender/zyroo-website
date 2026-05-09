@@ -139,47 +139,6 @@ export default function HomePage() {
       {/* ==================== FOOTER ==================== */}
       <footer className={styles.footer} id="contact">
         <div className="container">
-
-          {/* Links */}
-          <div className={styles.footerGrid}>
-            <div className={styles.footerBrand}>
-              <div className={styles.fLogo}>
-                <div className={styles.fLogoIcon}>Z</div>
-                <div className={styles.fLogoText}>
-                  <span>ZYROO</span>
-                  <span className={styles.fLogoSub}>Web-Design</span>
-                </div>
-              </div>
-              <p className={styles.fDesc}>
-                Premium web design studio crafting beautiful websites for
-                businesses across India.
-              </p>
-            </div>
-
-            <div className={styles.fCol}>
-              <h5>Quick Links</h5>
-              <a href="#services">Services</a>
-              <a href="#reviews">Reviews</a>
-            </div>
-
-            <div className={styles.fCol}>
-              <h5>Services</h5>
-              {services.slice(0, 4).map((s) => (
-                <Link key={s.id} href={`/order/${s.id}`}>
-                  {s.shortTitle}
-                </Link>
-              ))}
-            </div>
-
-            <div className={styles.fCol}>
-              <h5>Connect</h5>
-              <a href="mailto:jha@tinytoono.in">✉️ jha@tinytoono.in</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
-            </div>
-          </div>
-
           <div className={styles.footerBar}>
             <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
           </div>
