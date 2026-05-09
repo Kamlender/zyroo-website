@@ -116,7 +116,7 @@ export default function HomePage() {
       <section className={`section ${styles.reviews}`} id="reviews">
         <div className="container">
           <div className={styles.sectionTop}>
-            <div className="section-tag">⭐ Reviews</div>
+            <div className="section-tag">Reviews</div>
             <h2 className={styles.sectionHeading}>
               Our <span className="gradient-text">Happy Clients</span>
             </h2>
