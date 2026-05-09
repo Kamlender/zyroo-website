@@ -1,6 +1,7 @@
 /* ============================================
    LightBeamButton — Rotating Beam Border Effect
    CSS @property based animation
+   GPU-accelerated for performance
    ============================================ */
 
 @property --gradient-angle {
@@ -35,12 +36,21 @@
   border-radius: var(--radius-full);
   background: var(--bg-primary);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s ease;
+  contain: layout style;
 }
 
 .lightBeamBtn:hover {
-  background: rgba(12, 6, 40, 0.95);
+  transform: translateY(-3px) scale(1.02) translateZ(0);
+}
+
+.lightBeamBtn:active {
+  transform: scale(0.98) translateZ(0);
 }
 
 /* Button Content — stays on top */
@@ -52,24 +62,26 @@
   gap: 10px;
 }
 
-/* Rotating Gradient Border */
+/* Rotating Gradient Border — GPU layer */
 .beamBorder {
   position: absolute;
   inset: 0;
   z-index: -1;
   border-radius: var(--radius-full);
   padding: 1.5px;
-  animation: borderSpin 2.5s linear infinite;
+  animation: borderSpin 3s linear infinite;
+  will-change: --gradient-angle;
+  transform: translateZ(0);
 }
 
-/* Inner Background — keeps text readable over the spinning gradient */
+/* Inner Background — keeps text readable */
 .beamInner {
   position: absolute;
   inset: 1.5px;
   z-index: -1;
   border-radius: var(--radius-full);
   background: var(--bg-primary);
-  transition: background 0.3s ease;
+  transition: background 0.25s ease;
 }
 
 .lightBeamBtn:hover .beamInner {
@@ -83,7 +95,7 @@
   z-index: -1;
   border-radius: var(--radius-full);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
 .lightBeamBtn:hover .beamShine {
@@ -92,20 +104,18 @@
 
 /* === VARIANT: Primary (Purple beam) === */
 .variantPrimary {
-  box-shadow: 0 0 24px -5px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.3);
 }
 .variantPrimary:hover {
-  box-shadow: 0 0 32px -5px rgba(139, 92, 246, 0.55);
-  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 28px -5px rgba(139, 92, 246, 0.5);
 }
 
 /* === VARIANT: WhatsApp (Green beam) === */
 .variantWhatsapp {
-  box-shadow: 0 0 24px -5px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 0 20px -5px rgba(37, 211, 102, 0.3);
 }
 .variantWhatsapp:hover {
-  box-shadow: 0 0 32px -5px rgba(37, 211, 102, 0.55);
-  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 28px -5px rgba(37, 211, 102, 0.5);
 }
 
 /* ---- Responsive ---- */

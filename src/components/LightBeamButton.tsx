@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import styles from './LightBeamButton.module.css';
 
 export interface LightBeamButtonProps {
@@ -24,7 +23,7 @@ export interface LightBeamButtonProps {
  *
  * A high-performance button/link with a rotating light beam border effect.
  * Uses CSS @property for smooth gradient rotation animations.
- * Adapted for ZYROO's CSS Module design system (no Tailwind).
+ * Pure CSS hover/tap — no framer-motion overhead.
  */
 export function LightBeamButton({
   children,
@@ -39,7 +38,7 @@ export function LightBeamButton({
   // Build the conic gradient string from provided colors
   const gradientBg = `conic-gradient(from var(--gradient-angle), transparent 0%, ${gradientColors[0]} 40%, ${gradientColors[1]} 50%, transparent 60%, transparent 100%)`;
 
-  // Shine overlay color matches the primary gradient color
+  // Shine overlay color matches the variant
   const shineColor = variant === 'whatsapp'
     ? 'rgba(37, 211, 102, 0.15)'
     : 'rgba(139, 92, 246, 0.15)';
@@ -79,32 +78,28 @@ export function LightBeamButton({
     </>
   );
 
-  // If href is provided, render as <a> wrapped in motion.a
+  // If href is provided, render as <a>
   if (href) {
     return (
-      <motion.a
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+      <a
         href={href}
         target={target}
         rel={rel}
         className={combinedClass}
       >
         {innerContent}
-      </motion.a>
+      </a>
     );
   }
 
   // Otherwise render as button
   return (
-    <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <button
       onClick={onClick}
       className={combinedClass}
     >
       {innerContent}
-    </motion.button>
+    </button>
   );
 }
 
