@@ -41,10 +41,6 @@ export default function HomePage() {
             <span className={styles.heroHighlight}>Premium</span> Websites
           </h1>
 
-          <p className={`${styles.heroSub} animate-fadeInUp stagger-2`}>
-            From stunning landing pages to full-scale e-commerce stores — we
-            bring your vision to life with pixel-perfect design and clean code.
-          </p>
 
           <div className={`${styles.heroCtas} animate-fadeInUp stagger-3`}>
             <LightBeamButton
@@ -61,7 +57,7 @@ export default function HomePage() {
               variant="whatsapp"
               gradientColors={['#25d366', '#128c7e', '#25d366']}
             >
-              💬 WhatsApp Us
+              WhatsApp Us
             </LightBeamButton>
           </div>
 
