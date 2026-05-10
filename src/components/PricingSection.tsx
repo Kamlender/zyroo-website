@@ -47,11 +47,10 @@ export default function PricingSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className={styles.heading}>
-            Choose Your <span className="gradient-text">Perfect Plan</span>
+            What We <span className="gradient-text">Offer</span>
           </h2>
           <p className={styles.subtitle}>
-            Premium web design packages at honest prices. Click any plan to get
-            started.
+            No hidden fees, no surprises. Pick a plan and we&apos;ll handle the rest.
           </p>
 
           {/* Toggle */}
@@ -198,8 +197,7 @@ export default function PricingSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.8, duration: 1 }}
         >
-          All plans include free consultation. Pay only after you&apos;re
-          satisfied with the design.
+          Pehle baat karo, phir decide karo. Consultation free hai.
         </motion.p>
       </div>
     </section>

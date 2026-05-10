@@ -22,28 +22,28 @@ export default function HomePage() {
       avatar: 'R',
       role: 'Business Owner',
       stars: 5,
-      review: 'ZYROO ne humari business website banai — design itni premium thi ki clients impress ho gaye. On-time delivery aur bahut professional team!',
+      review: 'Maine 3 freelancers try kiye pehle, kisi ne dhang se kaam nahi kiya. ZYROO ko contact kiya toh 6 din mein site ready thi. Ab Google se directly leads aa rahi hain.',
     },
     {
       name: 'Ashish',
       avatar: 'A',
       role: 'Startup Founder',
       stars: 5,
-      review: 'Startup ke liye landing page chahiye tha jo conversions le aaye. ZYROO ne exactly wahi deliver kiya — modern, fast, aur beautiful!',
+      review: 'Humara SaaS launch hone wala tha aur landing page urgent chahiye tha. Inlogo ne 2 din mein bana diya — investor meeting mein sabne website ki tarif ki.',
     },
     {
       name: 'Anil',
       avatar: 'AN',
       role: 'Freelancer',
-      stars: 5,
-      review: 'Mera portfolio site bilkul next-level ban gaya. Smooth animations, clean layout — ab clients khud approach karte hain. Highly recommend!',
+      stars: 4,
+      review: 'Portfolio site ke liye contact kiya tha. Design acchi banayi, bas ek revision mein thoda time laga. But final output dekh ke khush ho gaya, worth it tha.',
     },
     {
       name: 'Twinkle',
       avatar: 'T',
       role: 'Shop Owner',
       stars: 5,
-      review: 'E-commerce store banayi thi inhone — payment gateway, inventory sab set kar diya. Ab online orders aaram se aa rahi hain. Best investment!',
+      review: 'Meri saree ki dukaan hai, online store banana tha. Payment gateway, WhatsApp order sab set kar diya. Pehle mahine mein hi 12 online orders aaye.',
     },
   ];
 
@@ -59,9 +59,9 @@ export default function HomePage() {
           <div className={`${styles.heroInner} container`}>
 
             <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
-              We Build
+              Websites That
               <br />
-              <span className={styles.heroHighlight}>Premium</span> Websites
+              <span className={styles.heroHighlight}>Actually</span> Work
             </h1>
 
             <div
@@ -89,18 +89,18 @@ export default function HomePage() {
             {/* Stats Ticker */}
             <div className={`${styles.statsTicker} animate-fadeInUp stagger-4`}>
               <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>50+</span>
+                <span className={styles.tickerVal}>47+</span>
                 <span className={styles.tickerLabel}>Projects</span>
               </div>
               <div className={styles.tickerDot}></div>
               <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>30+</span>
+                <span className={styles.tickerVal}>32</span>
                 <span className={styles.tickerLabel}>Clients</span>
               </div>
               <div className={styles.tickerDot}></div>
               <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>24/7</span>
-                <span className={styles.tickerLabel}>Support</span>
+                <span className={styles.tickerVal}>2 yrs</span>
+                <span className={styles.tickerLabel}>Experience</span>
               </div>
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function HomePage() {
           <div className="container">
             <div className={styles.sectionTop}>
               <h2 className={styles.sectionHeading}>
-                Our <span className="gradient-text">Happy Clients</span>
+                What <span className="gradient-text">Clients Say</span>
               </h2>
             </div>
 
@@ -173,6 +173,26 @@ export default function HomePage() {
         {/* ==================== FOOTER ==================== */}
         <footer className={styles.footer} id="contact">
           <div className="container">
+            <div className={styles.footerContent}>
+              <div className={styles.footerLeft}>
+                <div className={styles.footerBrand}>
+                  <div className={styles.footerLogoIcon}>Z</div>
+                  <div>
+                    <span className={styles.footerLogoText}>ZYROO</span>
+                    <span className={styles.footerLogoSub}>Web-Design</span>
+                  </div>
+                </div>
+                <p className={styles.footerDesc}>
+                  Hum websites banate hain jo dikhne mein acchi ho aur kaam bhi kare. Koi bhi sawaal ho, seedha WhatsApp karo.
+                </p>
+              </div>
+              <div className={styles.footerRight}>
+                <h5 className={styles.footerColTitle}>Get in Touch</h5>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>WhatsApp</a>
+                <a href="mailto:zyroodesign@gmail.com" className={styles.footerLink}>zyroodesign@gmail.com</a>
+                <a href="https://instagram.com/zyroo.design" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a>
+              </div>
+            </div>
             <div className={styles.footerBar}>
               <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
             </div>

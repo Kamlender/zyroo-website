@@ -23,7 +23,7 @@ export const services: Service[] = [
     title: 'Landing Page Design',
     shortTitle: 'Landing Page',
     description:
-      'High-converting single page website perfect for startups, products, and marketing campaigns.',
+      'Ek page, ek goal — chahe product launch ho ya ad campaign. Fast, focused, aur conversion-ready.',
     price: 4999,
     originalPrice: 7999,
     features: [
@@ -44,7 +44,7 @@ export const services: Service[] = [
     title: 'Business Website',
     shortTitle: 'Business Site',
     description:
-      'Professional multi-page website to establish your brand online and attract more customers.',
+      'Multiple pages, proper branding, SEO setup — apne business ko online seriously le jaane ke liye.',
     price: 14999,
     originalPrice: 19999,
     features: [
@@ -66,7 +66,7 @@ export const services: Service[] = [
     title: 'E-Commerce Store',
     shortTitle: 'E-Commerce',
     description:
-      'Full-featured online store with payment gateway, inventory management, and admin panel.',
+      'Apni products online becho — payment gateway, stock management, orders sab built-in.',
     price: 24999,
     originalPrice: 34999,
     features: [
@@ -88,7 +88,7 @@ export const services: Service[] = [
     title: 'Portfolio Website',
     shortTitle: 'Portfolio',
     description:
-      'Showcase your work beautifully with a stunning portfolio site that leaves a lasting impression.',
+      'Apna kaam dikhao properly. Photographers, designers, developers — sabke liye.',
     price: 9999,
     originalPrice: 12999,
     features: [
@@ -109,7 +109,7 @@ export const services: Service[] = [
     title: 'Custom Web Application',
     shortTitle: 'Web App',
     description:
-      'Fully custom web application tailored to your business logic with modern tech stack.',
+      'Kuch alag chahiye? Custom dashboard, booking system, ya koi specific tool — bana denge.',
     price: 49999,
     originalPrice: 69999,
     features: [
@@ -131,7 +131,7 @@ export const services: Service[] = [
     title: 'Website Redesign',
     shortTitle: 'Redesign',
     description:
-      'Modernize your existing website with fresh design, improved UX, and better performance.',
+      'Purani site slow hai ya outdated lagti hai? Naya design, fast loading, mobile-friendly — done.',
     price: 7999,
     originalPrice: 11999,
     features: [

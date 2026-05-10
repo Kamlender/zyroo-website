@@ -5,9 +5,9 @@ import Navbar from '@/components/Navbar';
 export const metadata: Metadata = {
   title: 'ZYROO — Web Design Studio',
   description:
-    'Premium web design & development studio. We craft stunning websites, e-commerce stores, and web applications that convert visitors into customers.',
+    'Web design studio based in India. We build websites, online stores, and web apps for small businesses and startups. Quick delivery, fair pricing.',
   keywords:
-    'web design, website development, landing page, e-commerce, portfolio website, web application, responsive design',
+    'web design india, website development, landing page, e-commerce, portfolio website, web application, affordable web design',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ZYROO — Web Design Studio',
     description:
-      'Premium web design & development studio. Stunning websites that convert.',
+      'We build websites that look good and actually work. Based in India.',
     type: 'website',
   },
 };

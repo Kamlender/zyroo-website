@@ -172,7 +172,7 @@ export default function OrderPageClient() {
                 </div>
 
                 <div className={styles.serviceInfoDelivery}>
-                  <span>📅</span>
+                  <span>Delivery:</span>
                   <span>
                     Delivery in <strong>{isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days</strong>
                     {isRush && <em style={{ marginLeft: '6px', color: '#f59e0b', fontSize: '0.85em' }}>(Rush)</em>}
@@ -184,10 +184,9 @@ export default function OrderPageClient() {
             {/* Right — Order Form */}
             <div className={`${styles.orderForm} animate-fadeInUp stagger-2`}>
               <div className={styles.orderFormCard}>
-                <h2 className={styles.orderFormTitle}>📝 Place Your Order</h2>
+                <h2 className={styles.orderFormTitle}>Order Details</h2>
                 <p className={styles.orderFormSubtitle}>
-                  Apni details bharo aur Send karo — aapka order seedha hamare
-                  paas aa jayega.
+                  Form bharo aur submit karo. Hum WhatsApp pe confirm kar lenge.
                 </p>
 
                 <form onSubmit={handleSubmit} id="order-form">
