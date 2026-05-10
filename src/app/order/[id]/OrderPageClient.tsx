@@ -2,7 +2,7 @@
 
 import React, { useState, FormEvent } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { getServiceById, formatPrice } from '@/lib/services';
 import LottieCheckbox from '@/components/LottieCheckbox';
 import { ParallaxStars } from '@/components/ParallaxStars';
@@ -10,8 +10,11 @@ import styles from './page.module.css';
 
 export default function OrderPageClient() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const serviceId = params.id as string;
   const service = getServiceById(serviceId);
+  const isRush = searchParams.get('mode') === 'rush';
+
 
   const [form, setForm] = useState({
     name: '',
@@ -54,14 +57,15 @@ export default function OrderPageClient() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
-          subject: `🛒 New Order — ${service.title} | ZYROO`,
+          subject: `🛒 New Order — ${service.title}${isRush ? ' (Rush)' : ''} | ZYROO`,
           from_name: 'ZYROO Orders',
           name: form.name,
           phone: form.phone,
           email: form.email || 'Not provided',
           service: service.title,
-          price: formatPrice(service.price),
-          delivery: `${service.deliveryDays} days`,
+          mode: isRush ? 'Rush (2× faster)' : 'Standard',
+          price: formatPrice(isRush ? Math.round(service.price * 1.5) : service.price),
+          delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
           message: form.details,
         }),
       });
@@ -135,14 +139,25 @@ export default function OrderPageClient() {
                 <h2 className={styles.serviceInfoTitle}>{service.title}</h2>
                 <p className={styles.serviceInfoDesc}>{service.description}</p>
 
+                {isRush && (
+                  <div className={styles.rushBadge}>
+                    ⚡ Rush Delivery — 2× Faster
+                  </div>
+                )}
+
                 <div className={styles.serviceInfoPricing}>
-                  {service.originalPrice && (
+                  {!isRush && service.originalPrice && (
                     <span className={styles.serviceInfoOldPrice}>
                       {formatPrice(service.originalPrice)}
                     </span>
                   )}
+                  {isRush && (
+                    <span className={styles.serviceInfoOldPrice}>
+                      {formatPrice(service.price)}
+                    </span>
+                  )}
                   <span className={styles.serviceInfoPrice}>
-                    {formatPrice(service.price)}
+                    {formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)}
                   </span>
                 </div>
 
@@ -159,7 +174,8 @@ export default function OrderPageClient() {
                 <div className={styles.serviceInfoDelivery}>
                   <span>📅</span>
                   <span>
-                    Delivery in <strong>{service.deliveryDays} days</strong>
+                    Delivery in <strong>{isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days</strong>
+                    {isRush && <em style={{ marginLeft: '6px', color: '#f59e0b', fontSize: '0.85em' }}>(Rush)</em>}
                   </span>
                 </div>
               </div>
