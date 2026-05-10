@@ -19,46 +19,28 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.heroGlow1 {
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.13) 0%, transparent 50%);
-  top: -350px;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(80px);
-}
-
-.heroGlow2 {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, transparent 50%);
-  bottom: -200px;
-  right: -100px;
-  filter: blur(60px);
+  width: 100%;
+  height: 100%;
 }
 
 .heroNoise {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .heroInner {
   position: relative;
-  z-index: 1;
+  z-index: 11;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 860px;
   margin: 0 auto;
+  pointer-events: none;
 }
 
 .heroBadge {
@@ -89,6 +71,8 @@
   line-height: 1.0;
   letter-spacing: -0.05em;
   margin-bottom: var(--space-lg);
+  text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
 }
 
 .heroHighlight {
@@ -164,9 +148,11 @@
 .marqueeWrap {
   overflow: hidden;
   padding: 20px 0;
-  background: rgba(139, 92, 246, 0.04);
+  background: rgba(139, 92, 246, 0.03);
   border-top: 1px solid rgba(139, 92, 246, 0.08);
   border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+  position: relative;
+  z-index: 2;
 }
 
 .marqueeTrack {
@@ -454,7 +440,7 @@
 }
 
 /* ==================== REVIEWS ==================== */
-.reviews { position: relative; background: var(--bg-secondary); }
+.reviews { position: relative; background: transparent; }
 
 .reviewGrid {
   display: grid;
@@ -508,9 +494,11 @@
 
 /* ==================== FOOTER ==================== */
 .footer {
-  background: var(--bg-secondary);
+  background: transparent;
   border-top: 1px solid rgba(139, 92, 246, 0.06);
   padding: var(--space-4xl) 0 var(--space-xl);
+  position: relative;
+  z-index: 2;
 }
 
 /* CTA Block */
