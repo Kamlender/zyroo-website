@@ -104,7 +104,7 @@
   font-size: 28px;
 }
 
-.serviceInfoTitle { font-size: var(--text-2xl); font-weight: 400; margin-bottom: var(--space-sm); }
+.serviceInfoTitle { font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-sm); }
 .serviceInfoDesc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-xl); }
 
 .rushBadge {
@@ -138,7 +138,7 @@
 .serviceInfoPrice {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 800;
   color: var(--accent-purple-light);
 }
 
@@ -175,7 +175,7 @@
   padding: var(--space-2xl);
 }
 
-.orderFormTitle { font-size: var(--text-2xl); font-weight: 400; margin-bottom: var(--space-sm); }
+.orderFormTitle { font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-sm); }
 .orderFormSubtitle { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--space-xl); }
 
 .formGrid {
@@ -215,7 +215,7 @@
 }
 
 .successIcon { font-size: 64px; margin-bottom: var(--space-lg); }
-.successTitle { font-size: var(--text-3xl); font-weight: 400; margin-bottom: var(--space-md); }
+.successTitle { font-size: var(--text-3xl); font-weight: 800; margin-bottom: var(--space-md); }
 .successText { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-xl); }
 .successActions { display: flex; flex-direction: column; gap: var(--space-md); align-items: center; }
 

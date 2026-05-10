@@ -66,12 +66,11 @@
 }
 
 .heroTitle {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 10vw, 7.5rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  font-family: 'Syne', var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   margin-bottom: var(--space-xl);
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
@@ -85,6 +84,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-style: normal;
+  font-weight: 800;
 }
 
 .heroSub {
@@ -128,7 +128,7 @@
 .tickerVal {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 400;
+  font-weight: 800;
   color: var(--accent-purple-light);
 }
 
@@ -195,7 +195,7 @@
 
 .sectionHeading {
   font-size: var(--text-4xl);
-  font-weight: 400;
+  font-weight: 800;
   margin: var(--space-md) 0;
   letter-spacing: -0.03em;
 }
@@ -335,7 +335,7 @@
 .bentoPrice {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 800;
   color: var(--accent-purple-light);
 }
 
@@ -422,7 +422,7 @@
   border-radius: 50%;
   font-family: var(--font-display);
   font-size: var(--text-sm);
-  font-weight: 400;
+  font-weight: 800;
   color: white;
   margin-bottom: var(--space-lg);
 }
@@ -517,7 +517,7 @@
   background: var(--gradient-secondary);
   border-radius: 50%;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 800;
   font-size: var(--text-sm);
   color: white;
   flex-shrink: 0;
@@ -573,7 +573,7 @@
   justify-content: center;
   background: var(--gradient-primary);
   border-radius: var(--radius-md);
-  font-weight: 400;
+  font-weight: 800;
   font-size: var(--text-sm);
   color: white;
 }
