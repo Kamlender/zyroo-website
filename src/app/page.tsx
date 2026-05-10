@@ -173,26 +173,6 @@ export default function HomePage() {
         {/* ==================== FOOTER ==================== */}
         <footer className={styles.footer} id="contact">
           <div className="container">
-            <div className={styles.footerContent}>
-              <div className={styles.footerLeft}>
-                <div className={styles.footerBrand}>
-                  <div className={styles.footerLogoIcon}>Z</div>
-                  <div>
-                    <span className={styles.footerLogoText}>ZYROO</span>
-                    <span className={styles.footerLogoSub}>Web-Design</span>
-                  </div>
-                </div>
-                <p className={styles.footerDesc}>
-                  Hum websites banate hain jo dikhne mein acchi ho aur kaam bhi kare. Koi bhi sawaal ho, seedha WhatsApp karo.
-                </p>
-              </div>
-              <div className={styles.footerRight}>
-                <h5 className={styles.footerColTitle}>Get in Touch</h5>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>WhatsApp</a>
-                <a href="mailto:zyroodesign@gmail.com" className={styles.footerLink}>zyroodesign@gmail.com</a>
-                <a href="https://instagram.com/zyroo.design" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a>
-              </div>
-            </div>
             <div className={styles.footerBar}>
               <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
             </div>
