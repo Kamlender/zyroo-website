@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { services } from '@/lib/services';
 import OrderPageClient from './OrderPageClient';
 
@@ -9,5 +10,9 @@ export function generateStaticParams() {
 }
 
 export default function OrderPage() {
-  return <OrderPageClient />;
+  return (
+    <Suspense>
+      <OrderPageClient />
+    </Suspense>
+  );
 }
