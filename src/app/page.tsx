@@ -17,10 +17,34 @@ export default function HomePage() {
   )}`;
 
   const clients = [
-    { name: 'Raj', avatar: 'R', role: 'Business Owner' },
-    { name: 'Ashish', avatar: 'A', role: 'Startup Founder' },
-    { name: 'Anil', avatar: 'AN', role: 'Freelancer' },
-    { name: 'Twinkle', avatar: 'T', role: 'Shop Owner' },
+    {
+      name: 'Raj',
+      avatar: 'R',
+      role: 'Business Owner',
+      stars: 5,
+      review: 'ZYROO ne humari business website banai — design itni premium thi ki clients impress ho gaye. On-time delivery aur bahut professional team!',
+    },
+    {
+      name: 'Ashish',
+      avatar: 'A',
+      role: 'Startup Founder',
+      stars: 5,
+      review: 'Startup ke liye landing page chahiye tha jo conversions le aaye. ZYROO ne exactly wahi deliver kiya — modern, fast, aur beautiful!',
+    },
+    {
+      name: 'Anil',
+      avatar: 'AN',
+      role: 'Freelancer',
+      stars: 5,
+      review: 'Mera portfolio site bilkul next-level ban gaya. Smooth animations, clean layout — ab clients khud approach karte hain. Highly recommend!',
+    },
+    {
+      name: 'Twinkle',
+      avatar: 'T',
+      role: 'Shop Owner',
+      stars: 5,
+      review: 'E-commerce store banayi thi inhone — payment gateway, inventory sab set kar diya. Ab online orders aaram se aa rahi hain. Best investment!',
+    },
   ];
 
 
@@ -127,9 +151,19 @@ export default function HomePage() {
                   key={index}
                   className={`${styles.reviewCard} animate-fadeInUp stagger-${index + 1}`}
                 >
-                  <div className={styles.reviewAvatar}>{c.avatar}</div>
-                  <h4 className={styles.reviewName}>{c.name}</h4>
-                  <span className={styles.reviewRole}>{c.role}</span>
+                  <div className={styles.reviewStars}>
+                    {Array.from({ length: c.stars }).map((_, i) => (
+                      <span key={i} className={styles.star}>★</span>
+                    ))}
+                  </div>
+                  <p className={styles.reviewText}>&ldquo;{c.review}&rdquo;</p>
+                  <div className={styles.reviewAuthor}>
+                    <div className={styles.reviewAvatar}>{c.avatar}</div>
+                    <div>
+                      <h4 className={styles.reviewName}>{c.name}</h4>
+                      <span className={styles.reviewRole}>{c.role}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

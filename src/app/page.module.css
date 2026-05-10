@@ -449,23 +449,66 @@
 }
 
 .reviewCard {
-  text-align: center;
-  padding: var(--space-2xl) var(--space-lg);
+  text-align: left;
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
   background: rgba(17, 24, 56, 0.5);
   border: 1.5px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-lg);
   transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.reviewCard::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  font-size: 120px;
+  font-family: Georgia, serif;
+  color: rgba(139, 92, 246, 0.06);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .reviewCard:hover {
   border-color: rgba(139, 92, 246, 0.2);
   transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.04);
+}
+
+.reviewStars {
+  display: flex;
+  gap: 3px;
+}
+
+.star {
+  color: #f59e0b;
+  font-size: 16px;
+}
+
+.reviewText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  flex: 1;
+}
+
+.reviewAuthor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(139, 92, 246, 0.06);
+  margin-top: auto;
 }
 
 .reviewAvatar {
-  width: 64px;
-  height: 64px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -473,16 +516,16 @@
   border-radius: 50%;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: var(--text-xl);
+  font-size: var(--text-sm);
   color: white;
-  margin: 0 auto var(--space-lg);
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.12);
 }
 
 .reviewName {
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .reviewRole {
