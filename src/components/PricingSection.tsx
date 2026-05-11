@@ -31,10 +31,9 @@ export default function PricingSection() {
 
   return (
     <section className={styles.section} id="services">
-      {/* Background Decor */}
+      {/* Atmospheric Glow */}
       <div className={styles.bgDecor}>
         <div className={styles.bgGlowTop} />
-        <div className={styles.bgGlowBottom} />
       </div>
 
       <div className={`${styles.inner} container`}>
@@ -47,7 +46,7 @@ export default function PricingSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className={styles.heading}>
-            What We <span className="gradient-text">Offer</span>
+            Available today
           </h2>
           <p className={styles.subtitle}>
             No hidden fees, no surprises. Pick a plan and we&apos;ll handle the rest.
@@ -117,7 +116,7 @@ export default function PricingSection() {
                 >
                   {service.popular && (
                     <div className={styles.popularBadge}>
-                      🔥 Most Popular
+                      Most Popular
                     </div>
                   )}
 
@@ -126,7 +125,7 @@ export default function PricingSection() {
                     <div
                       className={`${styles.cardIcon} ${service.popular ? styles.cardIconPopular : ''}`}
                     >
-                      <Icon size={22} />
+                      <Icon size={20} />
                     </div>
                     <h3 className={styles.cardName}>{service.title}</h3>
                     <p className={styles.cardDesc}>{service.description}</p>
@@ -157,7 +156,7 @@ export default function PricingSection() {
                     {service.features.map((feat, i) => (
                       <li key={i} className={styles.featureItem}>
                         <Check
-                          size={16}
+                          size={15}
                           className={
                             service.popular
                               ? styles.checkPopular
@@ -169,19 +168,19 @@ export default function PricingSection() {
                     ))}
                   </ul>
 
-                  {/* CTA Button */}
+                  {/* CTA */}
                   <div className={styles.cardFooter}>
                     <span
                       className={`${styles.ctaBtn} ${service.popular ? styles.ctaBtnPopular : ''}`}
                     >
                       Order Now
                       <Zap
-                        size={14}
+                        size={13}
                         className={styles.ctaIcon}
                       />
                     </span>
                     <span className={styles.delivery}>
-                      📅 {deliveryDays} days
+                      {deliveryDays} days
                     </span>
                   </div>
                 </Link>
