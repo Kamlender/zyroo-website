@@ -57,50 +57,77 @@ export default function HomePage() {
           <div className={styles.heroNoise}></div>
 
           <div className={`${styles.heroInner} container`}>
+            {/* Left — Text Content */}
+            <div className={styles.heroLeft}>
+              <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
+                Websites That
+                <br />
+                <span className={styles.heroHighlight}>Actually</span> Work
+              </h1>
 
-            <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
-              Websites That
-              <br />
-              <span className={styles.heroHighlight}>Actually</span> Work
-            </h1>
+              <div
+                className={`${styles.heroCtas} animate-fadeInUp stagger-3`}
+                style={{ pointerEvents: 'auto' }}
+              >
+                <LightBeamButton
+                  href="#services"
+                  variant="primary"
+                  gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
+                >
+                  Explore Services
+                </LightBeamButton>
+                <LightBeamButton
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="whatsapp"
+                  gradientColors={['#25d366', '#128c7e', '#25d366']}
+                >
+                  WhatsApp Us
+                </LightBeamButton>
+              </div>
 
-            <div
-              className={`${styles.heroCtas} animate-fadeInUp stagger-3`}
-              style={{ pointerEvents: 'auto' }}
-            >
-              <LightBeamButton
-                href="#services"
-                variant="primary"
-                gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
-              >
-                Explore Services
-              </LightBeamButton>
-              <LightBeamButton
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="whatsapp"
-                gradientColors={['#25d366', '#128c7e', '#25d366']}
-              >
-                WhatsApp Us
-              </LightBeamButton>
+              {/* Stats Ticker */}
+              <div className={`${styles.statsTicker} animate-fadeInUp stagger-4`}>
+                <div className={styles.tickerItem}>
+                  <span className={styles.tickerVal}>47+</span>
+                  <span className={styles.tickerLabel}>Projects</span>
+                </div>
+                <div className={styles.tickerDot}></div>
+                <div className={styles.tickerItem}>
+                  <span className={styles.tickerVal}>32</span>
+                  <span className={styles.tickerLabel}>Clients</span>
+                </div>
+                <div className={styles.tickerDot}></div>
+                <div className={styles.tickerItem}>
+                  <span className={styles.tickerVal}>2 yrs</span>
+                  <span className={styles.tickerLabel}>Experience</span>
+                </div>
+              </div>
             </div>
 
-            {/* Stats Ticker */}
-            <div className={`${styles.statsTicker} animate-fadeInUp stagger-4`}>
-              <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>47+</span>
-                <span className={styles.tickerLabel}>Projects</span>
-              </div>
-              <div className={styles.tickerDot}></div>
-              <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>32</span>
-                <span className={styles.tickerLabel}>Clients</span>
-              </div>
-              <div className={styles.tickerDot}></div>
-              <div className={styles.tickerItem}>
-                <span className={styles.tickerVal}>2 yrs</span>
-                <span className={styles.tickerLabel}>Experience</span>
+            {/* Right — Code Window */}
+            <div className={`${styles.heroRight} animate-fadeInUp stagger-2`}>
+              <div className={styles.codeWindow}>
+                <div className={styles.codeWindowHeader}>
+                  <span className={styles.codeDot} style={{ background: '#ff5f57' }}></span>
+                  <span className={styles.codeDot} style={{ background: '#febc2e' }}></span>
+                  <span className={styles.codeDot} style={{ background: '#28c840' }}></span>
+                </div>
+                <pre className={styles.codeBlock}>
+                  <code>
+                    <span className={styles.codeComment}>{'// Your new website, simplified'}</span>{`\n`}
+                    <span className={styles.codeKeyword}>{'const'}</span>{' site = '}<span className={styles.codeFunc}>{'createSite'}</span>{'({'}{`\n`}
+                    {'  name: '}<span className={styles.codeString}>{'"My Business"'}</span>{','}{`\n`}
+                    {'  pages: '}<span className={styles.codeString}>{'"5"'}</span>{','}{`\n`}
+                    {'  responsive: '}<span className={styles.codeKeyword}>{'true'}</span>{','}{`\n`}
+                    {'  seo: '}<span className={styles.codeKeyword}>{'true'}</span>{','}{`\n`}
+                    {'  analytics: '}<span className={styles.codeKeyword}>{'true'}</span>{','}{`\n`}
+                    {'})'}{`\n`}{`\n`}
+                    <span className={styles.codeComment}>{'// Deploy in days, not months'}</span>{`\n`}
+                    <span className={styles.codeKeyword}>{'await'}</span>{' site.'}<span className={styles.codeFunc}>{'deploy'}</span>{'()'}
+                  </code>
+                </pre>
               </div>
             </div>
           </div>

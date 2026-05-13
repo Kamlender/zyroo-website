@@ -36,11 +36,90 @@
   position: relative;
   z-index: 11;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  max-width: 860px;
+  justify-content: space-between;
+  max-width: 1200px;
   margin: 0 auto;
   pointer-events: none;
+  gap: var(--space-2xl);
+}
+
+.heroLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.heroRight {
+  flex-shrink: 0;
+  width: 380px;
+  pointer-events: auto;
+}
+
+/* ---- Code Window ---- */
+.codeWindow {
+  background: rgba(10, 12, 30, 0.85);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.codeWindow:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(139, 92, 246, 0.12);
+}
+
+.codeWindowHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.codeBlock {
+  padding: 20px 22px 24px;
+  margin: 0;
+  font-family: 'Geist Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.codeComment {
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+.codeKeyword {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.codeFunc {
+  color: #fbbf24;
+}
+
+.codeString {
+  color: #34d399;
 }
 
 .heroBadge {
@@ -636,8 +715,11 @@
 
 .footerBar p { font-size: var(--text-sm); color: var(--text-dim); }
 
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
+  .heroInner { flex-direction: column; text-align: center; }
+  .heroLeft { align-items: center; text-align: center; }
+  .heroRight { width: 340px; }
+  .heroCtas { justify-content: center; }
   .bentoGrid { grid-template-columns: repeat(2, 1fr); }
   .bentoFeatured { grid-column: span 2; }
   .reviewGrid { grid-template-columns: repeat(2, 1fr); }
@@ -645,6 +727,8 @@
 
 @media (max-width: 768px) {
   .hero { padding: 120px 0 60px; }
+  .heroRight { display: none; }
+  .heroLeft { align-items: center; text-align: center; }
   .heroCtas { flex-direction: column; align-items: center; }
   .heroBtn { width: 100%; max-width: 280px; }
   .statsTicker { flex-direction: column; gap: var(--space-md); padding: 20px 30px; border-radius: var(--radius-lg); }
