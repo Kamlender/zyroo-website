@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className={styles.logoIcon}>Z</div>
           <div className={styles.logoGroup}>
             <span className={styles.logoText}>ZYROO</span>
-            <span className={styles.logoNiche}>Web Studio</span>
+            <span className={styles.logoNiche}>Web-Design</span>
           </div>
         </Link>
 
@@ -81,10 +81,10 @@ export default function Navbar() {
             Reviews
           </button>
           <button
-            className={`btn-primary ${styles.navCta}`}
+            className={`btn btn-primary btn-sm ${styles.navCta}`}
             onClick={() => scrollToSection('contact')}
           >
-            Get Started
+            Contact
           </button>
         </div>
       </div>
