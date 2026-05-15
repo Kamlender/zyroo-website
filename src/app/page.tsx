@@ -73,9 +73,9 @@ export default function HomePage() {
           {/* Left — Text Content */}
           <div className={styles.heroLeft}>
             <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
-              Websites That
+              Make Your Business
               <br />
-              <span className={styles.heroHighlight}>Actually</span> Work
+              <span className={styles.heroHighlight}>Invincible</span>
             </h1>
 
             <div
