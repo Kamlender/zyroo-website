@@ -6,13 +6,14 @@
 /* ==================== HERO — CENTERED ==================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  padding: 200px 0 80px;
+  padding: 0;
 }
 
 .heroBg {
@@ -146,11 +147,11 @@
 
 .heroTitle {
   font-family: 'Syne', var(--font-display);
-  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.04em;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
 }
@@ -177,7 +178,7 @@
 .heroCtas {
   display: flex;
   gap: var(--space-md);
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-lg);
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -191,7 +192,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xl);
-  padding: 20px 40px;
+  padding: 14px 32px;
   background: rgba(139, 92, 246, 0.04);
   border: 1px solid rgba(139, 92, 246, 0.1);
   border-radius: var(--radius-full);
