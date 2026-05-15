@@ -80,11 +80,18 @@ export default function Navbar() {
           >
             Reviews
           </button>
+          <Link
+            href="/job"
+            className={`${styles.navLink} ${isActive('/job') ? styles.active : ''}`}
+            onClick={() => setMobileOpen(false)}
+          >
+            Job
+          </Link>
           <button
             className={`btn btn-primary btn-sm ${styles.navCta}`}
             onClick={() => scrollToSection('contact')}
           >
-            Contact
+            About
           </button>
         </div>
       </div>
