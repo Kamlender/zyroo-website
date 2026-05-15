@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -210,7 +210,7 @@ export function LiquidEther({
       material:THREE.RawShaderMaterial|null=null; geometry:THREE.BufferGeometry|null=null; plane:THREE.Mesh|null=null;
       constructor(props:any){this.props=props||{};this.uniforms=this.props.material?.uniforms;}
       init(){this.scene=new THREE.Scene();this.camera=new THREE.Camera();if(this.uniforms){this.material=new THREE.RawShaderMaterial(this.props.material);this.geometry=new THREE.PlaneGeometry(2,2);this.plane=new THREE.Mesh(this.geometry,this.material);this.scene.add(this.plane);}}
-      update(){if(!Common.renderer||!this.scene||!this.camera)return;Common.renderer.setRenderTarget(this.props.output||null);Common.renderer.render(this.scene,this.camera);Common.renderer.setRenderTarget(null);}
+      update(..._args: any[]){if(!Common.renderer||!this.scene||!this.camera)return;Common.renderer.setRenderTarget(this.props.output||null);Common.renderer.render(this.scene,this.camera);Common.renderer.setRenderTarget(null);}
     }
 
     class Advection extends ShaderPass {
