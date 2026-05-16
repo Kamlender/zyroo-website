@@ -64,7 +64,9 @@ export default function OrderPageClient() {
           email: form.email || 'Not provided',
           service: service.title,
           mode: isRush ? 'Rush (2× faster)' : 'Standard',
-          price: formatPrice(isRush ? Math.round(service.price * 1.5) : service.price),
+          price: service.maxPrice
+            ? `${formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)} – ${formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}`
+            : formatPrice(isRush ? Math.round(service.price * 1.5) : service.price),
           delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
           message: form.details,
         }),
@@ -158,6 +160,9 @@ export default function OrderPageClient() {
                   )}
                   <span className={styles.serviceInfoPrice}>
                     {formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)}
+                    {service.maxPrice && (
+                      <> – {formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}</>
+                    )}
                   </span>
                 </div>
 

@@ -8,6 +8,7 @@ export interface Service {
   shortTitle: string;
   description: string;
   price: number;
+  maxPrice?: number;
   originalPrice?: number;
   features: string[];
   icon: string;
@@ -128,6 +129,7 @@ export const services: Service[] = [
     description:
       'Kuch alag chahiye? Custom dashboard, booking system, ya koi specific tool — bana denge.',
     price: 500000,
+    maxPrice: 1000000,
     features: [
       'Custom Architecture',
       'Database Design',

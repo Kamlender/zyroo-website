@@ -139,6 +139,9 @@ export default function PricingSection() {
                     <div className={styles.priceRow}>
                       <span className={styles.price}>
                         {formatPrice(displayPrice)}
+                        {service.maxPrice && (
+                          <> – {formatPrice(mode === 'standard' ? service.maxPrice : Math.round(service.maxPrice * 1.5))}</>
+                        )}
                       </span>
                       {service.originalPrice && mode === 'standard' && (
                         <span className={styles.oldPrice}>
