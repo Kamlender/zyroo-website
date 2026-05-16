@@ -170,9 +170,6 @@ export default function OrderPageClient() {
                       <> – {priceFormatter(isRush ? Math.round(service.maxPrice * regionMultiplier * 1.5) : Math.round(service.maxPrice * regionMultiplier))}</>
                     )}
                   </span>
-                  {isForeigner && (
-                    <span className={styles.serviceInfoOldPrice} style={{ textDecoration: 'none', color: '#34d399', marginLeft: '8px' }}>🌍 USD</span>
-                  )}
                 </div>
 
                 <div className={styles.serviceInfoFeatures}>

@@ -122,7 +122,6 @@ export default function PricingSection() {
                 className={`${styles.toggleLabel} ${region === 'foreigner' ? styles.toggleActive : ''}`}
               >
                 Foreigner
-                <span className={styles.toggleBadgeForeigner}>🌍 USD</span>
               </span>
             </div>
           </motion.div>
