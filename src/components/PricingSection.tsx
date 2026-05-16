@@ -156,7 +156,10 @@ export default function PricingSection() {
                 className={service.popular ? styles.cardPopularWrap : ''}
               >
                 <Link
-                  href={`/order/${service.id}${mode === 'rush' ? '?mode=rush' : ''}`}
+                  href={`/order/${service.id}?${[
+                    mode === 'rush' ? 'mode=rush' : '',
+                    region === 'foreigner' ? 'region=foreigner' : '',
+                  ].filter(Boolean).join('&')}`}
                   className={`${styles.card} ${service.popular ? styles.cardPopular : ''}`}
                   id={`service-${service.id}`}
                 >

@@ -3,7 +3,7 @@
 import React, { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
-import { getServiceById, formatPrice } from '@/lib/services';
+import { getServiceById, formatPrice, formatPriceUSD } from '@/lib/services';
 import LottieCheckbox from '@/components/LottieCheckbox';
 import { ParallaxStars } from '@/components/ParallaxStars';
 import styles from './page.module.css';
@@ -14,6 +14,9 @@ export default function OrderPageClient() {
   const serviceId = params.id as string;
   const service = getServiceById(serviceId);
   const isRush = searchParams.get('mode') === 'rush';
+  const isForeigner = searchParams.get('region') === 'foreigner';
+  const regionMultiplier = isForeigner ? 1.5 : 1;
+  const priceFormatter = isForeigner ? formatPriceUSD : formatPrice;
 
 
   const [form, setForm] = useState({
@@ -57,16 +60,24 @@ export default function OrderPageClient() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
-          subject: `🛒 New Order — ${service.title}${isRush ? ' (Rush)' : ''} | ZYROO`,
+          subject: `🛒 New Order — ${service.title}${isRush ? ' (Rush)' : ''}${isForeigner ? ' (Foreigner)' : ''} | ZYROO`,
           from_name: 'ZYROO Orders',
           name: form.name,
           phone: form.phone,
           email: form.email || 'Not provided',
           service: service.title,
           mode: isRush ? 'Rush (2× faster)' : 'Standard',
-          price: service.maxPrice
-            ? `${formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)} – ${formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}`
-            : formatPrice(isRush ? Math.round(service.price * 1.5) : service.price),
+          region: isForeigner ? 'Foreigner (USD)' : 'India (INR)',
+          price: (() => {
+            const base = Math.round(service.price * regionMultiplier);
+            const final = isRush ? Math.round(base * 1.5) : base;
+            if (service.maxPrice) {
+              const baseMax = Math.round(service.maxPrice * regionMultiplier);
+              const finalMax = isRush ? Math.round(baseMax * 1.5) : baseMax;
+              return `${priceFormatter(final)} – ${priceFormatter(finalMax)}`;
+            }
+            return priceFormatter(final);
+          })(),
           delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
           message: form.details,
         }),
@@ -148,22 +159,20 @@ export default function OrderPageClient() {
                 )}
 
                 <div className={styles.serviceInfoPricing}>
-                  {!isRush && service.originalPrice && (
-                    <span className={styles.serviceInfoOldPrice}>
-                      {formatPrice(service.originalPrice)}
-                    </span>
-                  )}
                   {isRush && (
                     <span className={styles.serviceInfoOldPrice}>
-                      {formatPrice(service.price)}
+                      {priceFormatter(Math.round(service.price * regionMultiplier))}
                     </span>
                   )}
                   <span className={styles.serviceInfoPrice}>
-                    {formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)}
+                    {priceFormatter(isRush ? Math.round(service.price * regionMultiplier * 1.5) : Math.round(service.price * regionMultiplier))}
                     {service.maxPrice && (
-                      <> – {formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}</>
+                      <> – {priceFormatter(isRush ? Math.round(service.maxPrice * regionMultiplier * 1.5) : Math.round(service.maxPrice * regionMultiplier))}</>
                     )}
                   </span>
+                  {isForeigner && (
+                    <span className={styles.serviceInfoOldPrice} style={{ textDecoration: 'none', color: '#34d399', marginLeft: '8px' }}>🌍 USD</span>
+                  )}
                 </div>
 
                 <div className={styles.serviceInfoFeatures}>
