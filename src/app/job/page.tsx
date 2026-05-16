@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { ParallaxStars } from '@/components/ParallaxStars';
 import styles from './page.module.css';
 
 const perks = [
@@ -37,8 +36,7 @@ const openings = [
 
 export default function JobPage() {
   return (
-    <ParallaxStars speed={0.8}>
-      <section className={styles.jobPage}>
+    <section className={styles.jobPage}>
         <div className="container">
           {/* Header */}
           <div className={styles.header}>
@@ -68,6 +66,5 @@ export default function JobPage() {
 
         </div>
       </section>
-    </ParallaxStars>
   );
 }

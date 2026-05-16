@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { getServiceById, formatPrice, formatPriceUSD } from '@/lib/services';
 import LottieCheckbox from '@/components/LottieCheckbox';
-import { ParallaxStars } from '@/components/ParallaxStars';
 import styles from './page.module.css';
 
 export default function OrderPageClient() {
@@ -31,20 +30,18 @@ export default function OrderPageClient() {
 
   if (!service) {
     return (
-      <ParallaxStars speed={0.8}>
-        <div className={styles.notFound}>
-          <div className="container">
-            <div className={styles.notFoundCard}>
-              <div className={styles.notFoundIcon}>🔍</div>
-              <h2>Service Not Found</h2>
-              <p>The service you are looking for does not exist.</p>
-              <Link href="/" className="btn btn-primary">
-                ← Back to Home
-              </Link>
-            </div>
+      <div className={styles.notFound}>
+        <div className="container">
+          <div className={styles.notFoundCard}>
+            <div className={styles.notFoundIcon}>🔍</div>
+            <h2>Service Not Found</h2>
+            <p>The service you are looking for does not exist.</p>
+            <Link href="/" className="btn btn-primary">
+              ← Back to Home
+            </Link>
           </div>
         </div>
-      </ParallaxStars>
+      </div>
     );
   }
 
@@ -102,10 +99,9 @@ export default function OrderPageClient() {
 
   if (status === 'success') {
     return (
-      <ParallaxStars speed={0.8}>
-        <div className={styles.orderPage}>
-          <div className="container">
-            <div className={`${styles.successCard} animate-scaleIn`}>
+      <div className={styles.orderPage}>
+        <div className="container">
+          <div className={styles.successCard}>
               <div className={styles.successIcon}>
                 <LottieCheckbox size={80} />
               </div>
@@ -122,22 +118,20 @@ export default function OrderPageClient() {
             </div>
           </div>
         </div>
-      </ParallaxStars>
     );
   }
 
   return (
-    <ParallaxStars speed={0.8}>
-      <div className={styles.orderPage}>
-        <div className="container">
-          {/* Back link */}
-          <Link href="/" className={`${styles.backLink} animate-fadeIn`}>
+    <div className={styles.orderPage}>
+      <div className="container">
+        {/* Back link */}
+        <Link href="/" className={styles.backLink}>
             ← Back to Services
           </Link>
 
           <div className={styles.orderLayout}>
             {/* Left — Service Info */}
-            <div className={`${styles.serviceInfo} animate-fadeInUp`}>
+            <div className={styles.serviceInfo}>
               <div className={styles.serviceInfoCard}>
                 <div
                   className={styles.serviceInfoGlow}
@@ -193,7 +187,7 @@ export default function OrderPageClient() {
             </div>
 
             {/* Right — Order Form */}
-            <div className={`${styles.orderForm} animate-fadeInUp stagger-2`}>
+            <div className={styles.orderForm}>
               <div className={styles.orderFormCard}>
                 <h2 className={styles.orderFormTitle}>Order Details</h2>
                 <p className={styles.orderFormSubtitle}>
@@ -291,8 +285,7 @@ export default function OrderPageClient() {
               </div>
             </div>
           </div>
-        </div>
       </div>
-    </ParallaxStars>
+    </div>
   );
 }

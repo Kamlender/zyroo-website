@@ -4,9 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { services } from '@/lib/services';
 import PricingSection from '@/components/PricingSection';
-import { LightBeamButton } from '@/components/LightBeamButton';
-import { LiquidEther } from '@/components/LiquidEther';
-import { ParallaxStars } from '@/components/ParallaxStars';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -47,61 +44,40 @@ export default function HomePage() {
     },
   ];
 
-
-
   return (
     <>
-      {/* ==================== HERO — 3D TUBES BACKGROUND ==================== */}
+      {/* ==================== HERO ==================== */}
       <section className={styles.hero} id="hero">
-        {/* LiquidEther Fluid Background */}
-        <div className={styles.heroBg}>
-          <LiquidEther
-            colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-            mouseForce={25}
-            cursorSize={120}
-            autoDemo={true}
-            autoSpeed={0.6}
-            autoIntensity={2.5}
-            resolution={0.6}
-            BFECC={true}
-          />
-        </div>
-
-        <div className={styles.heroNoise}></div>
+        <div className={styles.heroOverlay}></div>
 
         <div className={`${styles.heroInner} container`}>
           {/* Left — Text Content */}
           <div className={styles.heroLeft}>
-            <h1 className={`${styles.heroTitle} animate-fadeInUp stagger-1`}>
+            <h1 className={styles.heroTitle}>
               Make Your Business
               <br />
               <span className={styles.heroHighlight}>Invincible</span>
             </h1>
 
             <div
-              className={`${styles.heroCtas} animate-fadeInUp stagger-3`}
+              className={styles.heroCtas}
               style={{ pointerEvents: 'auto' }}
             >
-              <LightBeamButton
-                href="#services"
-                variant="primary"
-                gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
-              >
+              <a href="#services" className="btn btn-primary btn-lg">
                 Explore Services
-              </LightBeamButton>
-              <LightBeamButton
+              </a>
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="whatsapp"
-                gradientColors={['#25d366', '#128c7e', '#25d366']}
+                className="btn btn-whatsapp btn-lg"
               >
                 WhatsApp Us
-              </LightBeamButton>
+              </a>
             </div>
 
             {/* Stats Ticker */}
-            <div className={`${styles.statsTicker} animate-fadeInUp stagger-4`}>
+            <div className={styles.statsTicker}>
               <div className={styles.tickerItem}>
                 <span className={styles.tickerVal}>47+</span>
                 <span className={styles.tickerLabel}>Projects</span>
@@ -120,7 +96,7 @@ export default function HomePage() {
           </div>
 
           {/* Right — Code Window */}
-          <div className={`${styles.heroRight} animate-fadeInUp stagger-2`}>
+          <div className={styles.heroRight}>
             <div className={styles.codeWindow}>
               <div className={styles.codeWindowHeader}>
                 <span className={styles.codeDot} style={{ background: '#ff5f57' }}></span>
@@ -130,7 +106,7 @@ export default function HomePage() {
               <pre className={styles.codeBlock}>
                 <code>
                   <span className={styles.codeComment}>{'// Your new website, simplified'}</span>{`\n`}
-                  <span className={styles.codeKeyword}>{'const'}</span>{' site = '}<span className={styles.codeFunc}>{'createSite'}</span>{'({'}{`\n`}
+                  <span className={styles.codeKeyword}>{'const'}</span>{' site = '}<span className={styles.codeFunc}>{'createSite'}</span>{'('}{`\n`}
                   {'  name: '}<span className={styles.codeString}>{'"My Business"'}</span>{','}{`\n`}
                   {'  pages: '}<span className={styles.codeString}>{'"5"'}</span>{','}{`\n`}
                   {'  responsive: '}<span className={styles.codeKeyword}>{'true'}</span>{','}{`\n`}
@@ -146,78 +122,66 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== PARALLAX STARS — ALL NON-HERO SECTIONS ==================== */}
-      <ParallaxStars speed={0.8}>
-        {/* ==================== MARQUEE STRIP ==================== */}
-        <div className={styles.marqueeWrap}>
-          <div className={styles.marqueeTrack}>
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className={styles.marqueeContent}>
-                <span>Web Design</span>
-                <span className={styles.marqueeStar}>★</span>
-                <span>E-Commerce</span>
-                <span className={styles.marqueeStar}>★</span>
-                <span>Landing Pages</span>
-                <span className={styles.marqueeStar}>★</span>
-                <span>Business Sites</span>
-                <span className={styles.marqueeStar}>★</span>
-                <span>Portfolio</span>
-                <span className={styles.marqueeStar}>★</span>
-                <span>Redesign</span>
-                <span className={styles.marqueeStar}>★</span>
+      {/* ==================== MARQUEE STRIP ==================== */}
+      <div className={styles.marqueeWrap}>
+        <div className={styles.marqueeContent}>
+          <span>Web Design</span>
+          <span className={styles.marqueeStar}>★</span>
+          <span>E-Commerce</span>
+          <span className={styles.marqueeStar}>★</span>
+          <span>Landing Pages</span>
+          <span className={styles.marqueeStar}>★</span>
+          <span>Business Sites</span>
+          <span className={styles.marqueeStar}>★</span>
+          <span>Portfolio</span>
+          <span className={styles.marqueeStar}>★</span>
+          <span>Redesign</span>
+          <span className={styles.marqueeStar}>★</span>
+        </div>
+      </div>
+
+      {/* ==================== SERVICES — PRICING SECTION ==================== */}
+      <PricingSection />
+
+      {/* ==================== REVIEWS ==================== */}
+      <section className={`section ${styles.reviews}`} id="reviews">
+        <div className="container">
+          <div className={styles.sectionTop}>
+            <h2 className={styles.sectionHeading}>
+              What <span className="gradient-text">Clients Say</span>
+            </h2>
+          </div>
+
+          <div className={styles.reviewGrid}>
+            {clients.map((c, index) => (
+              <div key={index} className={styles.reviewCard}>
+                <div className={styles.reviewStars}>
+                  {Array.from({ length: c.stars }).map((_, i) => (
+                    <span key={i} className={styles.star}>★</span>
+                  ))}
+                </div>
+                <p className={styles.reviewText}>&ldquo;{c.review}&rdquo;</p>
+                <div className={styles.reviewAuthor}>
+                  <div className={styles.reviewAvatar}>{c.avatar}</div>
+                  <div>
+                    <h4 className={styles.reviewName}>{c.name}</h4>
+                    <span className={styles.reviewRole}>{c.role}</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* ==================== SERVICES — PRICING SECTION ==================== */}
-        <PricingSection />
-
-
-
-        {/* ==================== REVIEWS ==================== */}
-        <section className={`section ${styles.reviews}`} id="reviews">
-          <div className="container">
-            <div className={styles.sectionTop}>
-              <h2 className={styles.sectionHeading}>
-                What <span className="gradient-text">Clients Say</span>
-              </h2>
-            </div>
-
-            <div className={styles.reviewGrid}>
-              {clients.map((c, index) => (
-                <div
-                  key={index}
-                  className={`${styles.reviewCard} animate-fadeInUp stagger-${index + 1}`}
-                >
-                  <div className={styles.reviewStars}>
-                    {Array.from({ length: c.stars }).map((_, i) => (
-                      <span key={i} className={styles.star}>★</span>
-                    ))}
-                  </div>
-                  <p className={styles.reviewText}>&ldquo;{c.review}&rdquo;</p>
-                  <div className={styles.reviewAuthor}>
-                    <div className={styles.reviewAvatar}>{c.avatar}</div>
-                    <div>
-                      <h4 className={styles.reviewName}>{c.name}</h4>
-                      <span className={styles.reviewRole}>{c.role}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* ==================== FOOTER ==================== */}
+      <footer className={styles.footer} id="contact">
+        <div className="container">
+          <div className={styles.footerBar}>
+            <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
           </div>
-        </section>
-
-        {/* ==================== FOOTER ==================== */}
-        <footer className={styles.footer} id="contact">
-          <div className="container">
-            <div className={styles.footerBar}>
-              <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </ParallaxStars>
+        </div>
+      </footer>
     </>
   );
 }

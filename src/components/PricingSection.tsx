@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
   Check,
   Rocket,
@@ -46,13 +45,7 @@ export default function PricingSection() {
 
       <div className={`${styles.inner} container`}>
         {/* Header */}
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className={styles.header}>
           <h2 className={styles.heading}>
             What We <span className="gradient-text">Offer</span>
           </h2>
@@ -61,13 +54,7 @@ export default function PricingSection() {
           </p>
 
           {/* Toggles Container */}
-          <motion.div
-            className={styles.toggleGroup}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div className={styles.toggleGroup}>
             {/* Speed Toggle */}
             <div className={styles.toggle}>
               <span
@@ -82,11 +69,9 @@ export default function PricingSection() {
                 }
                 aria-label="Toggle pricing mode"
               >
-                <motion.div
+                <div
                   className={styles.toggleThumb}
-                  layout
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  animate={{ x: mode === 'standard' ? 0 : 24 }}
+                  style={{ transform: mode === 'standard' ? 'translateX(0)' : 'translateX(24px)' }}
                 />
               </button>
               <span
@@ -111,11 +96,9 @@ export default function PricingSection() {
                 }
                 aria-label="Toggle region pricing"
               >
-                <motion.div
+                <div
                   className={styles.toggleThumb}
-                  layout
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  animate={{ x: region === 'india' ? 0 : 24 }}
+                  style={{ transform: region === 'india' ? 'translateX(0)' : 'translateX(24px)' }}
                 />
               </button>
               <span
@@ -124,8 +107,8 @@ export default function PricingSection() {
                 Foreigner
               </span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Pricing Grid */}
         <div className={styles.grid}>
@@ -146,12 +129,8 @@ export default function PricingSection() {
               : null;
 
             return (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.08 + 0.3 }}
                 className={service.popular ? styles.cardPopularWrap : ''}
               >
                 <Link
@@ -230,20 +209,14 @@ export default function PricingSection() {
                     </span>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
-        <motion.p
-          className={styles.note}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 1 }}
-        >
+        <p className={styles.note}>
           Pehle baat karo, phir decide karo. Consultation free hai.
-        </motion.p>
+        </p>
       </div>
     </section>
   );
