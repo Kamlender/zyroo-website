@@ -13,7 +13,7 @@ import {
   RefreshCcw,
   Store,
 } from 'lucide-react';
-import { services, formatPrice } from '@/lib/services';
+import { services, formatPrice, formatPriceUSD } from '@/lib/services';
 import styles from './PricingSection.module.css';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -27,9 +27,14 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 type PricingMode = 'standard' | 'rush';
+type Region = 'india' | 'foreigner';
 
 export default function PricingSection() {
   const [mode, setMode] = useState<PricingMode>('standard');
+  const [region, setRegion] = useState<Region>('india');
+
+  const priceFormatter = region === 'foreigner' ? formatPriceUSD : formatPrice;
+  const regionMultiplier = region === 'foreigner' ? 1.5 : 1;
 
   return (
     <section className={styles.section} id="services">
@@ -55,39 +60,71 @@ export default function PricingSection() {
             No hidden fees, no surprises. Pick a plan and we&apos;ll handle the rest.
           </p>
 
-          {/* Toggle */}
+          {/* Toggles Container */}
           <motion.div
-            className={styles.toggle}
+            className={styles.toggleGroup}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span
-              className={`${styles.toggleLabel} ${mode === 'standard' ? styles.toggleActive : ''}`}
-            >
-              Standard
-            </span>
-            <button
-              className={styles.toggleTrack}
-              onClick={() =>
-                setMode((m) => (m === 'standard' ? 'rush' : 'standard'))
-              }
-              aria-label="Toggle pricing mode"
-            >
-              <motion.div
-                className={styles.toggleThumb}
-                layout
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                animate={{ x: mode === 'standard' ? 0 : 24 }}
-              />
-            </button>
-            <span
-              className={`${styles.toggleLabel} ${mode === 'rush' ? styles.toggleActive : ''}`}
-            >
-              Rush
-              <span className={styles.toggleBadge}>⚡ 2× faster</span>
-            </span>
+            {/* Speed Toggle */}
+            <div className={styles.toggle}>
+              <span
+                className={`${styles.toggleLabel} ${mode === 'standard' ? styles.toggleActive : ''}`}
+              >
+                Standard
+              </span>
+              <button
+                className={styles.toggleTrack}
+                onClick={() =>
+                  setMode((m) => (m === 'standard' ? 'rush' : 'standard'))
+                }
+                aria-label="Toggle pricing mode"
+              >
+                <motion.div
+                  className={styles.toggleThumb}
+                  layout
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  animate={{ x: mode === 'standard' ? 0 : 24 }}
+                />
+              </button>
+              <span
+                className={`${styles.toggleLabel} ${mode === 'rush' ? styles.toggleActive : ''}`}
+              >
+                Rush
+                <span className={styles.toggleBadge}>⚡ 2× faster</span>
+              </span>
+            </div>
+
+            {/* Region Toggle */}
+            <div className={styles.toggle}>
+              <span
+                className={`${styles.toggleLabel} ${region === 'india' ? styles.toggleActive : ''}`}
+              >
+                🇮🇳 India
+              </span>
+              <button
+                className={`${styles.toggleTrack} ${region === 'foreigner' ? styles.toggleTrackForeigner : ''}`}
+                onClick={() =>
+                  setRegion((r) => (r === 'india' ? 'foreigner' : 'india'))
+                }
+                aria-label="Toggle region pricing"
+              >
+                <motion.div
+                  className={styles.toggleThumb}
+                  layout
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  animate={{ x: region === 'india' ? 0 : 24 }}
+                />
+              </button>
+              <span
+                className={`${styles.toggleLabel} ${region === 'foreigner' ? styles.toggleActive : ''}`}
+              >
+                Foreigner
+                <span className={styles.toggleBadgeForeigner}>🌍 USD</span>
+              </span>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -95,13 +132,19 @@ export default function PricingSection() {
         <div className={styles.grid}>
           {services.map((service, index) => {
             const Icon = iconMap[service.id] || Zap;
-            const rushPrice = Math.round(service.price * 1.5);
+            const basePrice = Math.round(service.price * regionMultiplier);
             const displayPrice =
-              mode === 'standard' ? service.price : rushPrice;
+              mode === 'standard' ? basePrice : Math.round(basePrice * 1.5);
             const deliveryDays =
               mode === 'standard'
                 ? service.deliveryDays
                 : Math.ceil(service.deliveryDays / 2);
+
+            // maxPrice range handling
+            const baseMax = service.maxPrice ? Math.round(service.maxPrice * regionMultiplier) : null;
+            const displayMax = baseMax
+              ? (mode === 'standard' ? baseMax : Math.round(baseMax * 1.5))
+              : null;
 
             return (
               <motion.div
@@ -138,16 +181,11 @@ export default function PricingSection() {
                   <div className={styles.priceBlock}>
                     <div className={styles.priceRow}>
                       <span className={styles.price}>
-                        {formatPrice(displayPrice)}
-                        {service.maxPrice && (
-                          <> – {formatPrice(mode === 'standard' ? service.maxPrice : Math.round(service.maxPrice * 1.5))}</>
+                        {priceFormatter(displayPrice)}
+                        {displayMax && (
+                          <> – {priceFormatter(displayMax)}</>
                         )}
                       </span>
-                      {service.originalPrice && mode === 'standard' && (
-                        <span className={styles.oldPrice}>
-                          {formatPrice(service.originalPrice)}
-                        </span>
-                      )}
                     </div>
                     <span className={styles.priceSuffix}>
                       / project

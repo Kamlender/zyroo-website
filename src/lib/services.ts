@@ -178,3 +178,16 @@ export const formatPrice = (price: number): string => {
     maximumFractionDigits: 0,
   }).format(price);
 };
+
+// Convert INR to USD (approximate rate)
+const INR_TO_USD = 85;
+
+export const formatPriceUSD = (priceINR: number): string => {
+  const usd = Math.round(priceINR / INR_TO_USD);
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(usd);
+};
