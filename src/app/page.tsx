@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { services } from '@/lib/services';
 import PricingSection from '@/components/PricingSection';
+import { LightBeamButton } from '@/components/LightBeamButton';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -63,17 +64,22 @@ export default function HomePage() {
               className={styles.heroCtas}
               style={{ pointerEvents: 'auto' }}
             >
-              <a href="#services" className="btn btn-primary btn-lg">
+              <LightBeamButton
+                href="#services"
+                variant="primary"
+                gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
+              >
                 Explore Services
-              </a>
-              <a
+              </LightBeamButton>
+              <LightBeamButton
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
+                variant="whatsapp"
+                gradientColors={['#25d366', '#128c7e', '#25d366']}
               >
                 WhatsApp Us
-              </a>
+              </LightBeamButton>
             </div>
 
             {/* Stats Ticker */}
