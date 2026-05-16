@@ -180,7 +180,7 @@ export const formatPrice = (price: number): string => {
 };
 
 // Convert INR to USD (approximate rate)
-const INR_TO_USD = 85;
+const INR_TO_USD = 95;
 
 export const formatPriceUSD = (priceINR: number): string => {
   const usd = Math.round(priceINR / INR_TO_USD);
