@@ -13,7 +13,7 @@
 }
 
 .navbar.scrolled {
-  background: rgba(4, 2, 20, 0.92);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(32px) saturate(1.2);
   -webkit-backdrop-filter: blur(32px) saturate(1.2);
   border-bottom: 1px solid rgba(139, 92, 246, 0.06);
@@ -133,7 +133,7 @@
   .navLinks {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(4, 2, 20, 0.97);
+    background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(30px);
     flex-direction: column;
     justify-content: center;

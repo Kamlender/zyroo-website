@@ -128,23 +128,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== MARQUEE STRIP ==================== */}
-      <div className={styles.marqueeWrap}>
-        <div className={styles.marqueeContent}>
-          <span>Web Design</span>
-          <span className={styles.marqueeStar}>★</span>
-          <span>E-Commerce</span>
-          <span className={styles.marqueeStar}>★</span>
-          <span>Landing Pages</span>
-          <span className={styles.marqueeStar}>★</span>
-          <span>Business Sites</span>
-          <span className={styles.marqueeStar}>★</span>
-          <span>Portfolio</span>
-          <span className={styles.marqueeStar}>★</span>
-          <span>Redesign</span>
-          <span className={styles.marqueeStar}>★</span>
-        </div>
-      </div>
 
       {/* ==================== SERVICES — PRICING SECTION ==================== */}
       <PricingSection />

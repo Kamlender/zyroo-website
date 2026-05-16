@@ -13,15 +13,13 @@
   text-align: center;
   overflow: hidden;
   padding: 0;
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.06) 0%, var(--bg-primary) 60%);
+  background: #000000;
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(ellipse at 30% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 60%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
 }
 
 .heroInner {
@@ -51,7 +49,7 @@
 
 /* ---- Code Window ---- */
 .codeWindow {
-  background: rgba(6, 8, 22, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(139, 92, 246, 0.15);
   border-radius: 16px;
   overflow: hidden;
@@ -172,7 +170,7 @@
 .marqueeWrap {
   overflow: hidden;
   padding: 20px 0;
-  background: rgba(139, 92, 246, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   border-top: 1px solid rgba(139, 92, 246, 0.06);
   border-bottom: 1px solid rgba(139, 92, 246, 0.06);
 }
@@ -229,7 +227,7 @@
 .reviewCard {
   text-align: left;
   padding: var(--space-xl) var(--space-xl) var(--space-lg);
-  background: rgba(10, 14, 40, 0.55);
+  background: rgba(8, 8, 8, 0.6);
   border: 1.5px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-lg);
   display: flex;
@@ -308,7 +306,7 @@
 
 /* ==================== FOOTER ==================== */
 .footer {
-  background: rgba(2, 0, 16, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   border-top: 1px solid rgba(139, 92, 246, 0.08);
   padding: var(--space-3xl) 0 var(--space-xl);
   position: relative;
