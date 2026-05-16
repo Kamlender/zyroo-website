@@ -17,7 +17,7 @@
   background: rgba(10, 15, 30, 0.88);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -99,6 +99,12 @@
 .navLink.active {
   color: var(--accent-purple-light);
   background: rgba(139, 92, 246, 0.06);
+}
+
+.navLink.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .navCta { margin-left: var(--space-md); }

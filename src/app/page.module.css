@@ -85,7 +85,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .codeDot {
@@ -231,8 +231,8 @@
   overflow: hidden;
   padding: 20px 0;
   background: rgba(139, 92, 246, 0.03);
-  border-top: 1px solid rgba(139, 92, 246, 0.08);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 2;
 }

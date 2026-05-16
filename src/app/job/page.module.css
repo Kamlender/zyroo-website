@@ -3,9 +3,14 @@
    ============================================ */
 
 .jobPage {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   padding: var(--space-3xl) 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Header */

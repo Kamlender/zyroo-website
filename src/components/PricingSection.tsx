@@ -11,15 +11,17 @@ import {
   Palette,
   Globe,
   RefreshCcw,
+  Store,
 } from 'lucide-react';
 import { services, formatPrice } from '@/lib/services';
 import styles from './PricingSection.module.css';
 
 const iconMap: Record<string, React.ElementType> = {
   'landing-page': Rocket,
+  'portfolio-website': Palette,
+  'small-business': Store,
   'business-website': Globe,
   'ecommerce-store': ShoppingCart,
-  'portfolio-website': Palette,
   'web-application': Zap,
   'website-redesign': RefreshCcw,
 };
