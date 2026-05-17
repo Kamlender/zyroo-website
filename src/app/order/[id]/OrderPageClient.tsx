@@ -57,8 +57,11 @@ export default function OrderPageClient() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
+          // Honeypot field — must be empty to pass spam check
+          botcheck: '',
           subject: `🛒 New Order — ${service.title}${isRush ? ' (Rush)' : ''}${isForeigner ? ' (Foreigner)' : ''} | ZYROO`,
           from_name: 'ZYROO Orders',
+          replyto: form.email || undefined,
           name: form.name,
           phone: form.phone,
           email: form.email || 'Not provided',
