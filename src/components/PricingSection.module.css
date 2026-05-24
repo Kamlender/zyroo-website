@@ -70,6 +70,7 @@
 }
 
 .subtitle {
+  font-family: var(--font-serif);
   font-size: var(--text-lg);
   color: var(--text-secondary);
   max-width: 520px;
@@ -261,6 +262,7 @@
 }
 
 .cardDesc {
+  font-family: var(--font-serif);
   font-size: var(--text-sm);
   color: var(--text-muted);
   line-height: 1.7;
@@ -388,6 +390,7 @@
 /* ---- Note ---- */
 .note {
   text-align: center;
+  font-family: var(--font-serif);
   font-size: var(--text-sm);
   color: var(--text-muted);
   margin-top: var(--space-2xl);
