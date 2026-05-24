@@ -103,9 +103,9 @@
 }
 
 .heroTitle {
-  font-family: 'Syne', var(--font-display);
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 4.5rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.04em;
   margin-bottom: var(--space-md);
@@ -117,7 +117,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .heroCtas {
@@ -148,7 +148,7 @@
 .tickerVal {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--accent-purple-light);
 }
 
@@ -202,13 +202,14 @@
 
 .sectionHeading {
   font-size: var(--text-4xl);
-  font-weight: 800;
+  font-weight: 700;
   margin: var(--space-md) 0;
   letter-spacing: -0.03em;
 }
 
 .sectionDesc {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-size: var(--text-lg);
   color: var(--text-secondary);
   max-width: 500px;
@@ -261,7 +262,8 @@
 }
 
 .reviewText {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.8;
@@ -287,7 +289,7 @@
   background: var(--gradient-secondary);
   border-radius: 50%;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--text-sm);
   color: white;
   flex-shrink: 0;
@@ -323,7 +325,7 @@
   text-align: center;
 }
 
-.footerBar p { font-family: var(--font-serif); font-size: var(--text-sm); color: var(--text-dim); }
+.footerBar p { font-family: var(--font-sans); font-weight: 400; font-size: var(--text-sm); color: var(--text-dim); }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {

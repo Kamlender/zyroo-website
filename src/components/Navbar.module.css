@@ -51,7 +51,7 @@
   background: var(--gradient-primary);
   border-radius: var(--radius-md);
   font-size: var(--text-base);
-  font-weight: 800;
+  font-weight: 700;
   color: white;
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
 }
