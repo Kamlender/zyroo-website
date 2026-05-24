@@ -3,11 +3,18 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'ZYROO — Web Design Studio',
+  metadataBase: new URL('https://tinytoono.in'),
+  title: {
+    default: 'ZYROO — Web Design Studio | Websites for Small Business & Startups',
+    template: '%s | ZYROO',
+  },
   description:
     'Web design studio based in India. We build websites, online stores, and web apps for small businesses and startups. Quick delivery, fair pricing.',
   keywords:
-    'web design india, website development, landing page, e-commerce, portfolio website, web application, affordable web design',
+    'web design india, website development, landing page, e-commerce, portfolio website, web application, affordable web design, web design studio, startup website, small business website',
+  authors: [{ name: 'ZYROO', url: 'https://tinytoono.in' }],
+  creator: 'ZYROO',
+  publisher: 'ZYROO',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -18,8 +25,31 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ZYROO — Web Design Studio',
     description:
-      'We build websites that look good and actually work. Based in India.',
+      'We build websites that look good and actually work. Based in India. Quick delivery, fair pricing.',
+    url: 'https://tinytoono.in',
+    siteName: 'ZYROO',
+    locale: 'en_IN',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ZYROO — Web Design Studio',
+    description:
+      'We build websites that look good and actually work. Based in India.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://tinytoono.in',
   },
 };
 
