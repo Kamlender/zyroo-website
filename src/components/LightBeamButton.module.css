@@ -34,7 +34,7 @@
   white-space: nowrap;
   border: none;
   border-radius: var(--radius-full);
-  background: var(--bg-primary);
+  background: #2a0a3e;
   cursor: pointer;
   text-decoration: none;
   /* GPU acceleration */
@@ -80,12 +80,12 @@
   inset: 1.5px;
   z-index: -1;
   border-radius: var(--radius-full);
-  background: var(--bg-primary);
+  background: #2a0a3e;
   transition: background 0.25s ease;
 }
 
 .lightBeamBtn:hover .beamInner {
-  background: rgba(12, 6, 40, 0.95);
+  background: rgba(42, 10, 62, 0.95);
 }
 
 /* Shine / Glow Overlay on hover */
@@ -104,10 +104,10 @@
 
 /* === VARIANT: Primary (Purple beam) === */
 .variantPrimary {
-  box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px -5px rgba(90, 26, 110, 0.3);
 }
 .variantPrimary:hover {
-  box-shadow: 0 0 28px -5px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 28px -5px rgba(90, 26, 110, 0.5);
 }
 
 /* === VARIANT: WhatsApp (Green beam) === */

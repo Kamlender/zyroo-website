@@ -1,5 +1,5 @@
 /* ============================================
-   PricingSection — Dark Theme, No Animations
+   PricingSection — Lavender Purple Theme
    ============================================ */
 
 /* ---- Section ---- */
@@ -7,7 +7,7 @@
   position: relative;
   padding: var(--space-4xl) 0;
   overflow: hidden;
-  background: transparent;
+  background: linear-gradient(180deg, #e8d0b8 0%, #d8c0d8 40%, #c9b8e8 100%);
 }
 
 .inner {
@@ -32,7 +32,7 @@
   transform: translateX(-50%);
   background: radial-gradient(
     ellipse at top,
-    rgba(139, 92, 246, 0.1) 0%,
+    rgba(90, 26, 110, 0.06) 0%,
     transparent 70%
   );
   filter: blur(80px);
@@ -46,7 +46,7 @@
   height: 500px;
   transform: translate(40%, 40%);
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.04);
+  background: rgba(232, 117, 32, 0.06);
   filter: blur(100px);
 }
 
@@ -61,6 +61,7 @@
   font-weight: 700;
   letter-spacing: -0.03em;
   margin: var(--space-md) 0;
+  color: #3a0a4e;
 }
 
 @media (min-width: 640px) {
@@ -73,7 +74,7 @@
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: var(--text-lg);
-  color: var(--text-secondary);
+  color: rgba(90, 26, 110, 0.6);
   max-width: 520px;
   margin: 0 auto;
   line-height: 1.7;
@@ -97,7 +98,7 @@
 
 .toggleLabel {
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: rgba(90, 26, 110, 0.5);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
@@ -109,7 +110,7 @@
 }
 
 .toggleActive {
-  color: var(--text-primary);
+  color: #3a0a4e;
   font-weight: 600;
 }
 
@@ -118,8 +119,8 @@
   width: 56px;
   height: 32px;
   border-radius: var(--radius-full);
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.18);
+  background: rgba(90, 26, 110, 0.08);
+  border: 1px solid rgba(90, 26, 110, 0.15);
   padding: 4px;
   cursor: pointer;
 }
@@ -133,8 +134,8 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--gradient-primary);
-  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.35);
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%);
+  box-shadow: 0 2px 10px rgba(90, 26, 110, 0.35);
 }
 
 .toggleTrackForeigner .toggleThumb {
@@ -181,8 +182,9 @@
   flex-direction: column;
   padding: var(--space-xl) var(--space-lg);
   border-radius: 24px;
-  background: rgba(8, 8, 8, 0.6);
-  border: 1.5px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(90, 26, 110, 0.08);
+  box-shadow: 0 8px 32px rgba(90, 26, 110, 0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   text-decoration: none;
@@ -206,13 +208,13 @@
 .cardPopular {
   background: linear-gradient(
     to bottom,
-    rgba(139, 92, 246, 0.1),
-    rgba(8, 8, 8, 0.6)
+    rgba(122, 42, 158, 0.08),
+    rgba(255, 255, 255, 0.45)
   );
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: rgba(90, 26, 110, 0.2);
   box-shadow:
-    0 0 50px -12px rgba(139, 92, 246, 0.12),
-    0 20px 60px rgba(0, 0, 0, 0.25);
+    0 0 50px -12px rgba(90, 26, 110, 0.1),
+    0 20px 60px rgba(90, 26, 110, 0.08);
 }
 
 .popularBadge {
@@ -221,7 +223,7 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 20px;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-teal));
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%);
   border-radius: var(--radius-full);
   font-size: 11px;
   font-weight: 700;
@@ -229,7 +231,7 @@
   letter-spacing: 1.2px;
   text-transform: uppercase;
   white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 20px rgba(90, 26, 110, 0.35);
 }
 
 /* ---- Card Header ---- */
@@ -244,15 +246,15 @@
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: rgba(139, 92, 246, 0.07);
-  color: var(--text-secondary);
+  background: rgba(90, 26, 110, 0.06);
+  color: rgba(90, 26, 110, 0.5);
   margin-bottom: var(--space-md);
 }
 
 .cardIconPopular {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%);
   color: white;
-  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 18px rgba(90, 26, 110, 0.3);
 }
 
 .cardName {
@@ -260,13 +262,14 @@
   font-size: var(--text-xl);
   font-weight: 700;
   margin-bottom: var(--space-xs);
+  color: #3a0a4e;
 }
 
 .cardDesc {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: rgba(90, 26, 110, 0.45);
   line-height: 1.7;
 }
 
@@ -286,23 +289,23 @@
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #3a0a4e;
   letter-spacing: -0.02em;
 }
 
 .cardPopular .price {
-  color: var(--accent-purple-light);
+  color: #7a2a9e;
 }
 
 .oldPrice {
   font-size: var(--text-sm);
-  color: var(--text-dim);
+  color: rgba(90, 26, 110, 0.35);
   text-decoration: line-through;
 }
 
 .priceSuffix {
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: rgba(90, 26, 110, 0.5);
   display: flex;
   flex-direction: column;
   margin-top: 2px;
@@ -310,7 +313,7 @@
 
 .rushNote {
   font-size: 10px;
-  color: var(--accent-amber);
+  color: #d4622a;
   font-weight: 600;
 }
 
@@ -330,18 +333,18 @@
   align-items: flex-start;
   gap: 10px;
   font-size: var(--text-sm);
-  color: var(--text-secondary);
+  color: rgba(90, 26, 110, 0.6);
   line-height: 1.35;
 }
 
 .checkNormal {
-  color: var(--accent-purple);
+  color: #7a2a9e;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
 .checkPopular {
-  color: var(--accent-purple-light);
+  color: #9a4abe;
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -353,7 +356,7 @@
   justify-content: space-between;
   gap: var(--space-md);
   padding-top: var(--space-lg);
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(90, 26, 110, 0.08);
 }
 
 .ctaBtn {
@@ -364,15 +367,15 @@
   border-radius: 14px;
   font-size: var(--text-sm);
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-secondary);
+  background: rgba(90, 26, 110, 0.06);
+  color: rgba(90, 26, 110, 0.6);
   letter-spacing: 0.02em;
 }
 
 .ctaBtnPopular {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%);
   color: white;
-  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 18px rgba(90, 26, 110, 0.3);
 }
 
 .ctaIcon {
@@ -385,7 +388,7 @@
 
 .delivery {
   font-size: var(--text-xs);
-  color: var(--text-dim);
+  color: rgba(90, 26, 110, 0.4);
   white-space: nowrap;
 }
 
@@ -395,7 +398,7 @@
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: rgba(90, 26, 110, 0.45);
   margin-top: var(--space-2xl);
 }
 
