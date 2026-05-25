@@ -18,7 +18,7 @@ export default function HomePage() {
     {
       name: 'Raj',
       avatar: 'R',
-      role: 'Business Owner',
+      role: 'Freelancer',
       stars: 5,
       review: 'Maine 3 freelancers try kiye pehle, kisi ne dhang se kaam nahi kiya. ZYROO ko contact kiya toh 6 din mein site ready thi. Ab Google se directly leads aa rahi hain.',
     },
@@ -32,14 +32,14 @@ export default function HomePage() {
     {
       name: 'Anil',
       avatar: 'AN',
-      role: 'Freelancer',
+      role: 'Shop Owner',
       stars: 4,
       review: 'Portfolio site ke liye contact kiya tha. Design acchi banayi, bas ek revision mein thoda time laga. But final output dekh ke khush ho gaya, worth it tha.',
     },
     {
       name: 'Twinkle',
       avatar: 'T',
-      role: 'Shop Owner',
+      role: 'Business Owner',
       stars: 5,
       review: 'Meri saree ki dukaan hai, online store banana tha. Payment gateway, WhatsApp order sab set kar diya. Pehle mahine mein hi 12 online orders aaye.',
     },
