@@ -3,7 +3,7 @@
 import React, { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
-import { getServiceById, formatPrice, formatPriceUSD } from '@/lib/services';
+import { getServiceById, formatPrice } from '@/lib/services';
 import LottieCheckbox from '@/components/LottieCheckbox';
 import styles from './page.module.css';
 
@@ -13,9 +13,6 @@ export default function OrderPageClient() {
   const serviceId = params.id as string;
   const service = getServiceById(serviceId);
   const isRush = searchParams.get('mode') === 'rush';
-  const isForeigner = searchParams.get('region') === 'foreigner';
-  const regionMultiplier = isForeigner ? 1.5 : 1;
-  const priceFormatter = isForeigner ? formatPriceUSD : formatPrice;
 
 
   const [form, setForm] = useState({
@@ -51,18 +48,12 @@ export default function OrderPageClient() {
     setErrorMsg('');
 
     try {
-      // Build plain-text price (no currency symbols to avoid spam filters)
-      const base = Math.round(service.price * regionMultiplier);
-      const final = isRush ? Math.round(base * 1.5) : base;
-      let priceText = isForeigner
-        ? `USD ${Math.round(final / 85)}`
-        : `INR ${final}`;
+      // Build plain-text price
+      const final = isRush ? Math.round(service.price * 1.5) : service.price;
+      let priceText = `INR ${final}`;
       if (service.maxPrice) {
-        const baseMax = Math.round(service.maxPrice * regionMultiplier);
-        const finalMax = isRush ? Math.round(baseMax * 1.5) : baseMax;
-        priceText += isForeigner
-          ? ` to USD ${Math.round(finalMax / 85)}`
-          : ` to INR ${finalMax}`;
+        const finalMax = isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice;
+        priceText += ` to INR ${finalMax}`;
       }
 
       const payload: Record<string, string> = {
@@ -75,7 +66,6 @@ export default function OrderPageClient() {
         email: form.email || 'Not provided',
         service: service.title,
         mode: isRush ? 'Rush' : 'Standard',
-        region: isForeigner ? 'International' : 'India',
         price: priceText,
         delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
         message: form.details,
@@ -167,13 +157,13 @@ export default function OrderPageClient() {
                 <div className={styles.serviceInfoPricing}>
                   {isRush && (
                     <span className={styles.serviceInfoOldPrice}>
-                      {priceFormatter(Math.round(service.price * regionMultiplier))}
+                      {formatPrice(service.price)}
                     </span>
                   )}
                   <span className={styles.serviceInfoPrice}>
-                    {priceFormatter(isRush ? Math.round(service.price * regionMultiplier * 1.5) : Math.round(service.price * regionMultiplier))}
+                    {formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)}
                     {service.maxPrice && (
-                      <> – {priceFormatter(isRush ? Math.round(service.maxPrice * regionMultiplier * 1.5) : Math.round(service.maxPrice * regionMultiplier))}</>
+                      <> – {formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}</>
                     )}
                   </span>
                 </div>
@@ -240,8 +230,8 @@ export default function OrderPageClient() {
                           setForm((p) => ({ ...p, phone: e.target.value }))
                         }
                         required
-                        pattern={isForeigner ? undefined : '[0-9]{10}'}
-                        title={isForeigner ? 'Please enter a valid phone number' : 'Please enter a valid 10-digit phone number'}
+                        pattern="[0-9]{10}"
+                        title="Please enter a valid 10-digit phone number"
                         disabled={status === 'sending'}
                       />
                     </div>

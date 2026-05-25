@@ -12,7 +12,7 @@ import {
   RefreshCcw,
   Store,
 } from 'lucide-react';
-import { services, formatPrice, formatPriceUSD } from '@/lib/services';
+import { services, formatPrice } from '@/lib/services';
 import styles from './PricingSection.module.css';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -26,14 +26,9 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 type PricingMode = 'standard' | 'rush';
-type Region = 'india' | 'foreigner';
 
 export default function PricingSection() {
   const [mode, setMode] = useState<PricingMode>('standard');
-  const [region, setRegion] = useState<Region>('india');
-
-  const priceFormatter = region === 'foreigner' ? formatPriceUSD : formatPrice;
-  const regionMultiplier = region === 'foreigner' ? 1.5 : 1;
 
   return (
     <section className={styles.section} id="services">
@@ -81,40 +76,13 @@ export default function PricingSection() {
                 <span className={styles.toggleBadge}>⚡ 2× faster</span>
               </span>
             </div>
-
-            {/* Region Toggle */}
-            <div className={styles.toggle}>
-              <span
-                className={`${styles.toggleLabel} ${region === 'india' ? styles.toggleActive : ''}`}
-              >
-                🇮🇳 India
-              </span>
-              <button
-                className={`${styles.toggleTrack} ${region === 'foreigner' ? styles.toggleTrackForeigner : ''}`}
-                onClick={() =>
-                  setRegion((r) => (r === 'india' ? 'foreigner' : 'india'))
-                }
-                aria-label="Toggle region pricing"
-              >
-                <div
-                  className={styles.toggleThumb}
-                  style={{ transform: region === 'india' ? 'translateX(0)' : 'translateX(24px)' }}
-                />
-              </button>
-              <span
-                className={`${styles.toggleLabel} ${region === 'foreigner' ? styles.toggleActive : ''}`}
-              >
-                Foreigner
-              </span>
-            </div>
           </div>
         </div>
 
         {/* Pricing Grid */}
         <div className={styles.grid}>
           {services.map((service, index) => {
-            const Icon = iconMap[service.id] || Zap;
-            const basePrice = Math.round(service.price * regionMultiplier);
+            const basePrice = service.price;
             const displayPrice =
               mode === 'standard' ? basePrice : Math.round(basePrice * 1.5);
             const deliveryDays =
@@ -123,9 +91,8 @@ export default function PricingSection() {
                 : Math.ceil(service.deliveryDays / 2);
 
             // maxPrice range handling
-            const baseMax = service.maxPrice ? Math.round(service.maxPrice * regionMultiplier) : null;
-            const displayMax = baseMax
-              ? (mode === 'standard' ? baseMax : Math.round(baseMax * 1.5))
+            const displayMax = service.maxPrice
+              ? (mode === 'standard' ? service.maxPrice : Math.round(service.maxPrice * 1.5))
               : null;
 
             return (
@@ -134,10 +101,7 @@ export default function PricingSection() {
                 className={service.popular ? styles.cardPopularWrap : ''}
               >
                 <Link
-                  href={`/order/${service.id}?${[
-                    mode === 'rush' ? 'mode=rush' : '',
-                    region === 'foreigner' ? 'region=foreigner' : '',
-                  ].filter(Boolean).join('&')}`}
+                  href={`/order/${service.id}${mode === 'rush' ? '?mode=rush' : ''}`}
                   className={`${styles.card} ${service.popular ? styles.cardPopular : ''}`}
                   id={`service-${service.id}`}
                 >
@@ -162,9 +126,9 @@ export default function PricingSection() {
                   <div className={styles.priceBlock}>
                     <div className={styles.priceRow}>
                       <span className={styles.price}>
-                        {priceFormatter(displayPrice)}
+                        {formatPrice(displayPrice)}
                         {displayMax && (
-                          <> – {priceFormatter(displayMax)}</>
+                          <> – {formatPrice(displayMax)}</>
                         )}
                       </span>
                     </div>
