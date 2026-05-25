@@ -294,7 +294,7 @@
 
 /* ==================== FOOTER ==================== */
 .footer {
-  background: linear-gradient(180deg, #c9b8e8 0%, #3a0a4e 100%);
+  background: #000000;
   border-top: 1px solid rgba(90, 26, 110, 0.12);
   padding: var(--space-3xl) 0 var(--space-xl);
   position: relative;
