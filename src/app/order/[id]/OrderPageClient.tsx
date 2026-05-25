@@ -56,30 +56,26 @@ export default function OrderPageClient() {
         priceText += ` to INR ${finalMax}`;
       }
 
-      const payload: Record<string, string> = {
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
-        botcheck: '',
-        subject: `New Order - ${service.title} - ZYROO`,
-        from_name: 'ZYROO Website',
-        name: form.name,
-        phone: form.phone,
-        email: form.email || 'Not provided',
-        service: service.title,
-        mode: isRush ? 'Rush' : 'Standard',
-        price: priceText,
-        delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
-        message: form.details,
-      };
-
+      // Use FormData (Web3Forms recommended approach)
+      const formData = new FormData();
+      formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
+      formData.append('subject', `New Order - ${service.title} - ZYROO`);
+      formData.append('from_name', 'ZYROO Website');
+      formData.append('name', form.name);
+      formData.append('phone', form.phone);
+      formData.append('email', form.email || 'Not provided');
+      formData.append('service', service.title);
+      formData.append('mode', isRush ? 'Rush' : 'Standard');
+      formData.append('price', priceText);
+      formData.append('delivery', `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`);
+      formData.append('message', form.details);
       if (form.email) {
-        payload.replyto = form.email;
+        formData.append('replyto', form.email);
       }
 
-      // Send order via Web3Forms (delivers to email)
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
       const data = await response.json();
