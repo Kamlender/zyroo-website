@@ -82,6 +82,7 @@ export default function PricingSection() {
         {/* Pricing Grid */}
         <div className={styles.grid}>
           {services.map((service, index) => {
+            const Icon = iconMap[service.id] || Zap;
             const basePrice = service.price;
             const displayPrice =
               mode === 'standard' ? basePrice : Math.round(basePrice * 1.5);
