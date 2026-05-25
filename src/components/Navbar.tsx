@@ -32,9 +32,11 @@ export default function Navbar() {
     }
   };
 
+  const isHome = pathname === '/';
+
   return (
     <nav
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isHome ? styles.lightMode : ''}`}
       id="main-navbar"
     >
       <div className={styles.navbarInner}>
