@@ -56,7 +56,7 @@ export default function OrderPageClient() {
         priceText += ` to INR ${finalMax}`;
       }
 
-      // Use FormData (Web3Forms recommended approach)
+      // Use FormData instead of JSON to avoid Web3Forms spam detection
       const formData = new FormData();
       formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
       formData.append('subject', `New Order - ${service.title} - ZYROO`);
@@ -73,6 +73,7 @@ export default function OrderPageClient() {
         formData.append('replyto', form.email);
       }
 
+      // Send order via Web3Forms
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData,
