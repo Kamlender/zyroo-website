@@ -51,36 +51,45 @@ export default function OrderPageClient() {
     setErrorMsg('');
 
     try {
+      // Build plain-text price (no currency symbols to avoid spam filters)
+      const base = Math.round(service.price * regionMultiplier);
+      const final = isRush ? Math.round(base * 1.5) : base;
+      let priceText = isForeigner
+        ? `USD ${Math.round(final / 85)}`
+        : `INR ${final}`;
+      if (service.maxPrice) {
+        const baseMax = Math.round(service.maxPrice * regionMultiplier);
+        const finalMax = isRush ? Math.round(baseMax * 1.5) : baseMax;
+        priceText += isForeigner
+          ? ` to USD ${Math.round(finalMax / 85)}`
+          : ` to INR ${finalMax}`;
+      }
+
+      const payload: Record<string, string> = {
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
+        botcheck: '',
+        subject: `New Order - ${service.title} - ZYROO`,
+        from_name: 'ZYROO Website',
+        name: form.name,
+        phone: form.phone,
+        email: form.email || 'Not provided',
+        service: service.title,
+        mode: isRush ? 'Rush' : 'Standard',
+        region: isForeigner ? 'International' : 'India',
+        price: priceText,
+        delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
+        message: form.details,
+      };
+
+      if (form.email) {
+        payload.replyto = form.email;
+      }
+
       // Send order via Web3Forms (delivers to email)
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
-          // Honeypot field — must be empty to pass spam check
-          botcheck: '',
-          subject: `New Order - ${service.title}${isRush ? ' (Rush)' : ''}${isForeigner ? ' (International)' : ''} - ZYROO`,
-          from_name: 'ZYROO Website',
-          replyto: form.email || undefined,
-          name: form.name,
-          phone: form.phone,
-          email: form.email || 'Not provided',
-          service: service.title,
-          mode: isRush ? 'Rush (2x faster)' : 'Standard',
-          region: isForeigner ? 'Foreigner (USD)' : 'India (INR)',
-          price: (() => {
-            const base = Math.round(service.price * regionMultiplier);
-            const final = isRush ? Math.round(base * 1.5) : base;
-            if (service.maxPrice) {
-              const baseMax = Math.round(service.maxPrice * regionMultiplier);
-              const finalMax = isRush ? Math.round(baseMax * 1.5) : baseMax;
-              return `${priceFormatter(final)} – ${priceFormatter(finalMax)}`;
-            }
-            return priceFormatter(final);
-          })(),
-          delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
-          message: form.details,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
