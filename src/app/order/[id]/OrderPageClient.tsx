@@ -59,8 +59,8 @@ export default function OrderPageClient() {
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
           // Honeypot field — must be empty to pass spam check
           botcheck: '',
-          subject: `🛒 New Order — ${service.title}${isRush ? ' (Rush)' : ''}${isForeigner ? ' (Foreigner)' : ''} | ZYROO`,
-          from_name: 'ZYROO Orders',
+          subject: `New Order - ${service.title}${isRush ? ' (Rush)' : ''}${isForeigner ? ' (International)' : ''} - ZYROO`,
+          from_name: 'ZYROO Website',
           replyto: form.email || undefined,
           name: form.name,
           phone: form.phone,
@@ -231,8 +231,8 @@ export default function OrderPageClient() {
                           setForm((p) => ({ ...p, phone: e.target.value }))
                         }
                         required
-                        pattern="[0-9]{10}"
-                        title="Please enter a valid 10-digit phone number"
+                        pattern={isForeigner ? undefined : '[0-9]{10}'}
+                        title={isForeigner ? 'Please enter a valid phone number' : 'Please enter a valid 10-digit phone number'}
                         disabled={status === 'sending'}
                       />
                     </div>
