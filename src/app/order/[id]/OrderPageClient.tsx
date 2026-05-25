@@ -66,7 +66,7 @@ export default function OrderPageClient() {
           phone: form.phone,
           email: form.email || 'Not provided',
           service: service.title,
-          mode: isRush ? 'Rush (2× faster)' : 'Standard',
+          mode: isRush ? 'Rush (2x faster)' : 'Standard',
           region: isForeigner ? 'Foreigner (USD)' : 'India (INR)',
           price: (() => {
             const base = Math.round(service.price * regionMultiplier);
