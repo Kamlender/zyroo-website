@@ -32,11 +32,11 @@ export default function Navbar() {
     }
   };
 
-  const isHome = pathname === '/';
+  const isLightPage = pathname === '/' || pathname.startsWith('/order');
 
   return (
     <nav
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isHome ? styles.lightMode : ''}`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isLightPage ? styles.lightMode : ''}`}
       id="main-navbar"
     >
       <div className={styles.navbarInner}>
