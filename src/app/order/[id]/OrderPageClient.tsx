@@ -57,7 +57,7 @@ export default function OrderPageClient() {
       }
 
       // FormSubmit.co — no signup, no API key, just email
-      const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'jha@tinytoono.in';
+      const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'pawashjha7@gmail.com';
 
       const payload = {
         name: form.name,
