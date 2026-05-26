@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import {
   Check,
@@ -25,10 +25,7 @@ const iconMap: Record<string, React.ElementType> = {
   'website-redesign': RefreshCcw,
 };
 
-type PricingMode = 'standard' | 'rush';
-
 export default function PricingSection() {
-  const [mode, setMode] = useState<PricingMode>('standard');
 
   return (
     <section className={styles.section} id="services">
@@ -48,53 +45,16 @@ export default function PricingSection() {
             No hidden fees, no surprises. Pick a plan and we&apos;ll handle the rest.
           </p>
 
-          {/* Toggles Container */}
-          <div className={styles.toggleGroup}>
-            {/* Speed Toggle */}
-            <div className={styles.toggle}>
-              <span
-                className={`${styles.toggleLabel} ${mode === 'standard' ? styles.toggleActive : ''}`}
-              >
-                Standard
-              </span>
-              <button
-                className={styles.toggleTrack}
-                onClick={() =>
-                  setMode((m) => (m === 'standard' ? 'rush' : 'standard'))
-                }
-                aria-label="Toggle pricing mode"
-              >
-                <div
-                  className={styles.toggleThumb}
-                  style={{ transform: mode === 'standard' ? 'translateX(0)' : 'translateX(24px)' }}
-                />
-              </button>
-              <span
-                className={`${styles.toggleLabel} ${mode === 'rush' ? styles.toggleActive : ''}`}
-              >
-                Rush
-                <span className={styles.toggleBadge}>⚡ 2× faster</span>
-              </span>
-            </div>
-          </div>
+
         </div>
 
         {/* Pricing Grid */}
         <div className={styles.grid}>
           {services.map((service, index) => {
             const Icon = iconMap[service.id] || Zap;
-            const basePrice = service.price;
-            const displayPrice =
-              mode === 'standard' ? basePrice : Math.round(basePrice * 1.5);
-            const deliveryDays =
-              mode === 'standard'
-                ? service.deliveryDays
-                : Math.ceil(service.deliveryDays / 2);
-
-            // maxPrice range handling
-            const displayMax = service.maxPrice
-              ? (mode === 'standard' ? service.maxPrice : Math.round(service.maxPrice * 1.5))
-              : null;
+            const displayPrice = service.price;
+            const deliveryDays = service.deliveryDays;
+            const displayMax = service.maxPrice || null;
 
             return (
               <div
@@ -102,7 +62,7 @@ export default function PricingSection() {
                 className={service.popular ? styles.cardPopularWrap : ''}
               >
                 <Link
-                  href={`/order/${service.id}${mode === 'rush' ? '?mode=rush' : ''}`}
+                  href={`/order/${service.id}`}
                   className={`${styles.card} ${service.popular ? styles.cardPopular : ''}`}
                   id={`service-${service.id}`}
                 >
@@ -135,9 +95,6 @@ export default function PricingSection() {
                     </div>
                     <span className={styles.priceSuffix}>
                       / project
-                      {mode === 'rush' && (
-                        <span className={styles.rushNote}>rush delivery</span>
-                      )}
                     </span>
                   </div>
 
