@@ -50,45 +50,45 @@ export default function OrderPageClient() {
     try {
       // Build plain-text price
       const finalPrice = isRush ? Math.round(service.price * 1.5) : service.price;
-      let priceText = `INR ${finalPrice}`;
+      let priceText = formatPrice(finalPrice);
       if (service.maxPrice) {
         const finalMax = isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice;
-        priceText += ` to INR ${finalMax}`;
+        priceText += ` – ${formatPrice(finalMax)}`;
       }
 
-      // FormSubmit.co — no signup, no API key, just email
-      const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'pawashjha7@gmail.com';
+      const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
+      // EmailJS — reliable client-side email delivery
       const payload = {
-        name: form.name,
-        phone: form.phone,
-        email: form.email || 'Not provided',
-        service: service.title,
-        mode: isRush ? 'Rush Delivery' : 'Standard',
-        price: priceText,
-        delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
-        message: form.details,
-        _subject: `New Order - ${service.title} - ZYROO`,
-        _captcha: 'false',
-        _template: 'table',
-        ...(form.email ? { _replyto: form.email } : {}),
+        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+        template_params: {
+          from_name: form.name,
+          phone: form.phone,
+          email: form.email || 'Not provided',
+          service_name: service.title,
+          mode: isRush ? 'Rush Delivery' : 'Standard',
+          price: priceText,
+          delivery: `${deliveryDays} days`,
+          message: form.details,
+          subject: `New Order - ${service.title} - ZYROO`,
+        },
       };
 
-      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
-
-      if (data.success === 'true' || data.success === true) {
+      if (response.ok) {
         setStatus('success');
       } else {
-        throw new Error(data.message || 'Failed to send order');
+        const errorText = await response.text();
+        throw new Error(errorText || 'Failed to send order');
       }
     } catch (err) {
       setStatus('error');
