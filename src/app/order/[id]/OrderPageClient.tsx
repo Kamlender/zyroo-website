@@ -59,18 +59,27 @@ export default function OrderPageClient() {
       const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
       // Web3Forms — simple form submission
+      // All order info in message to avoid spam filters on extra fields
+      const orderMessage = [
+        `Customer: ${form.name}`,
+        `Phone: ${form.phone}`,
+        form.email ? `Email: ${form.email}` : '',
+        ``,
+        `Service: ${service.title}`,
+        `Delivery: ${isRush ? 'Fast' : 'Standard'} - ${deliveryDays} days`,
+        `Price: ${priceText}`,
+        ``,
+        `Project Details:`,
+        form.details,
+      ].filter(Boolean).join('\n');
+
       const payload = {
         access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '3d744368-965a-435f-ba2d-b85b9f5a70cf',
-        subject: `New Order - ${service.title} - ZYROO`,
-        from_name: 'ZYROO Website',
+        subject: `New Order - ${service.title}`,
+        from_name: form.name,
         name: form.name,
-        phone: form.phone,
-        email: form.email || 'Not provided',
-        service: service.title,
-        mode: isRush ? 'Rush Delivery' : 'Standard',
-        price: priceText,
-        delivery: `${deliveryDays} days`,
-        message: form.details,
+        email: form.email || 'pawashjha7@gmail.com',
+        message: orderMessage,
         botcheck: '',
         ...(form.email ? { replyto: form.email } : {}),
       };
