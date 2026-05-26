@@ -49,32 +49,32 @@ export default function OrderPageClient() {
 
     try {
       // Build plain-text price
-      const final = isRush ? Math.round(service.price * 1.5) : service.price;
-      let priceText = `INR ${final}`;
+      const finalPrice = isRush ? Math.round(service.price * 1.5) : service.price;
+      let priceText = `INR ${finalPrice}`;
       if (service.maxPrice) {
         const finalMax = isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice;
         priceText += ` to INR ${finalMax}`;
       }
 
-      // Use JSON submission with proper headers - Web3Forms recommended approach
+      // FormSubmit.co — no signup, no API key, just email
+      const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'jha@tinytoono.in';
+
       const payload = {
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '',
-        subject: `New Order - ${service.title} - ZYROO`,
-        from_name: 'ZYROO Website',
         name: form.name,
         phone: form.phone,
         email: form.email || 'Not provided',
         service: service.title,
-        mode: isRush ? 'Rush' : 'Standard',
+        mode: isRush ? 'Rush Delivery' : 'Standard',
         price: priceText,
         delivery: `${isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays} days`,
         message: form.details,
-        // Honeypot field - must be empty to pass spam check
-        botcheck: '',
-        ...(form.email ? { replyto: form.email } : {}),
+        _subject: `New Order - ${service.title} - ZYROO`,
+        _captcha: 'false',
+        _template: 'table',
+        ...(form.email ? { _replyto: form.email } : {}),
       };
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export default function OrderPageClient() {
 
       const data = await response.json();
 
-      if (data.success) {
+      if (data.success === 'true' || data.success === true) {
         setStatus('success');
       } else {
         throw new Error(data.message || 'Failed to send order');
@@ -198,14 +198,6 @@ export default function OrderPageClient() {
                 </p>
 
                 <form onSubmit={handleSubmit} id="order-form">
-                  {/* Honeypot field - hidden from users, bots fill it */}
-                  <input
-                    type="checkbox"
-                    name="botcheck"
-                    style={{ display: 'none' }}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
 
                   <div className={styles.formGrid}>
                     <div className="form-group">
