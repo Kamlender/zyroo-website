@@ -39,9 +39,7 @@ jobs:
           NEXT_PUBLIC_WHATSAPP_NUMBER: '918743843752'
           NEXT_PUBLIC_WHATSAPP_MESSAGE: 'Hi! I am interested in your web design services.'
           NEXT_PUBLIC_CONTACT_EMAIL: 'pawashjha7@gmail.com'
-          NEXT_PUBLIC_EMAILJS_SERVICE_ID: 'service_pfuyfy9'
-          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: 'template_25z1c4q'
-          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: 'tHUj2YV8SFxEo3SDoY'
+          NEXT_PUBLIC_WEB3FORMS_KEY: '3d744368-965a-435f-ba2d-b85b9f5a70cf'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

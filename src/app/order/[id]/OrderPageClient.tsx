@@ -50,45 +50,46 @@ export default function OrderPageClient() {
     try {
       // Build plain-text price
       const finalPrice = isRush ? Math.round(service.price * 1.5) : service.price;
-      let priceText = formatPrice(finalPrice);
+      let priceText = `INR ${finalPrice}`;
       if (service.maxPrice) {
         const finalMax = isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice;
-        priceText += ` – ${formatPrice(finalMax)}`;
+        priceText += ` to INR ${finalMax}`;
       }
 
       const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
-      // EmailJS — reliable client-side email delivery
+      // Web3Forms — simple form submission
       const payload = {
-        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
-        template_params: {
-          from_name: form.name,
-          phone: form.phone,
-          email: form.email || 'Not provided',
-          service_name: service.title,
-          mode: isRush ? 'Rush Delivery' : 'Standard',
-          price: priceText,
-          delivery: `${deliveryDays} days`,
-          message: form.details,
-          subject: `New Order - ${service.title} - ZYROO`,
-        },
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '3d744368-965a-435f-ba2d-b85b9f5a70cf',
+        subject: `New Order - ${service.title} - ZYROO`,
+        from_name: 'ZYROO Website',
+        name: form.name,
+        phone: form.phone,
+        email: form.email || 'Not provided',
+        service: service.title,
+        mode: isRush ? 'Rush Delivery' : 'Standard',
+        price: priceText,
+        delivery: `${deliveryDays} days`,
+        message: form.details,
+        botcheck: '',
+        ...(form.email ? { replyto: form.email } : {}),
       };
 
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setStatus('success');
       } else {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Failed to send order');
+        throw new Error(data.message || 'Order send nahi ho paya.');
       }
     } catch (err) {
       setStatus('error');
