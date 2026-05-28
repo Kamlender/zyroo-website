@@ -32,7 +32,8 @@ export default function Navbar() {
     }
   };
 
-  const isLightPage = pathname === '/' || pathname.startsWith('/order');
+  const lightPages = ['/', '/order', '/terms', '/terms-of-use', '/privacy', '/return-policy', '/legal', '/faq', '/contact'];
+  const isLightPage = lightPages.some((p) => pathname === p || pathname.startsWith(p + '/'));
 
   return (
     <nav

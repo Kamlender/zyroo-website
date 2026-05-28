@@ -58,6 +58,8 @@ export default function OrderPageClient() {
 
       // FormSubmit.co — no signup, no API key, just email
       const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'pawashjha7@gmail.com';
+      const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
+      const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
       const message = [
         `🛒 *New Order — ZYROO*`,

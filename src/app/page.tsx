@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { services } from '@/lib/services';
 import PricingSection from '@/components/PricingSection';
 import { LightBeamButton } from '@/components/LightBeamButton';
+import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -164,13 +165,7 @@ export default function HomePage() {
       </section>
 
       {/* ==================== FOOTER ==================== */}
-      <footer className={styles.footer} id="contact">
-        <div className="container">
-          <div className={styles.footerBar}>
-            <p>© {new Date().getFullYear()} ZYROO. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
