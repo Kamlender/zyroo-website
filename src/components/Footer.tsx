@@ -13,14 +13,6 @@ export default function Footer() {
               <div className={styles.footerLogoIcon}>Z</div>
               <span className={styles.footerLogoText}>ZYROO</span>
             </Link>
-            <p className={styles.footerDesc}>
-              Web design studio based in India. We build websites, online stores,
-              and web apps for small businesses and startups.
-            </p>
-            <a href="mailto:jha@tinytoono.in" className={styles.footerEmail}>
-              <span className={styles.footerEmailIcon}>✉</span>
-              jha@tinytoono.in
-            </a>
           </div>
 
           {/* About Column */}
@@ -37,7 +29,8 @@ export default function Footer() {
           <div className={styles.footerColumn}>
             <h4 className={styles.footerColumnTitle}>Help</h4>
             <Link href="/faq" className={styles.footerLink}>FAQ</Link>
-            <Link href="/contact" className={styles.footerLink}>Contact</Link>
+            <span className={styles.footerLink}>Contact</span>
+            <a href="mailto:jha@tinytoono.in" className={styles.footerLink}>jha@tinytoono.in</a>
           </div>
         </div>
 
