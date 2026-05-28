@@ -2,6 +2,28 @@
    Order Page — Lavender Purple Theme
    ============================================ */
 
+/* Animated glow angle for rotating border */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes glowSpin {
+  0%   { --glow-angle: 0deg; }
+  100% { --glow-angle: 360deg; }
+}
+
+@keyframes glowFadeIn {
+  0%   { opacity: 0; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
 .orderPage {
   position: relative;
   min-height: 100vh;
@@ -76,10 +98,53 @@
   border: 1.5px solid rgba(90, 26, 110, 0.08);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 32px rgba(90, 26, 110, 0.06);
+  animation: glowFadeIn 0.6s ease-out both;
+}
+
+/* Rotating glow border */
+.serviceInfoCard::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-xl) + 2px);
+  padding: 2px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    #8b5cf6, #ec4899, #f59e0b, #3b82f6, #8b5cf6
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Outer soft glow halo */
+.serviceInfoCard::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--radius-xl) + 8px);
+  background: conic-gradient(
+    from var(--glow-angle),
+    rgba(139, 92, 246, 0.15),
+    rgba(236, 72, 153, 0.12),
+    rgba(245, 158, 11, 0.10),
+    rgba(59, 130, 246, 0.12),
+    rgba(139, 92, 246, 0.15)
+  );
+  filter: blur(16px);
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.7;
 }
 
 .serviceInfoGlow {
@@ -180,6 +245,51 @@
   padding: var(--space-2xl);
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 32px rgba(90, 26, 110, 0.06);
+  position: relative;
+  overflow: visible;
+  animation: glowFadeIn 0.6s ease-out 0.2s both;
+}
+
+/* Rotating glow border */
+.orderFormCard::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-xl) + 2px);
+  padding: 2px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    #8b5cf6, #ec4899, #f59e0b, #3b82f6, #8b5cf6
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Outer soft glow halo */
+.orderFormCard::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--radius-xl) + 8px);
+  background: conic-gradient(
+    from var(--glow-angle),
+    rgba(139, 92, 246, 0.15),
+    rgba(236, 72, 153, 0.12),
+    rgba(245, 158, 11, 0.10),
+    rgba(59, 130, 246, 0.12),
+    rgba(139, 92, 246, 0.15)
+  );
+  filter: blur(16px);
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.7;
 }
 
 .orderFormTitle { font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-sm); color: #3a0a4e; }
@@ -220,6 +330,49 @@
   border-radius: var(--radius-xl);
   box-shadow: 0 8px 40px rgba(90, 26, 110, 0.08);
   backdrop-filter: blur(12px);
+  position: relative;
+  overflow: visible;
+  animation: glowFadeIn 0.6s ease-out both;
+}
+
+.successCard::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-xl) + 2px);
+  padding: 2px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    #8b5cf6, #ec4899, #f59e0b, #3b82f6, #8b5cf6
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.successCard::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--radius-xl) + 8px);
+  background: conic-gradient(
+    from var(--glow-angle),
+    rgba(139, 92, 246, 0.15),
+    rgba(236, 72, 153, 0.12),
+    rgba(245, 158, 11, 0.10),
+    rgba(59, 130, 246, 0.12),
+    rgba(139, 92, 246, 0.15)
+  );
+  filter: blur(16px);
+  animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.7;
 }
 
 .successIcon { font-size: 64px; margin-bottom: var(--space-lg); }
