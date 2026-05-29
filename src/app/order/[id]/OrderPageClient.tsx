@@ -128,11 +128,6 @@ export default function OrderPageClient() {
           {/* Left — Service Info */}
           <div className={styles.serviceInfo}>
             <div className={styles.serviceInfoCard}>
-              <div
-                className={styles.serviceInfoGlow}
-                style={{ background: service.gradient }}
-              ></div>
-
               <div className={styles.serviceInfoHeader}>
                 <div className={styles.serviceInfoIcon}>{service.icon}</div>
                 <span className="badge badge-primary">{service.category}</span>
