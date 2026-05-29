@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -10,8 +11,11 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.footerBrand}>
             <Link href="/" className={styles.footerLogo}>
-              <div className={styles.footerLogoIcon}>Z</div>
-              <span className={styles.footerLogoText}>ZYROO</span>
+              <Image src="/skull-logo.png" alt="ZYROO" width={32} height={32} className={styles.footerLogoIcon} />
+              <div className={styles.footerLogoGroup}>
+                <span className={styles.footerLogoText}>ZYROO</span>
+                <span className={styles.footerLogoNiche}>Web-Design</span>
+              </div>
             </Link>
           </div>
 
