@@ -66,7 +66,7 @@ export default function OrderPageClient() {
         ``,
         `👤 *Name:* ${form.name}`,
         `📞 *Phone:* ${form.phone}`,
-        form.email ? `📧 *Email:* ${form.email}` : '',
+        `📧 *Email:* ${form.email}`,
         ``,
         `🎯 *Service:* ${service.title}`,
         `⚡ *Mode:* ${isRush ? 'Rush Delivery' : 'Standard'}`,
@@ -233,7 +233,7 @@ export default function OrderPageClient() {
 
                 <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
                   <label className="form-label" htmlFor="order-email">
-                    Email (Optional)
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -244,6 +244,7 @@ export default function OrderPageClient() {
                     onChange={(e) =>
                       setForm((p) => ({ ...p, email: e.target.value }))
                     }
+                    required
                     disabled={status === 'sending'}
                   />
                 </div>
