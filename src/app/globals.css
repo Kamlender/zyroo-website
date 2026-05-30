@@ -91,9 +91,9 @@
   --shadow-glow-pink: 0 0 50px rgba(236, 72, 153, 0.12);
 
   /* Transitions */
-  --transition-fast: 75ms ease;
-  --transition-base: 150ms ease;
-  --transition-slow: 250ms ease;
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
 
   /* Layout */
   --navbar-height: 76px;

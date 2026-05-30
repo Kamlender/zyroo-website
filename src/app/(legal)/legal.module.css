@@ -222,7 +222,7 @@
 .faqAnswer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease, padding 0.2s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .faqAnswerOpen {
