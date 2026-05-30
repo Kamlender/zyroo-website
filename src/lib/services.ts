@@ -36,7 +36,7 @@ export const services: Service[] = [
     icon: '🎯',
     popular: false,
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    deliveryDays: 5,
+    deliveryDays: 3,
     category: 'Design',
   },
   {
@@ -56,7 +56,7 @@ export const services: Service[] = [
     icon: '🎨',
     popular: false,
     gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    deliveryDays: 7,
+    deliveryDays: 4,
     category: 'Design',
   },
   {
@@ -77,7 +77,7 @@ export const services: Service[] = [
     icon: '🏪',
     popular: false,
     gradient: 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
-    deliveryDays: 10,
+    deliveryDays: 5,
     category: 'Development',
   },
   {
@@ -98,7 +98,7 @@ export const services: Service[] = [
     icon: '🏢',
     popular: true,
     gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    deliveryDays: 14,
+    deliveryDays: 7,
     category: 'Development',
   },
   {
@@ -119,7 +119,7 @@ export const services: Service[] = [
     icon: '🛒',
     popular: false,
     gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    deliveryDays: 21,
+    deliveryDays: 10,
     category: 'Development',
   },
   {
@@ -141,7 +141,7 @@ export const services: Service[] = [
     icon: '⚡',
     popular: false,
     gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    deliveryDays: 30,
+    deliveryDays: 15,
     category: 'Development',
   },
   {
@@ -161,7 +161,7 @@ export const services: Service[] = [
     icon: '🔄',
     popular: false,
     gradient: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-    deliveryDays: 7,
+    deliveryDays: 4,
     category: 'Design',
   },
 ];
