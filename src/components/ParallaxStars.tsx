@@ -73,7 +73,7 @@ export function ParallaxStars({
           background: 'transparent',
           zIndex: 1,
           boxShadow: shadowsSmall,
-          animation: `parallaxStarScroll ${50 / speed}s linear infinite`,
+          animation: `parallaxStarScroll ${25 / speed}s linear infinite`,
         }}
       >
         <div
@@ -99,7 +99,7 @@ export function ParallaxStars({
           background: 'transparent',
           zIndex: 1,
           boxShadow: shadowsMedium,
-          animation: `parallaxStarScroll ${100 / speed}s linear infinite`,
+          animation: `parallaxStarScroll ${50 / speed}s linear infinite`,
         }}
       >
         <div
@@ -125,7 +125,7 @@ export function ParallaxStars({
           background: 'transparent',
           zIndex: 1,
           boxShadow: shadowsBig,
-          animation: `parallaxStarScroll ${150 / speed}s linear infinite`,
+          animation: `parallaxStarScroll ${75 / speed}s linear infinite`,
         }}
       >
         <div
