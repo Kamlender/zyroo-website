@@ -56,31 +56,33 @@ export default function OrderPageClient() {
         priceText += ` to INR ${finalMax}`;
       }
 
-      // FormSubmit.co — no signup, no API key, just email
       const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'pawashjha7@gmail.com';
-      const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
       const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
-      const message = [
-        `🛒 *New Order — ZYROO*`,
-        ``,
-        `👤 *Name:* ${form.name}`,
-        `📞 *Phone:* ${form.phone}`,
-        `📧 *Email:* ${form.email}`,
-        ``,
-        `🎯 *Service:* ${service.title}`,
-        `⚡ *Mode:* ${isRush ? 'Rush Delivery' : 'Standard'}`,
-        `💰 *Price:* ${priceText}`,
-        `📦 *Delivery:* ${deliveryDays} days`,
-        ``,
-        `📝 *Project Details:*`,
-        form.details,
-      ].filter(Boolean).join('\n');
+      // Send via FormSubmit.co (email)
+      const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `🛒 New Order — ${service.title}`,
+          Name: form.name,
+          Phone: form.phone,
+          Email: form.email,
+          Service: service.title,
+          Mode: isRush ? 'Rush Delivery' : 'Standard',
+          Price: priceText,
+          Delivery: `${deliveryDays} days`,
+          'Project Details': form.details,
+        }),
+      });
 
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      if (!res.ok) {
+        throw new Error('Email send nahi ho paya. Please try again.');
+      }
 
-      // Open WhatsApp
-      window.open(whatsappUrl, '_blank');
       setStatus('success');
     } catch (err) {
       setStatus('error');
