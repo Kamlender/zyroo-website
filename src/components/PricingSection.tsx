@@ -11,6 +11,7 @@ import {
   Globe,
   RefreshCcw,
   Store,
+  Box,
 } from 'lucide-react';
 import { services, formatPrice } from '@/lib/services';
 import styles from './PricingSection.module.css';
@@ -23,6 +24,7 @@ const iconMap: Record<string, React.ElementType> = {
   'ecommerce-store': ShoppingCart,
   'web-application': Zap,
   'website-redesign': RefreshCcw,
+  '3d-web-design': Box,
 };
 
 export default function PricingSection() {

@@ -1,0 +1,373 @@
+/* ============================================
+   RedesignBanner3D — Lavender Glass Theme
+   Matches pricing card aesthetic
+   ============================================ */
+
+/* ---- Keyframes ---- */
+@keyframes bannerFadeUp {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 8px 40px rgba(90, 26, 110, 0.08); }
+  50%      { box-shadow: 0 12px 50px rgba(90, 26, 110, 0.14); }
+}
+
+@keyframes breatheOrb {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.08); }
+}
+
+/* ---- Banner Section ---- */
+.banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #c9b8e8 0%, #d0bce8 50%, #dcc8d8 100%);
+  padding: 0;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+/* ---- 3D Canvas ---- */
+.canvas3d {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---- Overlay for text readability ---- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(201, 184, 232, 0.88) 0%,
+    rgba(201, 184, 232, 0.6) 45%,
+    rgba(201, 184, 232, 0.15) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ---- Ambient Glows ---- */
+.glowOrb1 {
+  position: absolute;
+  top: -80px;
+  left: -60px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90, 26, 110, 0.08) 0%, transparent 60%);
+  filter: blur(50px);
+  z-index: 1;
+  animation: breatheOrb 6s ease-in-out infinite;
+}
+
+.glowOrb2 {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 117, 32, 0.06) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 1;
+  animation: breatheOrb 7s ease-in-out 1s infinite;
+}
+
+/* ---- Inner container ---- */
+.inner {
+  position: relative;
+  z-index: 3;
+  padding: 64px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ---- Content (Left side) ---- */
+.content {
+  max-width: 520px;
+  animation: bannerFadeUp 0.7s ease-out both;
+}
+
+/* ---- Glass Card wrapper ---- */
+.glassCard {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(90, 26, 110, 0.18),
+    0 8px 40px rgba(90, 26, 110, 0.08);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  animation: softPulse 5s ease-in-out infinite;
+}
+
+.glassCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7a2a9e, #5a1a6e, #d4622a, #7a2a9e);
+  background-size: 200% 100%;
+  animation: shimmerSlide 4s linear infinite;
+  border-radius: 24px 24px 0 0;
+}
+
+/* ---- Badge ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  background: rgba(90, 26, 110, 0.07);
+  border: 1px solid rgba(90, 26, 110, 0.15);
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7a2a9e;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.badge svg {
+  color: #d4622a;
+}
+
+/* ---- Title ---- */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #3a0a4e;
+  margin-bottom: 14px;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 50%, #d4622a 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Subtitle ---- */
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(90, 26, 110, 0.55);
+  line-height: 1.8;
+  margin-bottom: 22px;
+  max-width: 420px;
+}
+
+/* ---- Feature Pills ---- */
+.featurePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: rgba(90, 26, 110, 0.05);
+  border: 1px solid rgba(90, 26, 110, 0.1);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(90, 26, 110, 0.6);
+  transition: all 0.3s ease;
+}
+
+.pill svg {
+  color: #7a2a9e;
+  flex-shrink: 0;
+}
+
+.pill:hover {
+  background: rgba(90, 26, 110, 0.1);
+  border-color: rgba(90, 26, 110, 0.2);
+  color: #5a1a6e;
+  transform: translateY(-2px);
+}
+
+/* ---- CTA Row ---- */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(90, 26, 110, 0.08);
+}
+
+/* ---- CTA Button ---- */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%);
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(90, 26, 110, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmerSlide 3s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 30px rgba(90, 26, 110, 0.35),
+    0 0 50px rgba(90, 26, 110, 0.1);
+}
+
+.ctaButton:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.ctaButton svg {
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover svg {
+  transform: translateX(4px);
+}
+
+/* ---- Price Tag ---- */
+.priceTag {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.priceLabel {
+  font-size: 0.68rem;
+  color: rgba(90, 26, 110, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.priceValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7a2a9e;
+}
+
+/* ---- Delivery badge ---- */
+.deliveryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: rgba(90, 26, 110, 0.45);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(201, 184, 232, 0.92) 0%,
+      rgba(201, 184, 232, 0.75) 50%,
+      rgba(201, 184, 232, 0.4) 100%
+    );
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    min-height: 360px;
+  }
+
+  .inner {
+    padding: 48px 0;
+  }
+
+  .overlay {
+    background: rgba(201, 184, 232, 0.8);
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .glassCard {
+    padding: 28px 22px;
+  }
+
+  .featurePills {
+    justify-content: flex-start;
+  }
+
+  .ctaRow {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .glassCard {
+    padding: 24px 18px;
+  }
+}

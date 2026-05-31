@@ -164,6 +164,26 @@ export const services: Service[] = [
     deliveryDays: 4,
     category: 'Design',
   },
+  {
+    id: '3d-web-design',
+    title: '3D Web Design',
+    shortTitle: '3D Design',
+    description:
+      'Apni website ko next level pe le jaao — immersive 3D visuals, glassmorphism, aur smooth animations ke saath.',
+    price: 60000,
+    features: [
+      '3D Three.js Visuals',
+      'Glassmorphism UI',
+      'Smooth Animations',
+      'Interactive Elements',
+      'Mobile Optimized',
+    ],
+    icon: '🧊',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    deliveryDays: 5,
+    category: 'Design',
+  },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {

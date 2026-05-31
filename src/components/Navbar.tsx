@@ -84,12 +84,6 @@ export default function Navbar() {
           >
             Reviews
           </button>
-          <span
-            className={`${styles.navLink} ${styles.disabled}`}
-            title="Coming Soon"
-          >
-            Job
-          </span>
           <button
             className={`btn btn-primary btn-sm ${styles.navCta}`}
             onClick={() => scrollToSection('contact')}
