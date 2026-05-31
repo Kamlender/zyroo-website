@@ -56,31 +56,35 @@ export default function OrderPageClient() {
         priceText += ` to INR ${finalMax}`;
       }
 
-      const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'pawashjha7@gmail.com';
+      const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
       const deliveryDays = isRush ? Math.ceil(service.deliveryDays / 2) : service.deliveryDays;
 
-      // Send via FormSubmit.co (email)
-      const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+      // Send via Web3Forms (email)
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          _subject: `🛒 New Order — ${service.title}`,
-          Name: form.name,
-          Phone: form.phone,
-          Email: form.email,
-          Service: service.title,
-          Mode: isRush ? 'Rush Delivery' : 'Standard',
-          Price: priceText,
-          Delivery: `${deliveryDays} days`,
-          'Project Details': form.details,
+          access_key: web3formsKey,
+          subject: `🛒 New Order — ${service.title}`,
+          from_name: 'ZYROO Orders',
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          service: service.title,
+          mode: isRush ? 'Rush Delivery' : 'Standard',
+          price: priceText,
+          delivery: `${deliveryDays} days`,
+          message: form.details,
         }),
       });
 
-      if (!res.ok) {
-        throw new Error('Email send nahi ho paya. Please try again.');
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.message || 'Email send nahi ho paya. Please try again.');
       }
 
       setStatus('success');
