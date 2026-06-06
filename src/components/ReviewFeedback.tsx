@@ -10,42 +10,55 @@ export default function ReviewFeedback() {
   const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const whatsappNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
+  const [errorMsg, setErrorMsg] = useState('');
 
   const starLabels = ['Terrible', 'Poor', 'Okay', 'Great', 'Amazing!'];
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       if (rating === 0) return;
 
       setIsSubmitting(true);
+      setErrorMsg('');
 
-      const message = [
-        `⭐ *New Review — ${rating}/5 Stars*`,
-        '',
-        name ? `👤 *Name:* ${name}` : '',
-        feedback ? `💬 *Feedback:* ${feedback}` : '',
-        '',
-        `— Sent from zyroo.in`,
-      ]
-        .filter(Boolean)
-        .join('\n');
+      try {
+        const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
 
-      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        message
-      )}`;
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: web3formsKey,
+            subject: `⭐ New Review — ${rating}/5 Stars`,
+            from_name: 'ZYROO Reviews',
+            rating: `${rating}/5 — ${starLabels[rating - 1]}`,
+            name: name || 'Anonymous',
+            message: feedback || 'No additional feedback',
+          }),
+        });
 
-      // Short delay for animation, then open WhatsApp
-      setTimeout(() => {
+        const data = await res.json();
+
+        if (!data.success) {
+          throw new Error(data.message || 'Feedback send nahi ho paya. Please try again.');
+        }
+
         setSubmitted(true);
+      } catch (err) {
+        setErrorMsg(
+          err instanceof Error
+            ? err.message
+            : 'Feedback send nahi ho paya. Please try again.'
+        );
+      } finally {
         setIsSubmitting(false);
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-      }, 600);
+      }
     },
-    [rating, name, feedback, whatsappNumber]
+    [rating, name, feedback]
   );
 
   const handleReset = () => {
@@ -54,6 +67,7 @@ export default function ReviewFeedback() {
     setName('');
     setFeedback('');
     setSubmitted(false);
+    setErrorMsg('');
   };
 
   const activeRating = hoverRating || rating;
@@ -151,6 +165,11 @@ export default function ReviewFeedback() {
               )}
             </div>
 
+            {/* Error Message */}
+            {errorMsg && (
+              <p className={styles.errorMsg}>{errorMsg}</p>
+            )}
+
             {/* Submit Button */}
             <button
               type="submit"
@@ -172,7 +191,7 @@ export default function ReviewFeedback() {
                   >
                     <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                   </svg>
-                  Send via WhatsApp
+                  Send Feedback
                 </>
               )}
             </button>
@@ -188,7 +207,7 @@ export default function ReviewFeedback() {
             </div>
             <h4 className={styles.successTitle}>Dhanyavaad! 🎉</h4>
             <p className={styles.successText}>
-              Aapke {rating} star review ke liye shukriya. WhatsApp par message bhej dein!
+              Aapke {rating} star review ke liye shukriya. Aapka feedback hume mil gaya hai!
             </p>
             <button onClick={handleReset} className={styles.resetBtn}>
               Ek Aur Review Dein
