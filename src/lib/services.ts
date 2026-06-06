@@ -184,6 +184,47 @@ export const services: Service[] = [
     deliveryDays: 5,
     category: 'Design',
   },
+  {
+    id: 'hospital-website',
+    title: 'Hospital Website',
+    shortTitle: 'Hospital',
+    description:
+      'Apne hospital ko online le jaao — departments, doctors, appointment booking, aur patient portal sab ek jagah.',
+    price: 80000,
+    features: [
+      'Doctor Profiles & Departments',
+      'Online Appointment Booking',
+      'Patient Portal',
+      'Emergency Contact Section',
+      'Mobile Responsive',
+      'SEO Optimized',
+    ],
+    icon: '🏥',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #00b4d8 0%, #0077b6 100%)',
+    deliveryDays: 8,
+    category: 'Development',
+  },
+  {
+    id: 'clinic-website',
+    title: 'Clinic Website',
+    shortTitle: 'Clinic',
+    description:
+      'Chhoti clinic ya private practice ke liye professional website — patient trust badhao, online dikhao.',
+    price: 30000,
+    features: [
+      'Doctor Bio & Services',
+      'Appointment Form',
+      'Location & Timings',
+      'Patient Testimonials',
+      'Mobile Responsive',
+    ],
+    icon: '🩺',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #2ec4b6 0%, #20a4f3 100%)',
+    deliveryDays: 4,
+    category: 'Design',
+  },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {
@@ -191,12 +232,17 @@ export const getServiceById = (id: string): Service | undefined => {
 };
 
 export const formatPrice = (price: number): string => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
+  if (price >= 1000000) {
+    const val = price / 1000000;
+    const formatted = val % 1 === 0 ? val.toString() : val.toFixed(1);
+    return `₹${formatted}m`;
+  }
+  if (price >= 1000) {
+    const val = price / 1000;
+    const formatted = val % 1 === 0 ? val.toString() : val.toFixed(1);
+    return `₹${formatted}k`;
+  }
+  return `₹${price}`;
 };
 
 // Convert INR to USD (approximate rate)

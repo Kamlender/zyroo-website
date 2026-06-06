@@ -12,6 +12,8 @@ import {
   RefreshCcw,
   Store,
   Box,
+  Hospital,
+  HeartPulse,
 } from 'lucide-react';
 import { services, formatPrice } from '@/lib/services';
 import styles from './PricingSection.module.css';
@@ -25,6 +27,8 @@ const iconMap: Record<string, React.ElementType> = {
   'web-application': Zap,
   'website-redesign': RefreshCcw,
   '3d-web-design': Box,
+  'hospital-website': Hospital,
+  'clinic-website': HeartPulse,
 };
 
 export default function PricingSection() {
