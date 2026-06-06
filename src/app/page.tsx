@@ -6,6 +6,7 @@ import { services } from '@/lib/services';
 import PricingSection from '@/components/PricingSection';
 import { LightBeamButton } from '@/components/LightBeamButton';
 import Footer from '@/components/Footer';
+import ReviewFeedback from '@/components/ReviewFeedback';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -161,6 +162,9 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* ---- Rate Us / Feedback Card ---- */}
+          <ReviewFeedback />
         </div>
       </section>
 
