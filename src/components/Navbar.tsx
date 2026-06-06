@@ -33,7 +33,7 @@ export default function Navbar() {
     }
   };
 
-  const lightPages = ['/', '/order', '/terms', '/terms-of-use', '/privacy', '/return-policy', '/legal', '/faq', '/contact'];
+  const lightPages = ['/', '/order', '/terms', '/terms-of-use', '/privacy', '/return-policy', '/legal', '/faq', '/contact', '/services', '/reviews', '/about'];
   const isLightPage = lightPages.some((p) => pathname === p || pathname.startsWith(p + '/'));
 
   return (
@@ -72,24 +72,27 @@ export default function Navbar() {
           >
             Home
           </Link>
-          <button
-            className={styles.navLink}
-            onClick={() => scrollToSection('services')}
+          <Link
+            href="/services"
+            className={`${styles.navLink} ${isActive('/services') ? styles.active : ''}`}
+            onClick={() => setMobileOpen(false)}
           >
             Services
-          </button>
-          <button
-            className={styles.navLink}
-            onClick={() => scrollToSection('reviews')}
+          </Link>
+          <Link
+            href="/reviews"
+            className={`${styles.navLink} ${isActive('/reviews') ? styles.active : ''}`}
+            onClick={() => setMobileOpen(false)}
           >
             Reviews
-          </button>
-          <button
+          </Link>
+          <Link
+            href="/about"
             className={`btn btn-primary btn-sm ${styles.navCta}`}
-            onClick={() => scrollToSection('contact')}
+            onClick={() => setMobileOpen(false)}
           >
             About
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
