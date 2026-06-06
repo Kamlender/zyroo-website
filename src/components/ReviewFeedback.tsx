@@ -36,8 +36,8 @@ export default function ReviewFeedback() {
             subject: `⭐ New Review — ${rating}/5 Stars`,
             from_name: 'ZYROO Reviews',
             rating: `${rating}/5 — ${starLabels[rating - 1]}`,
-            name: name || 'Anonymous',
-            message: feedback || 'No additional feedback',
+            name: name,
+            message: feedback,
           }),
         });
 
@@ -131,7 +131,7 @@ export default function ReviewFeedback() {
             {/* Name Input */}
             <div className={styles.inputGroup}>
               <label htmlFor="feedback-name" className={styles.inputLabel}>
-                Aapka Naam <span className={styles.optional}>(optional)</span>
+                Aapka Naam *
               </label>
               <input
                 id="feedback-name"
@@ -141,13 +141,14 @@ export default function ReviewFeedback() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={50}
+                required
               />
             </div>
 
             {/* Feedback Textarea */}
             <div className={styles.inputGroup}>
               <label htmlFor="feedback-text" className={styles.inputLabel}>
-                Kuch kehna hai? <span className={styles.optional}>(optional)</span>
+                Kuch kehna hai? *
               </label>
               <textarea
                 id="feedback-text"
@@ -157,6 +158,7 @@ export default function ReviewFeedback() {
                 onChange={(e) => setFeedback(e.target.value)}
                 maxLength={500}
                 rows={3}
+                required
               />
               {feedback.length > 0 && (
                 <span className={styles.charCount}>
