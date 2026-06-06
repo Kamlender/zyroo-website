@@ -27,11 +27,46 @@
 }
 
 .navbar.lightMode.scrolled {
-  background: rgba(216, 200, 240, 0.9);
+  background: rgba(0, 0, 0, 0.92);
   backdrop-filter: blur(32px) saturate(1.2);
   -webkit-backdrop-filter: blur(32px) saturate(1.2);
-  border-bottom: 1px solid rgba(90, 26, 110, 0.1);
-  box-shadow: 0 4px 40px rgba(90, 26, 110, 0.08);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* When light page scrolls → dark bar, make everything white */
+.lightMode.scrolled .logo {
+  color: var(--text-primary);
+}
+
+.lightMode.scrolled .logoNiche {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lightMode.scrolled .logoIcon {
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+}
+
+.lightMode.scrolled .navLink {
+  color: var(--text-secondary);
+}
+
+.lightMode.scrolled .navLink:hover,
+.lightMode.scrolled .navLink.active {
+  color: var(--accent-purple-light);
+  background: rgba(139, 92, 246, 0.06);
+}
+
+.lightMode.scrolled .navCta {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+}
+
+.lightMode.scrolled .mobileToggle span {
+  background: var(--text-primary);
 }
 
 .navbarInner {
