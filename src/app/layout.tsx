@@ -78,7 +78,6 @@ export default function RootLayout({
         <Navbar />
         <main
           style={{
-            paddingTop: 'var(--navbar-height)',
             position: 'relative',
             zIndex: 1,
             minHeight: '100vh',

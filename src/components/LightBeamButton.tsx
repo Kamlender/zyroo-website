@@ -36,7 +36,7 @@ export function LightBeamButton({
   variant = 'primary',
 }: LightBeamButtonProps) {
   // Build the conic gradient string from provided colors
-  const gradientBg = `conic-gradient(from var(--gradient-angle), transparent 0%, ${gradientColors[0]} 40%, ${gradientColors[1]} 50%, transparent 60%, transparent 100%)`;
+  const gradientBg = `conic-gradient(from var(--gradient-angle), transparent 0%, ${gradientColors[0]} 20%, ${gradientColors[1]} 50%, ${gradientColors[2]} 80%, transparent 100%)`;
 
   // Shine overlay color matches the variant
   const shineColor = variant === 'whatsapp'

@@ -12,7 +12,6 @@
   min-height: 100vh;
   padding: var(--space-2xl) 0 var(--space-4xl);
   background: linear-gradient(180deg, #d8c8f0 0%, #c9b8e8 40%, #dcc8d8 70%, #e8d0b8 100%);
-  margin-top: calc(-1 * var(--navbar-height));
   padding-top: calc(var(--navbar-height) + var(--space-2xl));
 }
 

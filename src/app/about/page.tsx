@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { LightBeamButton } from '@/components/LightBeamButton';
 import Footer from '@/components/Footer';
 import styles from './about.module.css';
 
@@ -142,17 +142,22 @@ export default function AboutPage() {
               Pehle baat karo, phir decide karo. Consultation free hai.
             </p>
             <div className={styles.ctaButtons}>
-              <Link href="/services" className="btn btn-primary btn-lg">
+              <LightBeamButton
+                href="/services"
+                variant="primary"
+                gradientColors={['#8b5cf6', '#06b6d4', '#8b5cf6']}
+              >
                 View Services
-              </Link>
-              <a
+              </LightBeamButton>
+              <LightBeamButton
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
+                variant="whatsapp"
+                gradientColors={['#25d366', '#128c7e', '#25d366']}
               >
-                💬 WhatsApp Us
-              </a>
+                WhatsApp Us
+              </LightBeamButton>
             </div>
           </div>
         </div>

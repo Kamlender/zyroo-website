@@ -33,7 +33,7 @@ export default function Navbar() {
     }
   };
 
-  const lightPages = ['/', '/order', '/terms', '/terms-of-use', '/privacy', '/return-policy', '/legal', '/faq', '/contact', '/services', '/reviews', '/about'];
+  const lightPages: string[] = [];
   const isLightPage = lightPages.some((p) => pathname === p || pathname.startsWith(p + '/'));
 
   return (
@@ -63,8 +63,9 @@ export default function Navbar() {
           <span></span>
         </button>
 
-        {/* Nav Links */}
+        {/* Nav Links — Floating Glass Pill */}
         <div className={`${styles.navLinks} ${mobileOpen ? styles.open : ''}`}>
+          <div className={styles.navPillBg} />
           <Link
             href="/"
             className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}

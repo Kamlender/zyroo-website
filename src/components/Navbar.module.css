@@ -1,7 +1,19 @@
 /* ============================================
-   Navbar — Adaptive Theme (Dark + Light)
+   Navbar — Floating Glass Pill with Crystal Border
    ============================================ */
 
+@property --nav-border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes navBorderSpin {
+  from { --nav-border-angle: 0deg; }
+  to { --nav-border-angle: 360deg; }
+}
+
+/* ---- Full-width top bar ---- */
 .navbar {
   position: fixed;
   top: 0;
@@ -14,61 +26,35 @@
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(32px) saturate(1.2);
-  -webkit-backdrop-filter: blur(32px) saturate(1.2);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.06);
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* Light mode for coming-soon page */
-.navbar.lightMode {
   background: transparent;
 }
 
+/* Light mode (unused currently but kept for future) */
+.navbar.lightMode { background: transparent; }
 .navbar.lightMode.scrolled {
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(32px) saturate(1.2);
-  -webkit-backdrop-filter: blur(32px) saturate(1.2);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+  background: transparent;
 }
-
-/* When light page scrolls → dark bar, make everything white */
-.lightMode.scrolled .logo {
-  color: var(--text-primary);
-}
-
+.lightMode.scrolled .logo { color: var(--text-primary); }
 .lightMode.scrolled .logoNiche {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-.lightMode.scrolled .logoIcon {
-  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
-}
-
-.lightMode.scrolled .navLink {
-  color: var(--text-secondary);
-}
-
+.lightMode.scrolled .logoIcon { filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3)); }
+.lightMode.scrolled .navLink { color: var(--text-secondary); }
 .lightMode.scrolled .navLink:hover,
 .lightMode.scrolled .navLink.active {
   color: var(--accent-purple-light);
   background: rgba(139, 92, 246, 0.06);
 }
-
 .lightMode.scrolled .navCta {
   background: var(--gradient-primary) !important;
   color: white !important;
 }
+.lightMode.scrolled .mobileToggle span { background: var(--text-primary); }
 
-.lightMode.scrolled .mobileToggle span {
-  background: var(--text-primary);
-}
-
+/* ---- Inner layout ---- */
 .navbarInner {
   display: flex;
   align-items: center;
@@ -79,6 +65,7 @@
   height: 100%;
 }
 
+/* ---- Logo ---- */
 .logo {
   display: flex;
   align-items: center;
@@ -92,9 +79,7 @@
   transition: color 0.3s ease;
 }
 
-.lightMode .logo {
-  color: #5a1a6e;
-}
+.lightMode .logo { color: #5a1a6e; }
 
 .logoIcon {
   width: 38px;
@@ -105,12 +90,9 @@
   transition: filter 0.3s ease;
 }
 
-.lightMode .logoIcon {
-  filter: drop-shadow(0 0 8px rgba(90, 26, 110, 0.3));
-}
+.lightMode .logoIcon { filter: drop-shadow(0 0 8px rgba(90, 26, 110, 0.3)); }
 
 .logoText { letter-spacing: 1.5px; }
-
 .logoGroup { display: flex; flex-direction: column; line-height: 1; }
 
 .logoNiche {
@@ -132,36 +114,104 @@
   background-clip: text;
 }
 
+/* =============================================
+   Floating Glass Pill — Crystal Animated Border
+   ============================================= */
 .navLinks {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+  padding: 6px 8px;
+  border-radius: var(--radius-full);
+  isolation: isolate;
+  overflow: hidden;
+  /* Shift pill slightly right */
+  margin-left: auto;
+  margin-right: -20px;
 }
 
+/* Rotating crystal border */
+.navLinks::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from var(--nav-border-angle),
+    transparent 0%,
+    rgba(139, 92, 246, 0.7) 15%,
+    rgba(6, 182, 212, 0.6) 30%,
+    rgba(236, 72, 153, 0.5) 45%,
+    transparent 55%,
+    rgba(99, 102, 241, 0.6) 70%,
+    rgba(139, 92, 246, 0.7) 85%,
+    transparent 100%
+  );
+  animation: navBorderSpin 4s linear infinite;
+  will-change: --nav-border-angle;
+}
+
+/* Outer glow behind the spinning border */
+.navLinks::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  z-index: -3;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from var(--nav-border-angle),
+    transparent 0%,
+    rgba(139, 92, 246, 0.4) 15%,
+    rgba(6, 182, 212, 0.3) 30%,
+    rgba(236, 72, 153, 0.25) 45%,
+    transparent 55%,
+    rgba(99, 102, 241, 0.3) 70%,
+    rgba(139, 92, 246, 0.4) 85%,
+    transparent 100%
+  );
+  animation: navBorderSpin 4s linear infinite;
+  filter: blur(12px);
+  opacity: 0.7;
+}
+
+/* Solid glass inner background */
+.navPillBg {
+  position: absolute;
+  inset: 1.5px;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ---- Nav Links ---- */
 .navLink {
   padding: 9px 20px;
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.65);
   border-radius: var(--radius-full);
   cursor: pointer;
   background: none;
   border: none;
   font-family: inherit;
+  text-decoration: none;
   transition: color 0.2s ease, background 0.2s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .navLink:hover,
 .navLink.active {
-  color: var(--accent-purple-light);
-  background: rgba(139, 92, 246, 0.06);
+  color: #ffffff;
+  background: rgba(139, 92, 246, 0.12);
 }
 
 /* Light mode nav links */
-.lightMode .navLink {
-  color: rgba(90, 26, 110, 0.6);
-}
-
+.lightMode .navLink { color: rgba(90, 26, 110, 0.6); }
 .lightMode .navLink:hover,
 .lightMode .navLink.active {
   color: #5a1a6e;
@@ -174,14 +224,18 @@
   pointer-events: none;
 }
 
-.navCta { margin-left: var(--space-md); }
+.navCta {
+  margin-left: 4px;
+  position: relative;
+  z-index: 2;
+}
 
 .lightMode .navCta {
   background: linear-gradient(135deg, #7a2a9e 0%, #5a1a6e 100%) !important;
   color: white !important;
 }
 
-/* Mobile */
+/* ---- Mobile ---- */
 .mobileToggle {
   display: none;
   flex-direction: column;
@@ -201,9 +255,7 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.lightMode .mobileToggle span {
-  background: #5a1a6e;
-}
+.lightMode .mobileToggle span { background: #5a1a6e; }
 
 .mobileToggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .mobileToggle.active span:nth-child(2) { opacity: 0; }
@@ -222,17 +274,25 @@
     justify-content: center;
     align-items: center;
     gap: var(--space-lg);
+    border-radius: 0;
+    margin-right: 0;
+    overflow: visible;
   }
 
-  .lightMode .navLinks {
-    background: #d8c8f0;
-  }
+  /* Hide crystal border on mobile fullscreen */
+  .navLinks::before,
+  .navLinks::after { display: none; }
+
+  .navPillBg { display: none; }
+
+  .lightMode .navLinks { background: #d8c8f0; }
 
   .navLinks.open { display: flex; }
 
   .navLink {
     font-size: var(--text-xl);
     padding: 14px 28px;
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .navCta { margin-left: 0; margin-top: var(--space-md); }

@@ -1,7 +1,7 @@
 /* ============================================
-   LightBeamButton — Rotating Beam Border Effect
-   CSS @property based animation
-   GPU-accelerated for performance
+   LightBeamButton — Crystal Cube Beam Effect
+   Chromatic aberration + prismatic refractions
+   from GlassCube3D applied to button borders
    ============================================ */
 
 @property --gradient-angle {
@@ -15,11 +15,17 @@
   to { --gradient-angle: 360deg; }
 }
 
+@keyframes prismaticShift {
+  0%, 100% { filter: hue-rotate(0deg) blur(10px); }
+  33% { filter: hue-rotate(40deg) blur(12px); }
+  66% { filter: hue-rotate(-30deg) blur(10px); }
+}
+
 /* Main Button */
 .lightBeamBtn {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +40,7 @@
   white-space: nowrap;
   border: none;
   border-radius: var(--radius-full);
-  background: #2a0a3e;
+  background: transparent;
   cursor: pointer;
   text-decoration: none;
   /* GPU acceleration */
@@ -65,34 +71,91 @@
 /* Rotating Gradient Border — GPU layer */
 .beamBorder {
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  inset: -2px;
+  z-index: 1;
   border-radius: var(--radius-full);
-  padding: 1.5px;
   animation: borderSpin 3s linear infinite;
   will-change: --gradient-angle;
   transform: translateZ(0);
 }
 
-/* Inner Background — keeps text readable */
+/* Chromatic aberration glow — rainbow refraction leak */
+.beamBorder::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgba(255, 50, 100, 0.5) 0%,
+    rgba(80, 120, 255, 0.4) 20%,
+    rgba(50, 255, 150, 0.4) 40%,
+    rgba(255, 200, 50, 0.4) 60%,
+    rgba(200, 100, 255, 0.5) 80%,
+    rgba(255, 50, 100, 0.5) 100%
+  );
+  filter: blur(12px);
+  opacity: 0.5;
+  animation: prismaticShift 8s ease-in-out infinite;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.lightBeamBtn:hover .beamBorder::before {
+  opacity: 0.8;
+}
+
+/* Outer refraction edge — chromatic aberration spread */
+.beamBorder::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 0%,
+    rgba(255, 0, 80, 0.15) 15%,
+    rgba(0, 120, 255, 0.12) 30%,
+    rgba(0, 255, 120, 0.12) 45%,
+    transparent 55%,
+    rgba(255, 180, 0, 0.1) 70%,
+    rgba(200, 100, 255, 0.15) 85%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  z-index: -2;
+  transition: opacity 0.4s ease;
+}
+
+.lightBeamBtn:hover .beamBorder::after {
+  opacity: 1;
+}
+
+/* Inner Background — glass-like with subtle transparency */
 .beamInner {
   position: absolute;
-  inset: 1.5px;
-  z-index: -1;
+  inset: 2px;
+  z-index: 2;
   border-radius: var(--radius-full);
-  background: #2a0a3e;
+  background: rgba(20, 5, 35, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: background 0.25s ease;
+  /* Inner refraction highlight */
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .lightBeamBtn:hover .beamInner {
-  background: rgba(42, 10, 62, 0.95);
+  background: rgba(20, 5, 35, 0.88);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Shine / Glow Overlay on hover */
 .beamShine {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 3;
   border-radius: var(--radius-full);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -102,20 +165,34 @@
   opacity: 1;
 }
 
-/* === VARIANT: Primary (Purple beam) === */
+/* === VARIANT: Primary (Purple beam + chromatic refraction) === */
 .variantPrimary {
-  box-shadow: 0 0 20px -5px rgba(90, 26, 110, 0.3);
+  box-shadow:
+    0 0 20px -4px rgba(139, 92, 246, 0.3),
+    0 0 6px -1px rgba(80, 120, 255, 0.15),
+    0 0 6px -1px rgba(255, 50, 100, 0.1);
 }
 .variantPrimary:hover {
-  box-shadow: 0 0 28px -5px rgba(90, 26, 110, 0.5);
+  box-shadow:
+    0 0 40px -4px rgba(139, 92, 246, 0.5),
+    0 0 20px -2px rgba(80, 120, 255, 0.25),
+    0 0 20px -2px rgba(255, 50, 100, 0.15),
+    0 0 60px -8px rgba(200, 100, 255, 0.2);
 }
 
-/* === VARIANT: WhatsApp (Green beam) === */
+/* === VARIANT: WhatsApp (Green beam + chromatic refraction) === */
 .variantWhatsapp {
-  box-shadow: 0 0 20px -5px rgba(37, 211, 102, 0.3);
+  box-shadow:
+    0 0 20px -4px rgba(37, 211, 102, 0.3),
+    0 0 6px -1px rgba(50, 255, 150, 0.15),
+    0 0 6px -1px rgba(0, 120, 255, 0.1);
 }
 .variantWhatsapp:hover {
-  box-shadow: 0 0 28px -5px rgba(37, 211, 102, 0.5);
+  box-shadow:
+    0 0 40px -4px rgba(37, 211, 102, 0.5),
+    0 0 20px -2px rgba(50, 255, 150, 0.25),
+    0 0 20px -2px rgba(0, 120, 255, 0.15),
+    0 0 60px -8px rgba(100, 255, 200, 0.2);
 }
 
 /* ---- Responsive ---- */

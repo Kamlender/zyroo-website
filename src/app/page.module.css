@@ -3,6 +3,43 @@
    ============================================ */
 
 /* ==================== HERO ==================== */
+
+/* Prismatic hue shift — from cube faces */
+@keyframes prismaticBg {
+  0%, 100% { filter: hue-rotate(0deg); }
+  33% { filter: hue-rotate(30deg); }
+  66% { filter: hue-rotate(-20deg); }
+}
+
+/* Chromatic orb drift */
+@keyframes orbDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -40px) scale(1.1); }
+  50% { transform: translate(-30px, 50px) scale(0.95); }
+  75% { transform: translate(40px, 30px) scale(1.05); }
+}
+
+@keyframes orbDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-50px, 30px) scale(1.08); }
+  50% { transform: translate(40px, -50px) scale(0.92); }
+  75% { transform: translate(-20px, -30px) scale(1.05); }
+}
+
+@keyframes orbDrift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, 60px) scale(1.15); }
+  66% { transform: translate(-60px, -20px) scale(0.9); }
+}
+
+/* Refraction line sweep */
+@keyframes refractionSweep {
+  0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateX(200%) rotate(25deg); opacity: 0; }
+}
+
 .hero {
   position: relative;
   height: 100vh;
@@ -14,15 +51,102 @@
   overflow: hidden;
   padding: 0;
   background: linear-gradient(180deg, #d8c8f0 0%, #c9b8e8 40%, #dcc8d8 70%, #e8d0b8 100%);
-  margin-top: calc(-1 * var(--navbar-height));
-  padding-top: var(--navbar-height);
 }
 
+/* Main overlay — warm radial */
 .heroOverlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: radial-gradient(ellipse at 60% 50%, rgba(255, 180, 100, 0.12) 0%, transparent 60%);
+}
+
+/* === Chromatic Aberration Orbs — cube face light leaks === */
+
+/* Red-pink refraction orb — top-right */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -15%;
+  right: 0%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 50, 100, 0.35) 0%, rgba(255, 80, 130, 0.15) 35%, transparent 65%);
+  animation: orbDrift1 15s ease-in-out infinite, prismaticBg 8s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Blue-cyan refraction orb — bottom-left */
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  bottom: -20%;
+  left: -10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(60, 100, 255, 0.3) 0%, rgba(0, 180, 255, 0.12) 35%, transparent 65%);
+  animation: orbDrift2 18s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Green refraction orb — center-right (via overlay::before) */
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 35%;
+  right: 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 220, 130, 0.25) 0%, rgba(80, 255, 180, 0.1) 35%, transparent 65%);
+  animation: orbDrift3 20s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Purple-violet refraction orb — top-left (via overlay::after) */
+.heroOverlay::after {
+  content: '';
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  top: 5%;
+  left: 5%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180, 80, 255, 0.3) 0%, rgba(139, 92, 246, 0.12) 35%, transparent 65%);
+  animation: orbDrift1 22s ease-in-out infinite reverse;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* === Refraction Light Sweep — glass edge light streak === */
+.heroInner::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200vh;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 180, 255, 0.15),
+    rgba(80, 180, 255, 0.1),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: refractionSweep 10s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .heroInner {
@@ -47,7 +171,10 @@
 
 .heroRight {
   flex-shrink: 0;
-  width: 380px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---- Code Window ---- */
@@ -314,7 +441,7 @@
 @media (max-width: 1024px) {
   .heroInner { flex-direction: column; text-align: center; }
   .heroLeft { align-items: center; text-align: center; }
-  .heroRight { width: 340px; }
+  .heroRight { width: 260px; }
   .heroCtas { justify-content: center; }
   .reviewGrid { grid-template-columns: repeat(2, 1fr); }
 }
