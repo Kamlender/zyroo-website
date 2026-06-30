@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { LightBeamButton } from '@/components/LightBeamButton';
-import GlassCube3D from '@/components/GlassCube3D';
+import SolutionSection from '@/components/SolutionSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import ProcessSection from '@/components/ProcessSection';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
@@ -19,11 +21,28 @@ export default function HomePage() {
       <section className={styles.hero} id="hero">
         <div className={styles.heroOverlay}></div>
 
+        {/* Floating Surrealist Hands */}
+        <div className={styles.handLeft}>
+          <img
+            src="https://framerusercontent.com/images/KNhiA5A2ykNYqNkj04Hk6BVg5A.png?width=1540&height=1320"
+            alt=""
+            draggable={false}
+          />
+        </div>
+        <div className={styles.handRight}>
+          <img
+            src="https://framerusercontent.com/images/X89VFCABCEjjZ4oLGa3PjbOmsA.png?width=1542&height=1002"
+            alt=""
+            draggable={false}
+          />
+        </div>
+
         <div className={`${styles.heroInner} container`}>
-          {/* Left — Text Content */}
-          <div className={styles.heroLeft}>
+          <div className={styles.heroCenter}>
             <h1 className={styles.heroTitle}>
-              Make Your Business
+              Make Premium websites for
+              <br />
+              Your Business
               <br />
               <span className={styles.heroHighlight}>Invincible</span>
             </h1>
@@ -68,17 +87,20 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Right — 3D Glass Cube */}
-          <div className={styles.heroRight}>
-            <GlassCube3D />
-          </div>
         </div>
       </section>
+
+      {/* ==================== SOLUTION ==================== */}
+      <SolutionSection />
+
+      {/* ==================== PORTFOLIO ==================== */}
+      <PortfolioSection />
+
+      {/* ==================== PROCESS ==================== */}
+      <ProcessSection />
 
       {/* ==================== FOOTER ==================== */}
       <Footer />
     </>
   );
 }
-

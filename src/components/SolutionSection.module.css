@@ -1,0 +1,159 @@
+.section {
+  background: #0a0a0a;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+.tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(139, 92, 246, 0.8);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 48px;
+  max-width: 520px;
+}
+
+/* ---- Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.grid .card:last-child {
+  grid-column: 1 / 2;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 36px 32px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(139, 92, 246, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.cardDesc {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardList li {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.5);
+  padding-left: 16px;
+  position: relative;
+}
+
+.cardList li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: rgba(139, 92, 246, 0.6);
+}
+
+/* ---- CTA Button ---- */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.cta svg {
+  flex-shrink: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid .card:last-child {
+    grid-column: auto;
+  }
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   Check,
@@ -24,7 +24,7 @@ const iconMap: Record<string, React.ElementType> = {
   'small-business': Store,
   'business-website': Globe,
   'ecommerce-store': ShoppingCart,
-  'web-application': Zap,
+
   'website-redesign': RefreshCcw,
   '3d-web-design': Box,
   'hospital-website': Hospital,
@@ -32,8 +32,10 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function PricingSection() {
+  const [showCallPopup, setShowCallPopup] = useState(false);
 
   return (
+    <>
     <section className={styles.section} id="services">
       {/* Background Decor */}
       <div className={styles.bgDecor}>
@@ -145,7 +147,42 @@ export default function PricingSection() {
         <p className={styles.note}>
           Pehle baat karo, phir decide karo. Consultation free hai.
         </p>
+
       </div>
     </section>
+
+      {/* CTA Section — Full Width */}
+      <section className={styles.ctaSection}>
+        <div className={`${styles.ctaInner} container`}>
+          <h2 className={styles.ctaHeading}>
+            Ready to Turn Your Website Into Your Best Salesperson?
+          </h2>
+          <p className={styles.ctaSubtext}>
+            Book a free 20-minute strategy call. We&apos;ll audit your current site and show you exactly what&apos;s possible.
+          </p>
+          <button className={styles.ctaButton} onClick={() => setShowCallPopup(true)}>
+            Book Your Free Call
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+        </div>
+      </section>
+
+      {/* Call Popup */}
+      {showCallPopup && (
+        <div className={styles.callOverlay} onClick={() => setShowCallPopup(false)}>
+          <div className={styles.callPopup} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.callPopupClose} onClick={() => setShowCallPopup(false)}>
+              ✕
+            </button>
+            <div className={styles.callPopupIcon}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 className={styles.callPopupTitle}>Call Us Now</h3>
+            <span className={styles.callPopupNumber}>8278148729</span>
+            <p className={styles.callPopupNote}>Free consultation · No commitments</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -40,6 +40,17 @@
   100% { transform: translateX(200%) rotate(25deg); opacity: 0; }
 }
 
+/* Floating hand animations — Superdesign surrealist style */
+@keyframes floatHandLeft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes floatHandRight {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(20px) rotate(-2deg); }
+}
+
 .hero {
   position: relative;
   height: 100vh;
@@ -59,6 +70,70 @@
   inset: 0;
   z-index: 1;
   background: radial-gradient(ellipse at 60% 50%, rgba(255, 180, 100, 0.12) 0%, transparent 60%);
+}
+
+/* === Floating Surrealist Hands === */
+.handLeft {
+  position: absolute;
+  left: -15%;
+  top: -18%;
+  width: 38vw;
+  max-width: 600px;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: hard-light;
+  opacity: 0.8;
+  animation: floatHandLeft 12s ease-in-out infinite;
+}
+
+.handRight {
+  position: absolute;
+  right: -15%;
+  bottom: -15%;
+  width: 35vw;
+  max-width: 550px;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: hard-light;
+  opacity: 0.8;
+  animation: floatHandRight 14s ease-in-out infinite;
+}
+
+.handLeft img,
+.handRight img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive — smaller hands on tablet */
+@media (min-width: 768px) {
+  .handLeft {
+    left: -12%;
+    top: -20%;
+    width: 32vw;
+  }
+  .handRight {
+    right: -12%;
+    bottom: -12%;
+    width: 28vw;
+  }
+}
+
+/* Smaller hands on mobile */
+@media (max-width: 480px) {
+  .handLeft {
+    left: -20%;
+    top: -15%;
+    width: 45vw;
+    opacity: 0.5;
+  }
+  .handRight {
+    right: -20%;
+    bottom: -12%;
+    width: 40vw;
+    opacity: 0.5;
+  }
 }
 
 /* === Chromatic Aberration Orbs — cube face light leaks === */
@@ -153,28 +228,19 @@
   position: relative;
   z-index: 11;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: var(--space-2xl);
-}
-
-.heroLeft {
-  flex: 1;
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.heroRight {
-  flex-shrink: 0;
-  width: 400px;
-  display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* ---- Code Window ---- */
@@ -234,11 +300,11 @@
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  margin-bottom: var(--space-md);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-lg);
   color: #3a0a4e;
 }
 
@@ -256,6 +322,7 @@
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Stats Ticker */
@@ -420,6 +487,168 @@
   letter-spacing: 1.5px;
 }
 
+/* ==================== SERVICES SECTION ==================== */
+.servicesSection {
+  background: #000000;
+  padding: var(--space-4xl) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTop {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.sectionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 22px;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: #a78bfa;
+  margin-bottom: var(--space-lg);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.sectionHeading {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  margin: var(--space-md) 0;
+  letter-spacing: -0.03em;
+  color: #f0f0ff;
+}
+
+.sectionDesc {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.serviceCard {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.serviceCard:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  transform: translateY(-4px);
+}
+
+.serviceIconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.serviceTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #f0f0ff;
+  letter-spacing: -0.01em;
+}
+
+.serviceDesc {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+  flex: 0;
+}
+
+.serviceFeatures {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.serviceFeature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.featureCheck {
+  color: #06b6d4;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.serviceFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.servicePrice {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #f0f0ff;
+}
+
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.serviceLink:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #a78bfa;
+  background: rgba(139, 92, 246, 0.06);
+}
+
 /* ==================== FOOTER ==================== */
 .footer {
   background: #000000;
@@ -439,19 +668,16 @@
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
-  .heroInner { flex-direction: column; text-align: center; }
-  .heroLeft { align-items: center; text-align: center; }
-  .heroRight { width: 260px; }
-  .heroCtas { justify-content: center; }
+  .servicesGrid { grid-template-columns: repeat(2, 1fr); }
   .reviewGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .hero { padding: 120px 0 60px; }
-  .heroRight { display: none; }
-  .heroLeft { align-items: center; text-align: center; }
   .heroCtas { flex-direction: column; align-items: center; }
   .statsTicker { flex-direction: column; gap: var(--space-md); padding: 20px 30px; border-radius: var(--radius-lg); }
   .tickerDot { display: none; }
+  .servicesGrid { grid-template-columns: 1fr; }
+  .sectionHeading { font-size: var(--text-3xl); }
   .reviewGrid { grid-template-columns: 1fr; }
 }

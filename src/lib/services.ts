@@ -25,7 +25,7 @@ export const services: Service[] = [
     shortTitle: 'Landing Page',
     description:
       'Ek page, ek goal — chahe product launch ho ya ad campaign. Fast, focused, aur conversion-ready.',
-    price: 10000,
+    price: 5000,
     features: [
       'Responsive Design',
       'SEO Optimized',
@@ -45,7 +45,7 @@ export const services: Service[] = [
     shortTitle: 'Portfolio',
     description:
       'Apna kaam dikhao properly. Photographers, designers, developers — sabke liye.',
-    price: 25000,
+    price: 20000,
     features: [
       'Project Gallery',
       'Smooth Animations',
@@ -65,7 +65,7 @@ export const services: Service[] = [
     shortTitle: 'Small Business',
     description:
       'Chhota business ho ya startup — professional online presence banao without breaking the bank.',
-    price: 50000,
+    price: 40000,
     features: [
       'Up to 5 Pages',
       'Responsive Design',
@@ -86,7 +86,7 @@ export const services: Service[] = [
     shortTitle: 'Business Site',
     description:
       'Multiple pages, proper branding, SEO setup — apne business ko online seriously le jaane ke liye.',
-    price: 110000,
+    price: 50000,
     features: [
       'Up to 7 Pages',
       'CMS Integration',
@@ -96,7 +96,7 @@ export const services: Service[] = [
       'Fully Responsive',
     ],
     icon: '🏢',
-    popular: true,
+    popular: false,
     gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     deliveryDays: 7,
     category: 'Development',
@@ -107,7 +107,7 @@ export const services: Service[] = [
     shortTitle: 'E-Commerce',
     description:
       'Apni products online becho — payment gateway, stock management, orders sab built-in.',
-    price: 250000,
+    price: 60000,
     features: [
       'Product Management',
       'Payment Gateway',
@@ -122,35 +122,14 @@ export const services: Service[] = [
     deliveryDays: 10,
     category: 'Development',
   },
-  {
-    id: 'web-application',
-    title: 'Custom Web Application',
-    shortTitle: 'Web App',
-    description:
-      'Kuch alag chahiye? Custom dashboard, booking system, ya koi specific tool — bana denge.',
-    price: 500000,
-    maxPrice: 1000000,
-    features: [
-      'Custom Architecture',
-      'Database Design',
-      'API Development',
-      'User Authentication',
-      'Admin Panel',
-      'Cloud Deployment',
-    ],
-    icon: '⚡',
-    popular: false,
-    gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    deliveryDays: 15,
-    category: 'Development',
-  },
+
   {
     id: 'website-redesign',
     title: 'Website Redesign',
     shortTitle: 'Redesign',
     description:
       'Purani site slow hai ya outdated lagti hai? Naya design, fast loading, mobile-friendly — done.',
-    price: 20000,
+    price: 10000,
     features: [
       'UI/UX Audit',
       'Modern Redesign',
@@ -170,7 +149,7 @@ export const services: Service[] = [
     shortTitle: '3D Design',
     description:
       'Apni website ko next level pe le jaao — immersive 3D visuals, glassmorphism, aur smooth animations ke saath.',
-    price: 60000,
+    price: 30000,
     features: [
       '3D Three.js Visuals',
       'Glassmorphism UI',
@@ -190,7 +169,7 @@ export const services: Service[] = [
     shortTitle: 'Hospital',
     description:
       'Apne hospital ko online le jaao — departments, doctors, appointment booking, aur patient portal sab ek jagah.',
-    price: 80000,
+    price: 50000,
     features: [
       'Doctor Profiles & Departments',
       'Online Appointment Booking',
@@ -211,7 +190,7 @@ export const services: Service[] = [
     shortTitle: 'Clinic',
     description:
       'Chhoti clinic ya private practice ke liye professional website — patient trust badhao, online dikhao.',
-    price: 30000,
+    price: 20000,
     features: [
       'Doctor Bio & Services',
       'Appointment Form',
