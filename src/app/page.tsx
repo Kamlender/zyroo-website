@@ -21,21 +21,6 @@ export default function HomePage() {
       <section className={styles.hero} id="hero">
         <div className={styles.heroOverlay}></div>
 
-        {/* Floating Surrealist Hands */}
-        <div className={styles.handLeft}>
-          <img
-            src="https://framerusercontent.com/images/KNhiA5A2ykNYqNkj04Hk6BVg5A.png?width=1540&height=1320"
-            alt=""
-            draggable={false}
-          />
-        </div>
-        <div className={styles.handRight}>
-          <img
-            src="https://framerusercontent.com/images/X89VFCABCEjjZ4oLGa3PjbOmsA.png?width=1542&height=1002"
-            alt=""
-            draggable={false}
-          />
-        </div>
 
         <div className={`${styles.heroInner} container`}>
           <div className={styles.heroCenter}>

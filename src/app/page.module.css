@@ -40,17 +40,6 @@
   100% { transform: translateX(200%) rotate(25deg); opacity: 0; }
 }
 
-/* Floating hand animations — Superdesign surrealist style */
-@keyframes floatHandLeft {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-
-@keyframes floatHandRight {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(20px) rotate(-2deg); }
-}
-
 .hero {
   position: relative;
   height: 100vh;
@@ -72,69 +61,6 @@
   background: radial-gradient(ellipse at 60% 50%, rgba(255, 180, 100, 0.12) 0%, transparent 60%);
 }
 
-/* === Floating Surrealist Hands === */
-.handLeft {
-  position: absolute;
-  left: -15%;
-  top: -18%;
-  width: 38vw;
-  max-width: 600px;
-  z-index: 10;
-  pointer-events: none;
-  mix-blend-mode: hard-light;
-  opacity: 0.8;
-  animation: floatHandLeft 12s ease-in-out infinite;
-}
-
-.handRight {
-  position: absolute;
-  right: -15%;
-  bottom: -15%;
-  width: 35vw;
-  max-width: 550px;
-  z-index: 10;
-  pointer-events: none;
-  mix-blend-mode: hard-light;
-  opacity: 0.8;
-  animation: floatHandRight 14s ease-in-out infinite;
-}
-
-.handLeft img,
-.handRight img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Responsive — smaller hands on tablet */
-@media (min-width: 768px) {
-  .handLeft {
-    left: -12%;
-    top: -20%;
-    width: 32vw;
-  }
-  .handRight {
-    right: -12%;
-    bottom: -12%;
-    width: 28vw;
-  }
-}
-
-/* Smaller hands on mobile */
-@media (max-width: 480px) {
-  .handLeft {
-    left: -20%;
-    top: -15%;
-    width: 45vw;
-    opacity: 0.5;
-  }
-  .handRight {
-    right: -20%;
-    bottom: -12%;
-    width: 40vw;
-    opacity: 0.5;
-  }
-}
 
 /* === Chromatic Aberration Orbs — cube face light leaks === */
 
