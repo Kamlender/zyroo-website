@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'ZYROO Privacy Policy — how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: 'https://tinytoono.in/privacy',
+  },
 };
 
 export default function PrivacyPage() {

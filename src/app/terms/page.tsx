@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Terms and Conditions',
   description:
     'Read the Terms and Conditions for using ZYROO — Web Design Studio services and website.',
+  alternates: {
+    canonical: 'https://tinytoono.in/terms',
+  },
 };
 
 export default function TermsPage() {

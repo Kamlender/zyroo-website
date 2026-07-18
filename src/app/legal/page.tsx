@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Legal',
   description:
     'Legal information for ZYROO — copyright, intellectual property, and legal jurisdiction details.',
+  alternates: {
+    canonical: 'https://tinytoono.in/legal',
+  },
 };
 
 export default function LegalPage() {

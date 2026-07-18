@@ -1,20 +1,22 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
+import JsonLd from '@/components/JsonLd';
+import { services } from '@/lib/services';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tinytoono.in'),
   title: {
-    default: 'ZYROO — Web Design Studio | Websites for Small Business & Startups',
-    template: '%s | ZYROO',
+    default: 'ZYROO STUDIO — Web Design Studio | Websites for Small Business & Startups',
+    template: '%s | ZYROO STUDIO',
   },
   description:
     'Web design studio based in India. We build websites, online stores, and web apps for small businesses and startups. Quick delivery, fair pricing.',
   keywords:
     'web design india, website development, landing page, e-commerce, portfolio website, web application, affordable web design, web design studio, startup website, small business website',
-  authors: [{ name: 'ZYROO', url: 'https://tinytoono.in' }],
-  creator: 'ZYROO',
-  publisher: 'ZYROO',
+  authors: [{ name: 'ZYROO STUDIO', url: 'https://tinytoono.in' }],
+  creator: 'ZYROO STUDIO',
+  publisher: 'ZYROO STUDIO',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
@@ -28,17 +30,17 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'ZYROO — Web Design Studio',
+    title: 'ZYROO STUDIO — Web Design Studio',
     description:
       'We build websites that look good and actually work. Based in India. Quick delivery, fair pricing.',
     url: 'https://tinytoono.in',
-    siteName: 'ZYROO',
+    siteName: 'ZYROO STUDIO',
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYROO — Web Design Studio',
+    title: 'ZYROO STUDIO — Web Design Studio',
     description:
       'We build websites that look good and actually work. Based in India.',
   },
@@ -56,6 +58,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://tinytoono.in',
   },
+  other: {
+    'application-name': 'ZYROO STUDIO',
+  },
 };
 
 export default function RootLayout({
@@ -72,6 +77,59 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
+        />
+        {/* Organization Schema — appears on every page */}
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            '@id': 'https://tinytoono.in/#organization',
+            name: 'ZYROO Studio',
+            alternateName: 'ZYROO',
+            url: 'https://tinytoono.in',
+            logo: 'https://tinytoono.in/favicon.png',
+            image: 'https://tinytoono.in/favicon.png',
+            description:
+              'Web design studio based in Faridabad, India, building websites, online stores, and web apps for small businesses, startups, and healthcare providers.',
+            email: 'jha@tinytoono.in',
+            telephone: '+91-8278148729',
+            priceRange: '₹5,000–₹60,000',
+            areaServed: [
+              { '@type': 'City', name: 'Faridabad' },
+              { '@type': 'Country', name: 'India' },
+            ],
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Faridabad',
+              addressRegion: 'Haryana',
+              addressCountry: 'IN',
+            },
+            founder: { '@id': 'https://tinytoono.in/about#pawash' },
+            sameAs: [
+              'https://www.instagram.com/zyroo.in',
+              'https://www.linkedin.com/company/zyroo',
+            ],
+            makesOffer: services.map((s) => ({
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: s.title,
+                url: `https://tinytoono.in/order/${s.id}`,
+              },
+              price: String(s.price),
+              priceCurrency: 'INR',
+            })),
+          }}
+        />
+        {/* WebSite Schema */}
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            url: 'https://tinytoono.in',
+            name: 'ZYROO STUDIO',
+            publisher: { '@id': 'https://tinytoono.in/#organization' },
+          }}
         />
       </head>
       <body>

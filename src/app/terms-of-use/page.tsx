@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'Terms of Use for the ZYROO website — understand acceptable use of our platform and services.',
+  alternates: {
+    canonical: 'https://tinytoono.in/terms-of-use',
+  },
 };
 
 export default function TermsOfUsePage() {

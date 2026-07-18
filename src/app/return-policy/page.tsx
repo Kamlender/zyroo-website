@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Return Policy',
   description:
     'ZYROO Return Policy — understand our refund and cancellation terms for digital design services.',
+  alternates: {
+    canonical: 'https://tinytoono.in/return-policy',
+  },
 };
 
 export default function ReturnPolicyPage() {
