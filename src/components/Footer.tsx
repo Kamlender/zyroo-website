@@ -14,7 +14,7 @@ export default function Footer() {
               <Image src="/skull-logo.png" alt="ZYROO" width={32} height={32} className={styles.footerLogoIcon} />
               <div className={styles.footerLogoGroup}>
                 <span className={styles.footerLogoText}>ZYROO</span>
-                <span className={styles.footerLogoNiche}>Web-Design</span>
+                <span className={styles.footerLogoNiche}>Studio</span>
               </div>
             </Link>
             <p className={styles.footerDesc}>
