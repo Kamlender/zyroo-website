@@ -7,7 +7,7 @@ import { services } from '@/lib/services';
 export const metadata: Metadata = {
   metadataBase: new URL('https://tinytoono.in'),
   title: {
-    default: 'ZYROO STUDIO — Web Design Studio | Websites for Small Business & Startups',
+    default: 'ZYROO STUDIO',
     template: '%s | ZYROO STUDIO',
   },
   description:
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'ZYROO STUDIO — Web Design Studio',
+    title: 'ZYROO STUDIO',
     description:
       'We build websites that look good and actually work. Based in India. Quick delivery, fair pricing.',
     url: 'https://tinytoono.in',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZYROO STUDIO — Web Design Studio',
+    title: 'ZYROO STUDIO',
     description:
       'We build websites that look good and actually work. Based in India.',
   },
