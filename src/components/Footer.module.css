@@ -53,9 +53,13 @@
 }
 
 .footerLogoNiche {
+  display: block;
+  width: 100%;
+  text-align: justify;
+  text-align-last: justify;
   font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 0;
   text-transform: uppercase;
   background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
   -webkit-background-clip: text;

@@ -60,7 +60,7 @@ export default function Navbar() {
             <Image src="/skull-logo.png" alt="ZYROO" width={38} height={38} className={styles.logoIcon} />
             <div className={styles.logoGroup}>
               <span className={styles.logoText}>ZYROO</span>
-              <span className={styles.logoNiche}>Studio</span>
+              <span className={styles.logoNiche}>S T U D I O</span>
             </div>
           </Link>
 

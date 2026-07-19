@@ -96,9 +96,13 @@
 .logoGroup { display: flex; flex-direction: column; line-height: 1; }
 
 .logoNiche {
+  display: block;
+  width: 100%;
+  text-align: justify;
+  text-align-last: justify;
   font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 0;
   text-transform: uppercase;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
