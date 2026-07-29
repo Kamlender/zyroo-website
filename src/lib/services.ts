@@ -204,6 +204,27 @@ export const services: Service[] = [
     deliveryDays: 4,
     category: 'Design',
   },
+  {
+    id: 'school-college-website',
+    title: 'School & College Website',
+    shortTitle: 'School/College',
+    description:
+      'School ya college ke liye professional website — admissions, results, events, faculty info sab ek jagah dikhao.',
+    price: 20000,
+    features: [
+      'Admission Portal',
+      'Faculty Profiles',
+      'Events & Notices Board',
+      'Photo Gallery',
+      'Results Section',
+      'Mobile Responsive',
+    ],
+    icon: '🎓',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
+    deliveryDays: 5,
+    category: 'Development',
+  },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {

@@ -1,4 +1,15 @@
-'use client';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'ZYROO STUDIO | Premium Web Design & Development Agency India',
+  },
+  description:
+    'ZYROO STUDIO is a premium web design and development agency based in India. We build high-converting landing pages, e-commerce stores, and custom web apps for startups and small businesses.',
+  alternates: {
+    canonical: 'https://tinytoono.in',
+  },
+};
 
 import React from 'react';
 import { LightBeamButton } from '@/components/LightBeamButton';

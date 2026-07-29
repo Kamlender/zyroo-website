@@ -5,13 +5,16 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Our Services',
+  title: {
+    absolute: 'Web Design & Development Services | ZYROO STUDIO',
+  },
   description:
-    'Explore ZYROO web design services — landing pages, portfolios, e-commerce stores, hospital & clinic websites, and custom web apps. Fair pricing, fast delivery.',
+    'Explore ZYROO STUDIO web design and development services. We create high-converting landing pages, e-commerce stores, clinic websites, and custom web applications.',
   alternates: {
     canonical: 'https://tinytoono.in/services',
   },
 };
+
 
 export default function ServicesPage() {
   return (

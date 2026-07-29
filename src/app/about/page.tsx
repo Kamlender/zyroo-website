@@ -1,4 +1,16 @@
-'use client';
+import type { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'About ZYROO STUDIO | Web Design & Development Agency India',
+  },
+  description:
+    'Learn about ZYROO STUDIO, a leading web design studio in Faridabad, India. We build high-performing websites, online stores, and custom web apps with quick delivery.',
+  alternates: {
+    canonical: 'https://tinytoono.in/about',
+  },
+};
 
 import React from 'react';
 import Link from 'next/link';
@@ -15,6 +27,16 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tinytoono.in' },
+            { '@type': 'ListItem', position: 2, name: 'About', item: 'https://tinytoono.in/about' },
+          ],
+        }}
+      />
       <div className={styles.aboutPage}>
         <div className="container">
           {/* Hero */}

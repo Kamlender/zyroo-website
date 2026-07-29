@@ -1,4 +1,16 @@
-'use client';
+import type { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Client Reviews & Testimonials | ZYROO STUDIO',
+  },
+  description:
+    'Read reviews and testimonials from clients who built their landing pages, online stores, and websites with ZYROO STUDIO. Real feedback, real results.',
+  alternates: {
+    canonical: 'https://tinytoono.in/reviews',
+  },
+};
 
 import React from 'react';
 import Footer from '@/components/Footer';
@@ -43,6 +55,16 @@ const clients = [
 export default function ReviewsPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tinytoono.in' },
+            { '@type': 'ListItem', position: 2, name: 'Reviews', item: 'https://tinytoono.in/reviews' },
+          ],
+        }}
+      />
       <div className={styles.reviewsPage}>
         <div className="container">
           {/* Header */}
