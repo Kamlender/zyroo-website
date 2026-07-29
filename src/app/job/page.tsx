@@ -4,10 +4,10 @@ import React from 'react';
 import styles from './page.module.css';
 
 const perks = [
-  { icon: '🏠', label: 'Work From Home', desc: 'Ghar se kaam karo, no office required' },
-  { icon: '💰', label: 'Fixed Salary + Incentive', desc: 'Har call pe incentive, on-time payment guaranteed' },
-  { icon: '📞', label: 'Training Provided', desc: 'Calling script aur training hum denge, experience zaruri nahi' },
-  { icon: '🕐', label: 'Flexible Shifts', desc: 'Day shift ya evening shift, apni choice' },
+  { icon: '🏠', label: 'Work From Home', desc: 'Work from the comfort of your home, no office required' },
+  { icon: '💰', label: 'Fixed Salary + Incentive', desc: 'Incentive on every call, on-time payment guaranteed' },
+  { icon: '📞', label: 'Training Provided', desc: 'We provide calling scripts and training, no experience needed' },
+  { icon: '🕐', label: 'Flexible Shifts', desc: 'Day shift or evening shift, your choice' },
 ];
 
 const openings = [

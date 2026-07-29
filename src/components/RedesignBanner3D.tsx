@@ -273,14 +273,14 @@ export default function RedesignBanner3D() {
             </div>
 
             <h2 className={styles.title}>
-              Purani Website Ko
+              Transform Your Old Website
               <br />
-              <span className={styles.gradientText}>3D Mein Transform</span> Karo
+              <span className={styles.gradientText}>Into a 3D</span> Experience
             </h2>
 
             <p className={styles.subtitle}>
-              Apni boring website ko ek premium, immersive 3D experience mein upgrade karo. 
-              Modern animations, glassmorphism, aur Three.js powered visuals ke saath.
+              Upgrade your boring website into a premium, immersive 3D experience. 
+              With modern animations, glassmorphism, and Three.js powered visuals.
             </p>
 
             {/* Feature pills */}

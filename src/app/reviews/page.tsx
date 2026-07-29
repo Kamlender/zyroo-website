@@ -24,7 +24,7 @@ const clients = [
     role: 'Freelancer',
     stars: 5,
     review:
-      'Portfolio site ke liye contact kiya tha. Design acchi banayi, bas ek revision mein thoda time laga. But final output dekh ke khush ho gaya, worth it tha.',
+      'Reached out for a portfolio site. The design turned out great — one revision took a bit of time, but the final output was totally worth it.',
   },
   {
     name: 'Ashish',
@@ -32,7 +32,7 @@ const clients = [
     role: 'Startup Founder',
     stars: 5,
     review:
-      'Humara SaaS launch hone wala tha aur landing page urgent chahiye tha. Inlogo ne 2 din mein bana diya — investor meeting mein sabne website ki tarif ki.',
+      'Our SaaS was about to launch and we needed a landing page urgently. They built it in just 2 days — everyone at the investor meeting praised the website.',
   },
   {
     name: 'Anil',
@@ -40,7 +40,7 @@ const clients = [
     role: 'Shop Owner',
     stars: 4,
     review:
-      'Meri saree ki dukaan hai, online store banana tha. Payment gateway, WhatsApp order sab set kar diya. Pehle mahine mein hi 12 online orders aaye.',
+      'I own a saree shop and wanted to set up an online store. They integrated payment gateway, WhatsApp ordering — everything. Got 12 online orders in the very first month.',
   },
   {
     name: 'Twinkle',
@@ -48,7 +48,7 @@ const clients = [
     role: 'Business Owner',
     stars: 5,
     review:
-      'Maine 3 freelancers try kiye pehle, kisi ne dhang se kaam nahi kiya. ZYROO ko contact kiya toh 6 din mein site ready thi. Ab Google se directly leads aa rahi hain.',
+      'I tried 3 freelancers before, none of them delivered properly. Contacted ZYROO and the site was ready in 6 days. Now I\'m getting leads directly from Google.',
   },
 ];
 

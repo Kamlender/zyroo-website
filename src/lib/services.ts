@@ -24,7 +24,7 @@ export const services: Service[] = [
     title: 'Landing Page Design',
     shortTitle: 'Landing Page',
     description:
-      'Ek page, ek goal — chahe product launch ho ya ad campaign. Fast, focused, aur conversion-ready.',
+      'One page, one goal — whether it\'s a product launch or an ad campaign. Fast, focused, and conversion-ready.',
     price: 5000,
     features: [
       'Responsive Design',
@@ -44,7 +44,7 @@ export const services: Service[] = [
     title: 'Portfolio Website',
     shortTitle: 'Portfolio',
     description:
-      'Apna kaam dikhao properly. Photographers, designers, developers — sabke liye.',
+      'Showcase your work the right way. Perfect for photographers, designers, and developers.',
     price: 20000,
     features: [
       'Project Gallery',
@@ -64,7 +64,7 @@ export const services: Service[] = [
     title: 'Small Business Website',
     shortTitle: 'Small Business',
     description:
-      'Chhota business ho ya startup — professional online presence banao without breaking the bank.',
+      'Small business or startup — build a professional online presence without breaking the bank.',
     price: 40000,
     features: [
       'Up to 5 Pages',
@@ -85,7 +85,7 @@ export const services: Service[] = [
     title: 'Business Website',
     shortTitle: 'Business Site',
     description:
-      'Multiple pages, proper branding, SEO setup — apne business ko online seriously le jaane ke liye.',
+      'Multiple pages, proper branding, SEO setup — everything you need to take your business online seriously.',
     price: 50000,
     features: [
       'Up to 7 Pages',
@@ -106,7 +106,7 @@ export const services: Service[] = [
     title: 'E-Commerce Store',
     shortTitle: 'E-Commerce',
     description:
-      'Apni products online becho — payment gateway, stock management, orders sab built-in.',
+      'Sell your products online — payment gateway, stock management, and order tracking all built-in.',
     price: 60000,
     features: [
       'Product Management',
@@ -128,7 +128,7 @@ export const services: Service[] = [
     title: 'Website Redesign',
     shortTitle: 'Redesign',
     description:
-      'Purani site slow hai ya outdated lagti hai? Naya design, fast loading, mobile-friendly — done.',
+      'Is your site slow or looking outdated? Fresh design, fast loading, mobile-friendly — done.',
     price: 10000,
     features: [
       'UI/UX Audit',
@@ -148,7 +148,7 @@ export const services: Service[] = [
     title: '3D Web Design',
     shortTitle: '3D Design',
     description:
-      'Apni website ko next level pe le jaao — immersive 3D visuals, glassmorphism, aur smooth animations ke saath.',
+      'Take your website to the next level — with immersive 3D visuals, glassmorphism, and smooth animations.',
     price: 30000,
     features: [
       '3D Three.js Visuals',
@@ -168,7 +168,7 @@ export const services: Service[] = [
     title: 'Hospital Website',
     shortTitle: 'Hospital',
     description:
-      'Apne hospital ko online le jaao — departments, doctors, appointment booking, aur patient portal sab ek jagah.',
+      'Take your hospital online — departments, doctors, appointment booking, and patient portal all in one place.',
     price: 50000,
     features: [
       'Doctor Profiles & Departments',
@@ -189,7 +189,7 @@ export const services: Service[] = [
     title: 'Clinic Website',
     shortTitle: 'Clinic',
     description:
-      'Chhoti clinic ya private practice ke liye professional website — patient trust badhao, online dikhao.',
+      'Professional website for your clinic or private practice — build patient trust and grow your online presence.',
     price: 20000,
     features: [
       'Doctor Bio & Services',
@@ -209,7 +209,7 @@ export const services: Service[] = [
     title: 'School & College Website',
     shortTitle: 'School/College',
     description:
-      'School ya college ke liye professional website — admissions, results, events, faculty info sab ek jagah dikhao.',
+      'Professional website for your school or college — admissions, results, events, and faculty info all in one place.',
     price: 20000,
     features: [
       'Admission Portal',

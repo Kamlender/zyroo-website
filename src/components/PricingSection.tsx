@@ -145,7 +145,7 @@ export default function PricingSection() {
         </div>
 
         <p className={styles.note}>
-          Pehle baat karo, phir decide karo. Consultation free hai.
+          Talk to us first, then decide. Consultation is free.
         </p>
 
       </div>

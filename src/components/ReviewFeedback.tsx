@@ -44,7 +44,7 @@ export default function ReviewFeedback() {
         const data = await res.json();
 
         if (!data.success) {
-          throw new Error(data.message || 'Feedback send nahi ho paya. Please try again.');
+          throw new Error(data.message || 'Could not send feedback. Please try again.');
         }
 
         setSubmitted(true);
@@ -52,7 +52,7 @@ export default function ReviewFeedback() {
         setErrorMsg(
           err instanceof Error
             ? err.message
-            : 'Feedback send nahi ho paya. Please try again.'
+            : 'Could not send feedback. Please try again.'
         );
       } finally {
         setIsSubmitting(false);
@@ -83,10 +83,10 @@ export default function ReviewFeedback() {
         <div className={styles.cardHeader}>
           <span className={styles.cardBadge}>⭐ Rate Us</span>
           <h3 className={styles.cardTitle}>
-            Aapka Experience <span className={styles.titleHighlight}>Kaisa Raha?</span>
+            How Was Your <span className={styles.titleHighlight}>Experience?</span>
           </h3>
           <p className={styles.cardSubtitle}>
-            Hume apna feedback dein — aapki ek rating bahut matter karti hai!
+            Share your feedback — your rating truly matters to us!
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export default function ReviewFeedback() {
             {/* Name Input */}
             <div className={styles.inputGroup}>
               <label htmlFor="feedback-name" className={styles.inputLabel}>
-                Aapka Naam *
+                Your Name *
               </label>
               <input
                 id="feedback-name"
@@ -148,12 +148,12 @@ export default function ReviewFeedback() {
             {/* Feedback Textarea */}
             <div className={styles.inputGroup}>
               <label htmlFor="feedback-text" className={styles.inputLabel}>
-                Kuch kehna hai? *
+                Your Feedback *
               </label>
               <textarea
                 id="feedback-text"
                 className={`${styles.textInput} ${styles.textArea}`}
-                placeholder="Apna experience batayein..."
+                placeholder="Tell us about your experience..."
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
                 maxLength={500}
@@ -207,12 +207,12 @@ export default function ReviewFeedback() {
                 <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h4 className={styles.successTitle}>Dhanyavaad! 🎉</h4>
+            <h4 className={styles.successTitle}>Thank You! 🎉</h4>
             <p className={styles.successText}>
-              Aapke {rating} star review ke liye shukriya. Aapka feedback hume mil gaya hai!
+              Thanks for your {rating}-star review. We've received your feedback!
             </p>
             <button onClick={handleReset} className={styles.resetBtn}>
-              Ek Aur Review Dein
+              Submit Another Review
             </button>
           </div>
         )}

@@ -161,7 +161,7 @@ export default function AboutPage() {
           <div className={styles.ctaSection}>
             <h2 className={styles.ctaTitle}>Ready to Build Something?</h2>
             <p className={styles.ctaText}>
-              Pehle baat karo, phir decide karo. Consultation free hai.
+              Talk to us first, then decide. Consultation is free.
             </p>
             <div className={styles.ctaButtons}>
               <LightBeamButton

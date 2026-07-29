@@ -108,8 +108,8 @@ export default function OrderPageClient() {
             </div>
             <h2 className={styles.successTitle}>Order Sent!</h2>
             <p className={styles.successText}>
-              Aapka order successfully send ho gaya hai. Hum jaldi se aapse
-              contact karenge!
+              Your order has been sent successfully. We will contact you
+              shortly!
             </p>
             <div className={styles.successActions}>
               <Link href="/" className="btn btn-primary btn-lg">
@@ -187,7 +187,7 @@ export default function OrderPageClient() {
             <div className={styles.orderFormCard}>
               <h2 className={styles.orderFormTitle}>Order Details</h2>
               <p className={styles.orderFormSubtitle}>
-                Form bharo aur submit karo. Hum WhatsApp pe confirm kar lenge.
+                Fill out the form and submit. We'll confirm via WhatsApp.
               </p>
 
               <form onSubmit={handleSubmit} id="order-form">
@@ -201,7 +201,7 @@ export default function OrderPageClient() {
                       type="text"
                       id="order-name"
                       className="form-input"
-                      placeholder="Aapka naam"
+                      placeholder="Your name"
                       value={form.name}
                       onChange={(e) =>
                         setForm((p) => ({ ...p, name: e.target.value }))
@@ -240,7 +240,7 @@ export default function OrderPageClient() {
                     type="email"
                     id="order-email"
                     className="form-input"
-                    placeholder="aapka@email.com"
+                    placeholder="your@email.com"
                     value={form.email}
                     onChange={(e) =>
                       setForm((p) => ({ ...p, email: e.target.value }))
@@ -257,7 +257,7 @@ export default function OrderPageClient() {
                   <textarea
                     id="order-details"
                     className="form-input form-textarea"
-                    placeholder="Aapko kaisi website chahiye? Koi specific requirement ho toh yahan likho..."
+                    placeholder="What kind of website do you need? Write any specific requirements here..."
                     value={form.details}
                     onChange={(e) =>
                       setForm((p) => ({ ...p, details: e.target.value }))
