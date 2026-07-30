@@ -92,7 +92,6 @@ export default function RootLayout({
             description:
               'Web design studio based in Faridabad, India, building websites, online stores, and web apps for small businesses, startups, and healthcare providers.',
             email: 'jha@tinytoono.in',
-            telephone: '+91-8278148729',
             priceRange: '₹5,000–₹60,000',
             areaServed: [
               { '@type': 'City', name: 'Faridabad' },

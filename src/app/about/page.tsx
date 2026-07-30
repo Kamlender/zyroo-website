@@ -20,7 +20,7 @@ import styles from './about.module.css';
 
 export default function AboutPage() {
   const whatsappNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918278148729';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     'Hi! I want to discuss a web design project.'
   )}`;
