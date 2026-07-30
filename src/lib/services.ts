@@ -225,6 +225,27 @@ export const services: Service[] = [
     deliveryDays: 5,
     category: 'Development',
   },
+  {
+    id: 'gym-fitness-website',
+    title: 'Gym & Fitness Website',
+    shortTitle: 'Gym & Fitness',
+    description:
+      'Get your gym or fitness studio online — class schedules, trainer profiles, membership plans, and online bookings.',
+    price: 20000,
+    features: [
+      'Class Schedule & Timetable',
+      'Trainer Profiles',
+      'Membership Plans Display',
+      'Online Booking / Enquiry Form',
+      'Photo & Video Gallery',
+      'Mobile Responsive',
+    ],
+    icon: '💪',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)',
+    deliveryDays: 5,
+    category: 'Development',
+  },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {
