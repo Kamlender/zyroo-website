@@ -32,13 +32,7 @@
   66% { transform: translate(-60px, -20px) scale(0.9); }
 }
 
-/* Refraction line sweep */
-@keyframes refractionSweep {
-  0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
-  20% { opacity: 0.6; }
-  80% { opacity: 0.6; }
-  100% { transform: translateX(200%) rotate(25deg); opacity: 0; }
-}
+
 
 .hero {
   position: relative;
@@ -128,27 +122,7 @@
   mix-blend-mode: multiply;
 }
 
-/* === Refraction Light Sweep — glass edge light streak === */
-.heroInner::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200vh;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 180, 255, 0.15),
-    rgba(80, 180, 255, 0.1),
-    transparent
-  );
-  transform: rotate(25deg);
-  animation: refractionSweep 10s ease-in-out infinite;
-  z-index: 3;
-  pointer-events: none;
-}
+
 
 .heroInner {
   position: relative;
