@@ -14,8 +14,7 @@ export default function ContactPage() {
     message: '',
   });
 
-  const whatsappNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918278148729';
+  const whatsappNumber = '918278148729';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     'Hi! I want to discuss a web design project.'
   )}`;
