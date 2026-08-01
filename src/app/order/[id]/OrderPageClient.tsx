@@ -7,13 +7,31 @@ import { getServiceById, formatPrice } from '@/lib/services';
 import LottieCheckbox from '@/components/LottieCheckbox';
 import styles from './page.module.css';
 
+// Discount code config
+const VALID_CODES: { code: string; percent: number; expiresAt: string }[] = [
+  { code: 'zyroo80indenpendence', percent: 50, expiresAt: '2026-08-15T23:59:59+05:30' },
+];
+
+function validateDiscount(input: string): { valid: boolean; percent: number; message: string } {
+  const trimmed = input.trim().toLowerCase();
+  if (!trimmed) return { valid: false, percent: 0, message: '' };
+
+  const match = VALID_CODES.find((c) => c.code === trimmed);
+  if (!match) return { valid: false, percent: 0, message: 'Invalid discount code' };
+
+  const now = new Date();
+  const expiry = new Date(match.expiresAt);
+  if (now > expiry) return { valid: false, percent: 0, message: 'This code has expired' };
+
+  return { valid: true, percent: match.percent, message: `${match.percent}% OFF applied! 🎉` };
+}
+
 export default function OrderPageClient() {
   const params = useParams();
   const searchParams = useSearchParams();
   const serviceId = params.id as string;
   const service = getServiceById(serviceId);
   const isRush = searchParams.get('mode') === 'rush';
-
 
   const [form, setForm] = useState({
     name: '',
@@ -25,6 +43,12 @@ export default function OrderPageClient() {
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Discount state
+  const [discountApplied, setDiscountApplied] = useState(false);
+  const [discountPercent, setDiscountPercent] = useState(0);
+  const [discountMsg, setDiscountMsg] = useState('');
+  const [discountError, setDiscountError] = useState('');
 
   if (!service) {
     return (
@@ -43,6 +67,42 @@ export default function OrderPageClient() {
     );
   }
 
+  // Price calculations
+  const basePrice = isRush ? Math.round(service.price * 1.5) : service.price;
+  const baseMax = service.maxPrice
+    ? (isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)
+    : null;
+
+  const discountedPrice = discountApplied
+    ? Math.round(basePrice * (1 - discountPercent / 100))
+    : basePrice;
+  const discountedMax = baseMax && discountApplied
+    ? Math.round(baseMax * (1 - discountPercent / 100))
+    : baseMax;
+
+  const handleApplyDiscount = () => {
+    const result = validateDiscount(form.discount);
+    if (result.valid) {
+      setDiscountApplied(true);
+      setDiscountPercent(result.percent);
+      setDiscountMsg(result.message);
+      setDiscountError('');
+    } else {
+      setDiscountApplied(false);
+      setDiscountPercent(0);
+      setDiscountMsg('');
+      setDiscountError(result.message);
+    }
+  };
+
+  const handleRemoveDiscount = () => {
+    setDiscountApplied(false);
+    setDiscountPercent(0);
+    setDiscountMsg('');
+    setDiscountError('');
+    setForm((p) => ({ ...p, discount: '' }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('sending');
@@ -50,11 +110,14 @@ export default function OrderPageClient() {
 
     try {
       // Build plain-text price
-      const finalPrice = isRush ? Math.round(service.price * 1.5) : service.price;
-      let priceText = `INR ${finalPrice}`;
-      if (service.maxPrice) {
-        const finalMax = isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice;
-        priceText += ` to INR ${finalMax}`;
+      let priceText = `INR ${discountedPrice}`;
+      if (discountedMax) {
+        priceText += ` to INR ${discountedMax}`;
+      }
+
+      let discountInfo = 'None';
+      if (discountApplied) {
+        discountInfo = `${form.discount.trim()} (${discountPercent}% OFF) — Original: INR ${basePrice}${baseMax ? ` to INR ${baseMax}` : ''}`;
       }
 
       const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
@@ -69,7 +132,7 @@ export default function OrderPageClient() {
         },
         body: JSON.stringify({
           access_key: web3formsKey,
-          subject: `🛒 New Order — ${service.title}`,
+          subject: `🛒 New Order — ${service.title}${discountApplied ? ` (${discountPercent}% OFF)` : ''}`,
           from_name: 'ZYROO Orders',
           name: form.name,
           phone: form.phone,
@@ -78,7 +141,7 @@ export default function OrderPageClient() {
           mode: isRush ? 'Rush Delivery' : 'Standard',
           price: priceText,
           delivery: `${deliveryDays} days`,
-          discount_code: form.discount || 'None',
+          discount_code: discountInfo,
           message: form.details,
         }),
       });
@@ -151,17 +214,28 @@ export default function OrderPageClient() {
               )}
 
               <div className={styles.serviceInfoPricing}>
-                {isRush && (
+                {(isRush || discountApplied) && (
                   <span className={styles.serviceInfoOldPrice}>
-                    {formatPrice(service.price)}
+                    {formatPrice(isRush && !discountApplied ? service.price : basePrice)}
+                    {baseMax && !discountApplied && isRush && (
+                      <> – {formatPrice(service.maxPrice!)}</>
+                    )}
+                    {baseMax && discountApplied && (
+                      <> – {formatPrice(baseMax)}</>
+                    )}
                   </span>
                 )}
                 <span className={styles.serviceInfoPrice}>
-                  {formatPrice(isRush ? Math.round(service.price * 1.5) : service.price)}
-                  {service.maxPrice && (
-                    <> – {formatPrice(isRush ? Math.round(service.maxPrice * 1.5) : service.maxPrice)}</>
+                  {formatPrice(discountedPrice)}
+                  {discountedMax && (
+                    <> – {formatPrice(discountedMax)}</>
                   )}
                 </span>
+                {discountApplied && (
+                  <span className={styles.discountBadge}>
+                    {discountPercent}% OFF
+                  </span>
+                )}
               </div>
 
               <div className={styles.serviceInfoFeatures}>
@@ -189,7 +263,7 @@ export default function OrderPageClient() {
             <div className={styles.orderFormCard}>
               <h2 className={styles.orderFormTitle}>Order Details</h2>
               <p className={styles.orderFormSubtitle}>
-                Fill out the form and submit. We'll confirm via WhatsApp.
+                Fill out the form and submit. We&apos;ll confirm via WhatsApp.
               </p>
 
               <form onSubmit={handleSubmit} id="order-form">
@@ -256,17 +330,50 @@ export default function OrderPageClient() {
                   <label className="form-label" htmlFor="order-discount">
                     Discount Code
                   </label>
-                  <input
-                    type="text"
-                    id="order-discount"
-                    className="form-input"
-                    placeholder="Enter coupon code (if any)"
-                    value={form.discount}
-                    onChange={(e) =>
-                      setForm((p) => ({ ...p, discount: e.target.value }))
-                    }
-                    disabled={status === 'sending'}
-                  />
+                  <div className={styles.discountRow}>
+                    <input
+                      type="text"
+                      id="order-discount"
+                      className="form-input"
+                      placeholder="Enter coupon code (if any)"
+                      value={form.discount}
+                      onChange={(e) => {
+                        setForm((p) => ({ ...p, discount: e.target.value }));
+                        if (discountApplied) {
+                          setDiscountApplied(false);
+                          setDiscountPercent(0);
+                          setDiscountMsg('');
+                        }
+                        setDiscountError('');
+                      }}
+                      disabled={status === 'sending' || discountApplied}
+                    />
+                    {!discountApplied ? (
+                      <button
+                        type="button"
+                        className={styles.applyBtn}
+                        onClick={handleApplyDiscount}
+                        disabled={!form.discount.trim() || status === 'sending'}
+                      >
+                        Apply
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className={styles.removeBtn}
+                        onClick={handleRemoveDiscount}
+                        disabled={status === 'sending'}
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                  {discountMsg && (
+                    <p className={styles.discountSuccess}>{discountMsg}</p>
+                  )}
+                  {discountError && (
+                    <p className={styles.discountErrorMsg}>{discountError}</p>
+                  )}
                 </div>
 
                 <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>

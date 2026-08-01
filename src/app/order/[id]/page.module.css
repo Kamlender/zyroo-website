@@ -250,3 +250,93 @@
   .formGrid { grid-template-columns: 1fr; }
   .orderFormCard { padding: var(--space-xl); }
 }
+
+/* ---- Discount Code ---- */
+.discountRow {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.discountRow .form-input,
+.discountRow input {
+  flex: 1;
+  min-width: 0;
+}
+
+.applyBtn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #7a2a9e, #5a1a6e);
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.applyBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #8e3ab8, #6a2a7e);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(90, 26, 110, 0.3);
+}
+
+.applyBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.removeBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  font-weight: 700;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeBtn:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.discountSuccess {
+  margin-top: 8px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: #16a34a;
+  padding: 8px 14px;
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+  border-radius: var(--radius-md);
+  animation: glowFadeIn 0.3s ease-out both;
+}
+
+.discountErrorMsg {
+  margin-top: 8px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #ef4444;
+  padding: 8px 14px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: var(--radius-md);
+}
+
+.discountBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-full);
+  animation: glowFadeIn 0.3s ease-out both;
+}
+
