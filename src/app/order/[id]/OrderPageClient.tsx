@@ -9,7 +9,7 @@ import styles from './page.module.css';
 
 // Discount code config
 const VALID_CODES: { code: string; percent: number; expiresAt: string }[] = [
-  { code: 'zyroo80indenpendence', percent: 50, expiresAt: '2026-08-15T23:59:59+05:30' },
+  { code: 'zyroo80independence', percent: 50, expiresAt: '2026-08-15T23:59:59+05:30' },
 ];
 
 function validateDiscount(input: string): { valid: boolean; percent: number; message: string } {
