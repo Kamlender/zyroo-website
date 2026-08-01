@@ -19,6 +19,7 @@ export default function OrderPageClient() {
     name: '',
     phone: '',
     email: '',
+    discount: '',
     details: '',
   });
 
@@ -77,6 +78,7 @@ export default function OrderPageClient() {
           mode: isRush ? 'Rush Delivery' : 'Standard',
           price: priceText,
           delivery: `${deliveryDays} days`,
+          discount_code: form.discount || 'None',
           message: form.details,
         }),
       });
@@ -246,6 +248,23 @@ export default function OrderPageClient() {
                       setForm((p) => ({ ...p, email: e.target.value }))
                     }
                     required
+                    disabled={status === 'sending'}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginTop: 'var(--space-lg)' }}>
+                  <label className="form-label" htmlFor="order-discount">
+                    Discount Code
+                  </label>
+                  <input
+                    type="text"
+                    id="order-discount"
+                    className="form-input"
+                    placeholder="Enter coupon code (if any)"
+                    value={form.discount}
+                    onChange={(e) =>
+                      setForm((p) => ({ ...p, discount: e.target.value }))
+                    }
                     disabled={status === 'sending'}
                   />
                 </div>
