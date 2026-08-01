@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand + Help info */}
           <div className={styles.footerBrand}>
             <Link href="/" className={styles.footerLogo}>
-              <Image src="/skull-logo.png" alt="ZYROO" width={32} height={32} className={styles.footerLogoIcon} />
+              <Image src="/zr-logo.png" alt="ZYROO" width={36} height={36} className={styles.footerLogoIcon} />
               <div className={styles.footerLogoGroup}>
                 <span className={styles.footerLogoText}>ZYROO</span>
                 <span className={styles.footerLogoNiche}>S T U D I O</span>

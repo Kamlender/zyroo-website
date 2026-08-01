@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className={styles.navbarInner}>
           {/* Logo */}
           <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
-            <Image src="/skull-logo.png" alt="ZYROO" width={38} height={38} className={styles.logoIcon} />
+            <Image src="/zr-logo.png" alt="ZYROO" width={38} height={38} className={styles.logoIcon} />
             <div className={styles.logoGroup}>
               <span className={styles.logoText}>ZYROO</span>
               <span className={styles.logoNiche}>S T U D I O</span>
