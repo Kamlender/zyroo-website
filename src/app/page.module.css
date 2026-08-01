@@ -128,19 +128,68 @@
   position: relative;
   z-index: 11;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  padding: 0 20px;
 }
 
 .heroCenter {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+}
+
+/* Sticky Ad Section */
+.heroAdWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+  position: relative;
+}
+
+.stickyAd {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  transform: rotate(-3deg);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+}
+
+.stickyAd:hover {
+  transform: rotate(0deg) scale(1.03);
+  z-index: 20;
+}
+
+.tape {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 120px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.adImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 5px 15px 30px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.2);
+  display: block;
 }
 
 /* ---- Code Window ---- */
@@ -222,7 +271,7 @@
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Stats Ticker */
@@ -573,8 +622,11 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 120px 0 60px; }
-  .heroCtas { flex-direction: column; align-items: center; }
+  .hero { padding: 120px 0 60px; height: auto; max-height: none; min-height: 100vh; }
+  .heroInner { flex-direction: column; text-align: center; gap: 40px; }
+  .heroCenter { align-items: center; text-align: center; }
+  .heroAdWrapper { order: -1; margin-top: 40px; }
+  .heroCtas { flex-direction: column; align-items: center; justify-content: center; width: 100%; }
   .statsTicker { flex-direction: column; gap: var(--space-md); padding: 20px 30px; border-radius: var(--radius-lg); }
   .tickerDot { display: none; }
   .servicesGrid { grid-template-columns: 1fr; }

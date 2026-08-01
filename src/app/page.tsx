@@ -33,6 +33,15 @@ export default function HomePage() {
 
 
         <div className={`${styles.heroInner} container`}>
+          {/* Ad Section (Left Side) */}
+          <div className={styles.heroAdWrapper}>
+            <div className={styles.stickyAd}>
+              <div className={styles.tape}></div>
+              {/* Replace the src below with the actual ad image uploaded by the user */}
+              <img src="/offer.jpg" alt="Independence Day Offer 50% Off" className={styles.adImage} />
+            </div>
+          </div>
+
           <div className={styles.heroCenter}>
             <h1 className={styles.heroTitle}>
               Make Premium websites for
