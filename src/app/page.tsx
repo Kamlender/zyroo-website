@@ -35,16 +35,15 @@ export default function HomePage() {
         <div className={`${styles.heroInner} container`}>
           {/* Ad Section (Left Side) */}
           <div className={styles.heroAdWrapper}>
-            {/* Original Independence Day Offer — with EXPIRED stamp */}
+            {/* Independence Day Offer — with full EXPIRED overlay */}
             <div className={styles.stickyAd}>
               <div className={styles.tape}></div>
               <img src="/offer.jpg" alt="Independence Day Offer 50% Off - Expired" className={styles.adImage} />
-              <div className={styles.expiredStamp}>EXPIRED</div>
-            </div>
-            {/* Raksha Bandhan Offer — overlapping on top */}
-            <div className={`${styles.stickyAd} ${styles.stickyAdOverlay}`}>
-              <div className={styles.tape}></div>
-              <img src="/raksha-bandhan-offer.jpg" alt="Raksha Bandhan Offer - 60% Off on All Services - Use Code RAKSHABANDHAN60 - Valid till 31 August" className={styles.adImage} />
+              <div className={styles.expiredOverlay}>EXPIRED</div>
+              {/* Raksha Bandhan banner pinned in center */}
+              <div className={styles.centerBanner}>
+                <img src="/raksha-bandhan-offer.jpg" alt="Raksha Bandhan Offer - 60% Off on All Services - Use Code RAKSHABANDHAN60 - Valid till 31 August" className={styles.centerBannerImg} />
+              </div>
             </div>
           </div>
 
