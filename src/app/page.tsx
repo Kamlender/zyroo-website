@@ -39,12 +39,9 @@ export default function HomePage() {
             <div className={styles.stickyAd}>
               <div className={styles.tape}></div>
               <img src="/offer.jpg" alt="Independence Day Offer - Expired" className={styles.adImage} />
-              {/* Full watermark pattern like CONFIDENTIAL stamp */}
+              {/* Single EXPIRED stamp across full banner */}
               <div className={styles.expiredWatermark}>
-                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
-                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
-                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
-                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
+                <span>EXPIRED</span>
               </div>
             </div>
             {/* Raksha Bandhan Offer — overlapping on top as separate sticky note */}

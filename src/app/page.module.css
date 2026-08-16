@@ -192,7 +192,7 @@
   display: block;
 }
 
-/* EXPIRED Watermark — repeating pattern across full banner like CONFIDENTIAL stamp */
+/* EXPIRED — single stamp across full banner at 45 degrees */
 .expiredWatermark {
   position: absolute;
   inset: 0;
@@ -201,33 +201,23 @@
   z-index: 5;
   pointer-events: none;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  align-content: center;
   justify-content: center;
-  gap: 10px 20px;
-  padding: 10px;
-  transform: rotate(-25deg);
-  transform-origin: center center;
-  /* scale up so rotated content covers corners */
-  width: 140%;
-  height: 140%;
-  top: -20%;
-  left: -20%;
 }
 
 .expiredWatermark span {
   font-family: 'Impact', 'Arial Black', sans-serif;
-  font-size: clamp(22px, 4vw, 40px);
+  font-size: clamp(48px, 10vw, 90px);
   font-weight: 900;
-  color: rgba(210, 30, 30, 0.55);
+  color: rgba(210, 30, 30, 0.6);
   text-transform: uppercase;
-  letter-spacing: 6px;
-  border: 3px solid rgba(210, 30, 30, 0.45);
-  border-radius: 6px;
-  padding: 4px 14px;
+  letter-spacing: 10px;
+  border: 5px solid rgba(210, 30, 30, 0.5);
+  border-radius: 8px;
+  padding: 6px 30px;
   white-space: nowrap;
-  text-shadow: 1px 1px 0 rgba(150, 0, 0, 0.2);
+  transform: rotate(-45deg);
+  text-shadow: 2px 2px 0 rgba(150, 0, 0, 0.2);
 }
 
 /* Raksha Bandhan — separate sticky note overlapping on top, centered */
