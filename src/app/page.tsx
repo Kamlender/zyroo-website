@@ -35,15 +35,22 @@ export default function HomePage() {
         <div className={`${styles.heroInner} container`}>
           {/* Ad Section (Left Side) */}
           <div className={styles.heroAdWrapper}>
-            {/* Independence Day Offer — with full EXPIRED overlay */}
+            {/* Independence Day Offer — with full EXPIRED watermark */}
             <div className={styles.stickyAd}>
               <div className={styles.tape}></div>
-              <img src="/offer.jpg" alt="Independence Day Offer 50% Off - Expired" className={styles.adImage} />
-              <div className={styles.expiredOverlay}>EXPIRED</div>
-              {/* Raksha Bandhan banner pinned in center */}
-              <div className={styles.centerBanner}>
-                <img src="/raksha-bandhan-offer.jpg" alt="Raksha Bandhan Offer - 60% Off on All Services - Use Code RAKSHABANDHAN60 - Valid till 31 August" className={styles.centerBannerImg} />
+              <img src="/offer.jpg" alt="Independence Day Offer - Expired" className={styles.adImage} />
+              {/* Full watermark pattern like CONFIDENTIAL stamp */}
+              <div className={styles.expiredWatermark}>
+                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
+                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
+                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
+                <span>EXPIRED</span><span>EXPIRED</span><span>EXPIRED</span>
               </div>
+            </div>
+            {/* Raksha Bandhan Offer — overlapping on top as separate sticky note */}
+            <div className={`${styles.stickyAd} ${styles.stickyAdOverlap}`}>
+              <div className={styles.tape}></div>
+              <img src="/raksha-bandhan-offer.jpg" alt="Raksha Bandhan Offer - 60% Off on All Services - Use Code RAKSHABANDHAN60 - Valid till 31 August" className={styles.adImage} />
             </div>
           </div>
 
