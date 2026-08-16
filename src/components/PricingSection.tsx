@@ -48,6 +48,17 @@ export default function PricingSection() {
       <div className={`${styles.inner} container`}>
         {/* Header */}
         <div className={styles.header}>
+          {/* Raksha Bandhan Offer Banner */}
+          <div className={styles.offerBanner}>
+            <span className={styles.offerEmoji}>🎀</span>
+            <div className={styles.offerText}>
+              <strong>Raksha Bandhan Special — FLAT 60% OFF</strong> on all services!
+              <br />
+              Use code: <span className={styles.offerCode}>RAKSHABANDHAN60</span> · Valid till 31 August
+            </div>
+            <span className={styles.offerEmoji}>🎀</span>
+          </div>
+
           <h2 className={styles.heading}>
             What We <span className="gradient-text">Offer</span>
           </h2>
