@@ -15,6 +15,7 @@ import {
   Hospital,
   HeartPulse,
   Dumbbell,
+  Heart,
 } from 'lucide-react';
 import { services, formatPrice } from '@/lib/services';
 import styles from './PricingSection.module.css';
@@ -31,6 +32,7 @@ const iconMap: Record<string, React.ElementType> = {
   'hospital-website': Hospital,
   'clinic-website': HeartPulse,
   'gym-fitness-website': Dumbbell,
+  'ngo-website': Heart,
 };
 
 export default function PricingSection() {

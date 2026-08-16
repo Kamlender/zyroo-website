@@ -246,6 +246,27 @@ export const services: Service[] = [
     deliveryDays: 5,
     category: 'Development',
   },
+  {
+    id: 'ngo-website',
+    title: 'NGO / Non-Profit Website',
+    shortTitle: 'NGO',
+    description:
+      'Build trust and reach more donors — showcase your cause, accept donations, and share your impact stories online.',
+    price: 25000,
+    features: [
+      'Cause & Mission Pages',
+      'Donation / Payment Integration',
+      'Volunteer Registration Form',
+      'Photo & Video Gallery',
+      'Event & News Section',
+      'Mobile Responsive',
+    ],
+    icon: '🤝',
+    popular: false,
+    gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+    deliveryDays: 5,
+    category: 'Development',
+  },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {
