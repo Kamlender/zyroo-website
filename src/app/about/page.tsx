@@ -19,10 +19,7 @@ import Footer from '@/components/Footer';
 import styles from './about.module.css';
 
 export default function AboutPage() {
-  const whatsappNumber = '918278148729';
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    'Hi! I want to discuss a web design project.'
-  )}`;
+
 
   return (
     <>
@@ -170,15 +167,7 @@ export default function AboutPage() {
               >
                 View Services
               </LightBeamButton>
-              <LightBeamButton
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="whatsapp"
-                gradientColors={['#25d366', '#128c7e', '#25d366']}
-              >
-                WhatsApp Us
-              </LightBeamButton>
+
             </div>
           </div>
         </div>

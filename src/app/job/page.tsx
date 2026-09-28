@@ -16,21 +16,21 @@ const openings = [
     type: 'Full-time',
     location: 'Remote',
     experience: 'Fresher / 0-1 yr',
-    applyLink: 'mailto:zyroodesign@gmail.com?subject=Application: Telecaller – Client Outreach',
+    applyLink: 'mailto:Zyroostudio0@gmail.com?subject=Application: Telecaller – Client Outreach',
   },
   {
     role: 'Sales Caller – Lead Generation',
     type: 'Part-time',
     location: 'Remote',
     experience: 'Fresher',
-    applyLink: 'mailto:zyroodesign@gmail.com?subject=Application: Sales Caller – Lead Generation',
+    applyLink: 'mailto:Zyroostudio0@gmail.com?subject=Application: Sales Caller – Lead Generation',
   },
   {
     role: 'Follow-up Caller',
     type: 'Part-time',
     location: 'Remote',
     experience: 'Fresher',
-    applyLink: 'mailto:zyroodesign@gmail.com?subject=Application: Follow-up Caller',
+    applyLink: 'mailto:Zyroostudio0@gmail.com?subject=Application: Follow-up Caller',
   },
 ];
 

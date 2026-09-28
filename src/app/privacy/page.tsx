@@ -63,7 +63,7 @@ export default function PrivacyPage() {
             <h2>Contact</h2>
             <p>
               If you have any questions about our Privacy Policy, contact us at{' '}
-              <a href="mailto:jha@tinytoono.in">jha@tinytoono.in</a>.
+              <a href="mailto:Zyroostudio0@gmail.com">Zyroostudio0@gmail.com</a>.
             </p>
           </div>
         </div>

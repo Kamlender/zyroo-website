@@ -14,10 +14,7 @@ export default function ContactPage() {
     message: '',
   });
 
-  const whatsappNumber = '918278148729';
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    'Hi! I want to discuss a web design project.'
-  )}`;
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,7 +31,7 @@ export default function ContactPage() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
     );
-    window.location.href = `mailto:jha@tinytoono.in?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:Zyroostudio0@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -62,26 +59,12 @@ export default function ContactPage() {
                 <div>
                   <div className={styles.contactInfoLabel}>Email</div>
                   <div className={styles.contactInfoValue}>
-                    <a href="mailto:jha@tinytoono.in">jha@tinytoono.in</a>
+                    <a href="mailto:Zyroostudio0@gmail.com">Zyroostudio0@gmail.com</a>
                   </div>
                 </div>
               </div>
 
-              <div className={styles.contactInfoItem}>
-                <div className={styles.contactInfoIcon}>💬</div>
-                <div>
-                  <div className={styles.contactInfoLabel}>WhatsApp</div>
-                  <div className={styles.contactInfoValue}>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Chat with us on WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </div>
+
 
               <div className={styles.contactInfoItem}>
                 <div className={styles.contactInfoIcon}>📍</div>
