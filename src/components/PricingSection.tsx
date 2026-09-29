@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import {
   Check,
@@ -35,6 +35,7 @@ const iconMap: Record<string, React.ElementType> = {
   'ngo-website': Heart,
 };
 
+export default function PricingSection() {
   return (
     <>
     <section className={styles.section} id="services">
